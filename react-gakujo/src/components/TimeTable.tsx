@@ -1,3 +1,5 @@
+import { Edit } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 import { UniClass, UniTable } from "../type";
 import styles from "./TimeTable.module.css";
 
@@ -24,7 +26,12 @@ const GridCell = ({ data, day, period, length }: GridCellProps) => {
   const classData = data.getClass(day - 1, period - 1);
   return (
     <div className={styles.main_cell} style={{ gridRow: `${period + 1} / ${period + 1 + length}`, gridColumn: `${day + 1}` }}>
-      <ClassCell data={classData.getClass(0)} />
+      <div className={styles.class_grid_cell}>
+        <div className={styles.edit_button}>
+          <EditButton />
+        </div>
+        <ClassCell data={classData.getClass(0)} />
+      </div>
     </div>
   );
 }
@@ -64,6 +71,14 @@ const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
         <p className={styles.period_label_time}>{time2[period]}</p>
       </div>
     </div>
+  );
+}
+
+const EditButton = () => {
+  return (
+    <IconButton sx={{ width: 12, height: 12, padding: 0, margin: 0, display: "flex" }}>
+      <Edit sx={{ width: 12, height: 12 }} />
+    </IconButton>
   );
 }
 
