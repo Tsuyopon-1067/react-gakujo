@@ -1,4 +1,4 @@
-import { CalendarMonth, GridOn } from '@mui/icons-material';
+import { CalendarMonth, GridOn, InsertLink } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import * as React from 'react';
 import { UniCategory, UniClass, UniGrid, UniOnline, UniTable } from '../type';
 import GuidePage from './GuidePage';
+import Links from './Links';
 import TimeTable from './TimeTable';
 
 export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), (n) => { }]);
@@ -33,6 +34,8 @@ export default function FixedBottomNavigation() {
   const contents = [
     <TimeTable data={table} />,
     <GuidePage />,
+    <GuidePage />,
+    <Links />,
   ];
 
 
@@ -53,6 +56,7 @@ export default function FixedBottomNavigation() {
           <BottomNavigationAction label="時間割" icon={<GridOn />} />
           <BottomNavigationAction label="hoge" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="行事予定" icon={<CalendarMonth />} />
+          <BottomNavigationAction label="リンク" icon={<InsertLink />} />
         </BottomNavigation>
       </Paper>
     </Box>
