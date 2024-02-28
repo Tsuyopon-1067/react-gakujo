@@ -1,4 +1,4 @@
-import { UniTable } from "../type";
+import { UniClass, UniTable } from "../type";
 import styles from "./TimeTable.module.css";
 
 interface Props {
@@ -12,13 +12,29 @@ interface GridCellProps {
   length: number;
 }
 
+interface ClassCellProps {
+  data: UniClass;
+}
+
 const GridCell = ({ data, day, period, length }: GridCellProps) => {
+  const classData = data.getClass(day - 1, period - 1);
   return (
     <div className={styles.main_cell} style={{ gridRow: `${period + 1} / ${period + 1 + length}`, gridColumn: `${day + 1}` }}>
-      {data.getClass(day - 1, period - 1).getClass(0).getName()}-{length}
+      <ClassCell data={classData.getClass(0)} />
     </div>
   );
 }
+
+const ClassCell = ({ data }: ClassCellProps) => (
+  <div className={styles.classcell_main}>
+    <p className={`${styles.classcell_title}`}>{data.getName()}</p>
+    <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{data.getTeacher()}</p>
+    <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{data.getRoom()}</p>
+    <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{data.getOnline()}</p>
+    <p className={`${styles.classcell_credit} ${styles.classcell_subtitle}`}>{data.getCredit()}</p>
+    <p className={`${styles.classcell_category} ${styles.classcell_subtitle}`}>{data.getCategory()}</p>
+  </div>
+);
 
 export default function TimeTable({ data }: Props) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
