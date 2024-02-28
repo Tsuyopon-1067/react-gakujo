@@ -1,6 +1,5 @@
-import ArchiveIcon from '@mui/icons-material/Archive';
+import { CalendarMonth, GridOn } from '@mui/icons-material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import RestoreIcon from '@mui/icons-material/Restore';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
@@ -51,9 +50,9 @@ export default function FixedBottomNavigation() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+          <BottomNavigationAction label="時間割" icon={<GridOn />} />
+          <BottomNavigationAction label="hoge" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="行事予定" icon={<CalendarMonth />} />
         </BottomNavigation>
       </Paper>
     </Box>
