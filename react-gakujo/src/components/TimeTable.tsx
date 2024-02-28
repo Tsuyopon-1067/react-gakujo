@@ -1,4 +1,4 @@
-import { UniClass, UniTable } from "../type";
+import { UniTable } from "../type";
 import styles from "./TimeTable.module.css";
 import TimeTableSetting from "./TimeTableSetting";
 
@@ -6,48 +6,52 @@ interface Props {
   data: UniTable;
 }
 
-export interface GridCellProps {
+interface GridCellProps {
   data: UniTable;
   day: number;
   period: number;
   length: number;
 }
 
-interface ClassCellProps {
-  data: UniClass;
+export interface ClassCellProps {
+  data: UniTable;
+  day: number;
+  period: number;
+  index: number;
 }
 
 interface ClassPeriodCellProps {
   period: number;
 }
 
-const GridCell = ({ data, day, period, length }: GridCellProps) => {
-  const classData = data.getClass(day - 1, period - 1);
+const GridCell = ({ data, day, period }: GridCellProps) => {
+  const length = data.getClass(day - 1, period - 1).getClass(0).getLength();
   return (
     <div className={styles.main_cell} style={{ gridRow: `${period + 1} / ${period + 1 + length}`, gridColumn: `${day + 1}` }}>
       <div className={styles.class_grid_cell}>
-        <div className={styles.edit_button}>
-          <EditButton data={data} day={day} period={period} length={length} />
-        </div>
-        <ClassCell data={classData.getClass(0)} />
+        <ClassCell data={data} day={day} period={period} index={0} />
       </div>
     </div>
   );
 }
 
-const ClassCell = ({ data }: ClassCellProps) => {
-  if (data.getIsEnable()) {
-    const credit = data.getCredit();
-    const category = data.getCategory();
-    const categoryValue = data.getCategoryValue();
+const ClassCell = ({ data, day, period, index }: ClassCellProps) => {
+  const classData = data.getClass(day - 1, period - 1).getClass(index);
+  if (classData.getIsEnable()) {
+    const credit = classData.getCredit();
+    const category = classData.getCategory().toString();
+    const categoryValue = classData.getCategoryValue();
     const creditColors = ["", "#FF0000", "#0088FF", "#880088", "#880088", "#880088", "#880088"];
     const categoryColors = ["", "#FF0000", "#008800", "#0088FF", "#000000"];
     return (
       <div className={styles.classcell_main}>
-        <p className={`${styles.classcell_title}`}>{data.getName()}</p>
-        <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{data.getTeacher()}</p>
-        <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{data.getRoom()}</p>
-        <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{data.getOnline()}</p>
+        <div className={styles.edit_button}>
+          <EditButton data={data} day={day} period={period} index={index} />
+        </div>
+        <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
+        <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{classData.getTeacher()}</p>
+        <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{classData.getRoom()}</p>
+        <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{classData.getOnline().toString()}</p>
         <p className={`${styles.classcell_credit} ${styles.classcell_subtitle}`} style={{ backgroundColor: creditColors[credit] }}>{credit}</p>
         <p className={`${styles.classcell_category} ${styles.classcell_subtitle}`} style={{ backgroundColor: categoryColors[categoryValue] }}>{category}</p>
       </div>
@@ -73,9 +77,9 @@ const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   );
 }
 
-const EditButton = ({ data, day, period, length }: GridCellProps) => {
+const EditButton = ({ data, day, period, index }: ClassCellProps) => {
   return (
-    <TimeTableSetting data={data} day={day} period={period} length={length} />
+    <TimeTableSetting data={data} day={day} period={period} index={index} />
   );
 }
 
