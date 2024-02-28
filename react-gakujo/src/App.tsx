@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react';
-import './App.css';
 import TimeTable from './components/TimeTable';
 import { UniCategory, UniClass, UniGrid, UniOnline, UniTable } from './type';
 
