@@ -81,14 +81,14 @@ export default function TimeTable({ data }: Props) {
           }
           if (j === 0) {
             return (
-              <div key={6 * i + j} className={styles.main_cell} style={{ gridRow: i + 1, gridColumn: 1 }}>
+              <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color}`} style={{ gridRow: i + 1, gridColumn: 1 }}>
                 <ClassPeriodCell period={i} />
               </div>
             );
           }
           if (i === 0) {
             return (
-              <div key={6 * i + j} className={`${styles.main_cell} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1 }}>
+              <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1 }}>
                 <p className={styles.day_p}>
                   {dayLabel}
                 </p>

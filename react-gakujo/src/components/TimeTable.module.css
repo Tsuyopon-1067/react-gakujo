@@ -21,6 +21,11 @@
   padding: 0;
 }
 
+.cell_color {
+  color: white;
+  background-color: #04CBB0;
+}
+
 .day_cell {
   display: flex;
   align-items: center;
