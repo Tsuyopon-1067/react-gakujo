@@ -202,7 +202,7 @@
 }
 
 .foot_add {
-  border: 1px solid black;
+  border-top: 1px solid black;
   display: grid;
   background-color: white;
   grid-template-columns: 1fr 1fr 1fr;
