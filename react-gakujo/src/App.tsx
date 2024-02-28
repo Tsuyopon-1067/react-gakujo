@@ -4,6 +4,7 @@ import { UniCategory, UniClass, UniGrid, UniOnline, UniTable } from './type';
 
 export const ContextApp = createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), (n) => { }]);
 
+//<LabelBottomNavigation />
 function App() {
   const m3 = new UniClass('name1', 'tchr', 'cc', 2, new UniOnline(0), new UniCategory(0), 3, "");
   const f2 = new UniClass('name2', 'tchr', 'cc', 2, new UniOnline(0), new UniCategory(0), 1, "");
