@@ -92,7 +92,7 @@ class UniClass {
   }
 
   public static getEmptyClass(): UniClass {
-    return new UniClass("", "", "", 0, new UniOnline(0), new UniCategory(0), 0, "", false);
+    return new UniClass("", "", "", 0, new UniOnline(0), new UniCategory(0), 1, "", false);
   }
 
   public getName(): string {
@@ -133,6 +133,10 @@ class UniClass {
 
   public getMemo(): string {
     return this.memo;
+  }
+
+  public setIsEnable(isEnable: boolean) {
+    this.isEnable = isEnable;
   }
 }
 

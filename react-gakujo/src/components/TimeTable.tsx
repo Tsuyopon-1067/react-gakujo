@@ -1,6 +1,8 @@
+import { Add, Delete } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 import { useContext } from "react";
 import { ContextApp } from "../App";
-import { UniTable } from "../type";
+import { UniClass, UniTable } from "../type";
 import styles from "./TimeTable.module.css";
 import TimeTableSetting from "./TimeTableSetting";
 
@@ -24,12 +26,19 @@ interface TimeTableProps {
 }
 
 const GridCell = ({ day, period }: GridCellProps) => {
-  const [data,] = useContext(ContextApp);
+  const [data, setData] = useContext(ContextApp);
   const grid = data.getClass(day - 1, period - 1);
   const length = grid.getClass(0).getLength();
   return (
     <div className={styles.main_cell} style={{ gridRow: `${period + 1} / ${period + 1 + length}`, gridColumn: `${day + 1}` }}>
       <div className={styles.class_grid_cell}>
+        {grid.getClasses().length === 1 && grid.getClass(0).getIsEnable() && grid.getClass(0).getLength() === 1 && (
+          <div className={styles.add_button}>
+            <IconButton onClick={() => handleAdd(data, setData, day, period)} sx={{ width: 12, height: 12, padding: 0, margin: 0, display: "flex" }}>
+              <Add sx={{ width: 12, height: 12 }} />
+            </IconButton>
+          </div>
+        )}
         < ClassCell day={day} period={period} index={0} />
         {(length === 1 && grid.getClasses().length === 2) && (
           < ClassCell day={day} period={period} index={1} />
@@ -40,7 +49,7 @@ const GridCell = ({ day, period }: GridCellProps) => {
 }
 
 const ClassCell = ({ day, period, index }: ClassCellProps) => {
-  const [data,] = useContext(ContextApp);
+  const [data, setData] = useContext(ContextApp);
   const classData = data.getClass(day - 1, period - 1).getClass(index);
   if (classData.getIsEnable()) {
     const credit = classData.getCredit();
@@ -53,6 +62,11 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
         <div className={styles.edit_button}>
           <EditButton day={day} period={period} index={index} />
         </div>
+        <div className={styles.delete_button}>
+          <IconButton onClick={() => handleDelete(data, setData, day, period, index)} sx={{ width: 12, height: 12, padding: 0, margin: 0, display: "flex" }}>
+            <Delete sx={{ width: 12, height: 12 }} />
+          </IconButton>
+        </div>
         <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
         <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{classData.getTeacher()}</p>
         <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{classData.getRoom()}</p>
@@ -62,6 +76,13 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
       </div>
     );
   }
+  return (
+    <div className={styles.classcell_main}>
+      <div className={styles.edit_button}>
+        <EditButton day={day} period={period} index={index} />
+      </div>
+    </div>
+  );
 }
 
 // leftest column
@@ -87,6 +108,29 @@ const EditButton = ({ day, period, index }: ClassCellProps) => {
   return (
     <TimeTableSetting day={day} period={period} index={index} />
   );
+}
+
+const handleAdd = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number) => {
+  const grid = data.getClass(day - 1, period - 1);
+  console.log(grid.getClasses().length)
+  if (grid.getClasses().length === 1) {
+    const empty = UniClass.getEmptyClass();
+    empty.setIsEnable(true);
+    grid.add(empty);
+    const tmp = new UniTable(data.getClasses());
+    setData(tmp);
+  }
+}
+
+const handleDelete = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number, index: number) => {
+  const grid = data.getClass(day - 1, period - 1);
+  grid.delete(index);
+  if (grid.getClasses().length === 0) {
+    grid.add(UniClass.getEmptyClass());
+  }
+  const tmp = new UniTable(data.getClasses());
+  setData(tmp);
+  console.log(grid.getClasses().length);
 }
 
 export default function TimeTable({ data }: TimeTableProps) {

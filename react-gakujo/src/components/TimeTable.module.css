@@ -126,4 +126,27 @@
   height: 12pt;
   padding: 0;
   margin: 0;
+  z-index: 10;
+}
+
+.delete_button {
+  position: absolute;
+  top: 0;
+  left: 10pt;
+  width: 12pt;
+  height: 12pt;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.add_button {
+  position: absolute;
+  top: 0;
+  right: -3pt;
+  width: 12pt;
+  height: 12pt;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
 }
