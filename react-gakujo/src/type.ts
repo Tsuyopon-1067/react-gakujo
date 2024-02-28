@@ -163,7 +163,7 @@ class UniCategory {
   public static IDX_OTHER: number = 3;
 
   public  static readonly labels: string[] = [
-    "必修", "選択", "自由", "その他"
+    "必修", "選必", "選択", "自由", "その他"
   ];
 
   constructor(value: number) {

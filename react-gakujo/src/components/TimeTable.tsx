@@ -43,8 +43,8 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
     const credit = classData.getCredit();
     const category = classData.getCategory().toString();
     const categoryValue = classData.getCategoryValue();
-    const creditColors = ["", "#FF0000", "#0088FF", "#880088", "#880088", "#880088", "#880088"];
-    const categoryColors = ["", "#FF0000", "#008800", "#0088FF", "#000000"];
+    const creditColors = ["#000000", "#FF0000", "#0088FF", "#880088", "#880088", "#880088", "#880088"];
+    const categoryColors = ["#FF0000", "#009944", "#0088FF", "#000000"];
     return (
       <div className={styles.classcell_main}>
         <div className={styles.edit_button}>
