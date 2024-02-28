@@ -110,12 +110,20 @@ class UniClass {
     return this.category.toString();
   }
 
+  public getCategoryValue(): number {
+    return this.category.getValue();
+  }
+
   public getLength(): number {
     return this.length;
   }
 
   public getIsEnable(): boolean {
     return this.isEnable;
+  }
+
+  public getMemo(): string {
+    return this.memo;
   }
 }
 
@@ -168,7 +176,10 @@ class UniCategory {
   public toString(): string {
     return UniCategory.labels[this.value];
   }
+
+  public getValue(): number {
+    return this.value;
+  }
 }
 
 export { UniCategory, UniClass, UniGrid, UniOnline, UniTable };
-

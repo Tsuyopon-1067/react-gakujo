@@ -31,14 +31,19 @@ const GridCell = ({ data, day, period, length }: GridCellProps) => {
 
 const ClassCell = ({ data }: ClassCellProps) => {
   if (data.getIsEnable()) {
+    const credit = data.getCredit();
+    const category = data.getCategory();
+    const categoryValue = data.getCategoryValue();
+    const creditColors = ["", "#FF0000", "#0088FF", "#880088", "#880088", "#880088", "#880088"];
+    const categoryColors = ["", "#FF0000", "#008800", "#0088FF", "#000000"];
     return (
       <div className={styles.classcell_main}>
         <p className={`${styles.classcell_title}`}>{data.getName()}</p>
         <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{data.getTeacher()}</p>
         <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{data.getRoom()}</p>
         <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{data.getOnline()}</p>
-        <p className={`${styles.classcell_credit} ${styles.classcell_subtitle}`}>{data.getCredit()}</p>
-        <p className={`${styles.classcell_category} ${styles.classcell_subtitle}`}>{data.getCategory()}</p>
+        <p className={`${styles.classcell_credit} ${styles.classcell_subtitle}`} style={{ backgroundColor: creditColors[credit] }}>{credit}</p>
+        <p className={`${styles.classcell_category} ${styles.classcell_subtitle}`} style={{ backgroundColor: categoryColors[categoryValue] }}>{category}</p>
       </div>
     );
   }

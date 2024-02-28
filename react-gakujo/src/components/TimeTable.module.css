@@ -5,12 +5,11 @@
   grid-template-columns: 28pt 1fr 1fr 1fr 1fr 1fr;
   height: 100%;
   width: calc(100% - 20pt);
-  background-color: orange;
 }
 
 .main_cell {
   border: 1px solid black;
-  padding: 8px;
+  padding: 2pt;
   text-align: center;
 }
 
@@ -18,7 +17,6 @@
   display: grid;
   grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
-  background-color: aqua;
   margin: 0;
   padding: 0;
 }
@@ -59,13 +57,11 @@
 .classcell_teacher {
   grid-row: 2 / 3;
   grid-column: 1 / 3;
-  background-color: blue;
 }
 
 .classcell_room {
   grid-row: 3 / 4;
   grid-column: 1 / 3;
-  background-color: green;
 }
 
 .classcell_online {
@@ -76,11 +72,19 @@
 .classcell_credit {
   grid-row: 5 / 6;
   grid-column: 1 / 2;
+  color: white;
+  background-color: red;
+  border-radius: 10%;
+  margin: 0 1pt 0 0;
 }
 
 .classcell_category {
   grid-row: 5 / 6;
   grid-column: 2 / 3;
+  color: white;
+  background-color: red;
+  border-radius: 10%;
+  margin: 0 0 0 1pt;
 }
 
 .period_label_container {
