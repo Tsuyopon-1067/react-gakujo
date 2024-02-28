@@ -7,8 +7,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import * as React from 'react';
 import { useState } from "react";
-import { ContextApp } from '../App';
 import { UniCategory, UniClass, UniOnline, UniTable } from '../type';
+import { ContextApp } from './FixedBottomNavigation';
 import { ClassCellProps } from './TimeTable';
 
 export default function TimeTableSetting({ day, period, index }: ClassCellProps) {

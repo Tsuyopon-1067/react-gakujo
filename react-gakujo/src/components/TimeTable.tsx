@@ -1,8 +1,8 @@
 import { Add, AddCircleOutline, Delete } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useContext } from "react";
-import { ContextApp } from "../App";
 import { UniClass, UniTable } from "../type";
+import { ContextApp } from "./FixedBottomNavigation";
 import styles from "./TimeTable.module.css";
 import TimeTableSetting from "./TimeTableSetting";
 
