@@ -16,6 +16,10 @@ interface ClassCellProps {
   data: UniClass;
 }
 
+interface ClassPeriodCellProps {
+  period: number;
+}
+
 const GridCell = ({ data, day, period, length }: GridCellProps) => {
   const classData = data.getClass(day - 1, period - 1);
   return (
@@ -36,6 +40,24 @@ const ClassCell = ({ data }: ClassCellProps) => (
   </div>
 );
 
+const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
+  if (period === 0) {
+    return;
+  }
+  const time1 = ["", "8:40", "10:20", "12:45", "14:25", "16:05"];
+  const time2 = ["", "10:10", "11:50", "14:15", "15:55", "17:35"];
+  return (
+    <div className={styles.period_label_container}>
+      <div>
+        <p className={styles.period_label}>[{period}]</p>
+        <p className={styles.period_label_time}>{time1[period]}</p>
+        <p className={styles.period_label_time}>～</p>
+        <p className={styles.period_label_time}>{time2[period]}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function TimeTable({ data }: Props) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
@@ -51,14 +73,16 @@ export default function TimeTable({ data }: Props) {
           if (j === 0) {
             return (
               <div key={6 * i + j} className={styles.main_cell} style={{ gridRow: i + 1, gridColumn: 1 }}>
-                {periodLabel}
+                <ClassPeriodCell period={i} />
               </div>
             );
           }
           if (i === 0) {
             return (
-              <div key={6 * i + j} className={styles.main_cell} style={{ gridRow: 1, gridColumn: j + 1 }}>
-                {dayLabel}
+              <div key={6 * i + j} className={`${styles.main_cell} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1 }}>
+                <p className={styles.day_p}>
+                  {dayLabel}
+                </p>
               </div>
             );
           }
