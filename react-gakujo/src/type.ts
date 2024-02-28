@@ -9,10 +9,6 @@ class UniTable {
     return this.classes[day][period];
   }
 
-  public getDay(day: number): UniGrid[] {
-    return this.classes[day];
-  }
-
   public getClasses(): UniGrid[][] {
     return this.classes;
   }
@@ -172,22 +168,6 @@ class UniCategory {
 
   constructor(value: number) {
     this.value = value;
-  }
-
-  public static required(): UniCategory {
-    return new UniCategory(UniCategory.IDX_REQUIRED);
-  }
-
-  public static elective(): UniCategory {
-    return new UniCategory(UniCategory.IDX_ELECTIVE);
-  }
-
-  public static free(): UniCategory {
-    return new UniCategory(UniCategory.IDX_FREE);
-  }
-
-  public static other(): UniCategory {
-    return new UniCategory(UniCategory.IDX_OTHER);
   }
 
   public toString(): string {
