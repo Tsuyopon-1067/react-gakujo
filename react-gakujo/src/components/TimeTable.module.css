@@ -1,7 +1,6 @@
 .main_div {
   display: grid;
   margin: 10pt;
-  grid-template-rows: 16pt 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 28pt 1fr 1fr 1fr 1fr 1fr;
   height: 100%;
   width: calc(100% - 20pt);
@@ -15,6 +14,7 @@
 
 .classcell_main {
   display: grid;
+  position: relative;
   grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   margin: 0;
