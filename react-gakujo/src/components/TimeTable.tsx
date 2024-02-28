@@ -7,7 +7,6 @@ import TimeTableSetting from "./TimeTableSetting";
 interface GridCellProps {
   day: number;
   period: number;
-  length: number;
 }
 
 export interface ClassCellProps {
@@ -26,13 +25,17 @@ interface TimeTableProps {
 
 const GridCell = ({ day, period }: GridCellProps) => {
   const [data,] = useContext(ContextApp);
-  const length = data.getClass(day - 1, period - 1).getClass(0).getLength();
+  const grid = data.getClass(day - 1, period - 1);
+  const length = grid.getClass(0).getLength();
   return (
     <div className={styles.main_cell} style={{ gridRow: `${period + 1} / ${period + 1 + length}`, gridColumn: `${day + 1}` }}>
       <div className={styles.class_grid_cell}>
-        <ClassCell day={day} period={period} index={0} />
+        < ClassCell day={day} period={period} index={0} />
+        {(length === 1 && grid.getClasses().length === 2) && (
+          < ClassCell day={day} period={period} index={1} />
+        )}
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -61,6 +64,7 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
   }
 }
 
+// leftest column
 const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   if (period === 0) {
     return;
@@ -117,7 +121,7 @@ export default function TimeTable({ data }: TimeTableProps) {
           const length = data.getClass(j - 1, i - 1).getClass(0).getLength();
           skipCount = length - 1;
           return (
-            <GridCell key={6 * i + j} day={j} period={i} length={length} />
+            <GridCell key={6 * i + j} day={j} period={i} />
           );
         })
       ))}
