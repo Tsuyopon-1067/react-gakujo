@@ -1,4 +1,4 @@
-.main_div {
+.table_main_div {
   display: grid;
   margin: 10pt;
   grid-template-columns: 28pt 1fr 1fr 1fr 1fr 1fr;
@@ -149,4 +149,67 @@
   padding: 0;
   margin: 0;
   z-index: 10;
+}
+
+.foot_div {
+  margin: 10pt;
+  width: calc(100% - 20pt);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: #04CBB0;
+  border: solid 1px black;
+}
+
+.foot_title_p {
+  margin: 0;
+  padding: 0;
+  font-size: 8pt;
+  text-align: center;
+}
+
+.foot_class_grid {
+  border-top: 1px solid black;
+  border-bottom-style: 1px solid black;
+  text-align: center;
+  height: 28pt;
+  font-size: 8pt;
+  background-color: white;
+}
+
+.foot_edit_button {
+  margin: 2pt;
+  grid-column: 1;
+}
+
+.foot_delete_button {
+  margin: 2pt 2pt 2pt 2pt;
+  grid-column: 2;
+}
+
+.foot_left_grid {
+  display: grid;
+  grid-template-columns: 12pt 1fr;
+}
+
+.foot_right_grid {
+  display: grid;
+  grid-template-columns: 1fr 14pt;
+}
+
+.foot_class_p {
+  font-size: 8pt;
+  color: black;
+}
+
+.foot_add {
+  border: 1px solid black;
+  display: grid;
+  background-color: white;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column: 1 / 7;
+}
+
+.foot_center {
+  grid-column: 2;
+  text-align: center;
 }

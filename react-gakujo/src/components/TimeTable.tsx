@@ -1,4 +1,4 @@
-import { Add, Delete } from "@mui/icons-material";
+import { Add, AddCircleOutline, Delete } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useContext } from "react";
 import { ContextApp } from "../App";
@@ -112,7 +112,6 @@ const EditButton = ({ day, period, index }: ClassCellProps) => {
 
 const handleAdd = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number) => {
   const grid = data.getClass(day - 1, period - 1);
-  console.log(grid.getClasses().length)
   if (grid.getClasses().length === 1) {
     const empty = UniClass.getEmptyClass();
     empty.setIsEnable(true);
@@ -133,6 +132,84 @@ const handleDelete = (data: UniTable, setData: (data: UniTable) => void, day: nu
   console.log(grid.getClasses().length);
 }
 
+const handleFootAdd = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number) => {
+  const grid = data.getClass(day - 1, period - 1);
+  const empty = UniClass.getEmptyClass();
+  empty.setIsEnable(true);
+  grid.add(empty);
+  const tmp = new UniTable(data.getClasses());
+  setData(tmp);
+}
+
+const FootTable = () => {
+  const [data, setData] = useContext(ContextApp);
+  const list = data.getClass(5, 0);
+  const labels = ["科目名", "教員", "教室", "形態", "分類", "単位数"];
+  return (
+    <div className={styles.foot_div}>
+      {
+        labels.map((label, i) => (
+          <div key={i} className={styles.foot_title_grid} style={{ gridColumn: i + 1 }}>
+            <p className={styles.foot_title_p}>{label}</p>
+          </div>
+        ))
+      }
+      {
+        list.getClasses().map((classData, i) => {
+          if (!classData.getIsEnable()) {
+            return;
+          }
+          return (
+            <>
+              <div className={styles.foot_class_grid} style={{ gridColumn: 1 }}>
+                <div className={styles.foot_left_grid}>
+                  <div className={styles.foot_edit_button}>
+                    <p>
+                      <EditButton day={6} period={1} index={i} />
+                    </p>
+                  </div>
+                  <p className={styles.foot_class_p} style={{ gridColumn: 2 }}>{classData.getName()}</p>
+                </div>
+              </div>
+              <div className={styles.foot_class_grid} style={{ gridColumn: 2 }}>
+                <p className={styles.foot_class_p}>{classData.getTeacher()}</p>
+              </div>
+              <div className={styles.foot_class_grid} style={{ gridColumn: 3 }}>
+                <p className={styles.foot_class_p}>{classData.getRoom()}</p>
+              </div>
+              <div className={styles.foot_class_grid} style={{ gridColumn: 4 }}>
+                <p className={styles.foot_class_p}>{classData.getOnline().toString()}</p>
+              </div>
+              <div className={styles.foot_class_grid} style={{ gridColumn: 5 }}>
+                <p className={styles.foot_class_p}>{classData.getCategory().toString()}</p>
+              </div>
+              <div className={styles.foot_class_grid} style={{ gridColumn: 6 }}>
+                <div className={styles.foot_right_grid}>
+                  <p className={styles.foot_class_p} style={{ gridColumn: 1 }}>{classData.getCredit()}</p>
+                  <div className={styles.foot_delete_button}>
+                    <p>
+                      <IconButton onClick={() => handleDelete(data, setData, 6, 1, i)} sx={{ width: 12, height: 12, padding: 0, margin: 0, display: "flex" }}>
+                        <Delete sx={{ width: 12, height: 12 }} />
+                      </IconButton>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )
+        })
+      }
+      <div className={styles.foot_add}>
+        <div className={styles.foot_center}>
+          <IconButton onClick={() => handleFootAdd(data, setData, 6, 1)}>
+            <AddCircleOutline />
+          </IconButton>
+        </div>
+      </div>
+    </div >
+  );
+}
+
 export default function TimeTable({ data }: TimeTableProps) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
@@ -140,35 +217,38 @@ export default function TimeTable({ data }: TimeTableProps) {
   let skipCount = 0;
   return (
     <div className={styles.main_div}>
-      {dayLabels.map((dayLabel, j) => (
-        periodLabels.map((_, i) => {
-          if (skipCount > 0) {
-            skipCount--;
-            return;
-          }
-          if (j === 0) {
+      <div className={styles.table_main_div}>
+        {dayLabels.map((dayLabel, j) => (
+          periodLabels.map((_, i) => {
+            if (skipCount > 0) {
+              skipCount--;
+              return;
+            }
+            if (j === 0) {
+              return (
+                <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color}`} style={{ gridRow: i + 1, gridColumn: 1 }}>
+                  <ClassPeriodCell period={i} />
+                </div>
+              );
+            }
+            if (i === 0) {
+              return (
+                <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1 }}>
+                  <p className={styles.day_p}>
+                    {dayLabel}
+                  </p>
+                </div>
+              );
+            }
+            const length = data.getClass(j - 1, i - 1).getClass(0).getLength();
+            skipCount = length - 1;
             return (
-              <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color}`} style={{ gridRow: i + 1, gridColumn: 1 }}>
-                <ClassPeriodCell period={i} />
-              </div>
+              <GridCell key={6 * i + j} day={j} period={i} />
             );
-          }
-          if (i === 0) {
-            return (
-              <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1 }}>
-                <p className={styles.day_p}>
-                  {dayLabel}
-                </p>
-              </div>
-            );
-          }
-          const length = data.getClass(j - 1, i - 1).getClass(0).getLength();
-          skipCount = length - 1;
-          return (
-            <GridCell key={6 * i + j} day={j} period={i} />
-          );
-        })
-      ))}
+          })
+        ))}
+      </div >
+      <FootTable />
     </div >
   );
 }
