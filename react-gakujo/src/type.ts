@@ -84,6 +84,26 @@ class UniClass {
     return this.name;
   }
 
+  public getTeacher(): string {
+    return this.teacher;
+  }
+
+  public getRoom(): string {
+    return this.room;
+  }
+
+  public getCredit(): number {
+    return this.credit;
+  }
+
+  public getOnline(): string {
+    return this.online.toString();
+  }
+
+  public getCategory(): string {
+    return this.category.toString();
+  }
+
   public getLength(): number {
     return this.length;
   }
