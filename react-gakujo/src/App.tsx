@@ -1,9 +1,13 @@
-import './App.css'
+import './App.css';
+import FixedBottomNavigation from './components/FixedBottomNavigation';
 
+      //<LabelBottomNavigation />
 function App() {
 
   return (
-    <div>hogehoge</div>
+    <div>
+    <FixedBottomNavigation />
+    </div>
   )
 }
 
