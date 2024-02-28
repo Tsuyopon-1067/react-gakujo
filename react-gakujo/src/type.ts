@@ -64,7 +64,9 @@ class UniClass {
   private memo: string
   private isEnable: boolean = false;
 
-  constructor(name: string, teacher: string, room: string, credit: number, online: UniOnline, category: UniCategory, length: number, memo: string) {
+  constructor(name: string, teacher: string, room: string, credit: number, online: UniOnline, category: UniCategory, length: number, memo: string)
+  constructor(name: string, teacher: string, room: string, credit: number, online: UniOnline, category: UniCategory, length: number, memo: string, isEnable: boolean)
+  constructor(name: string, teacher: string, room: string, credit: number, online: UniOnline, category: UniCategory, length: number, memo: string, isEnable?: boolean) {
     this.name = name;
     this.teacher = teacher;
     this.room = room;
@@ -73,11 +75,15 @@ class UniClass {
     this.category = category;
     this.length = length;
     this.memo = memo;
-    this.isEnable = true;
+    if (isEnable !== undefined) {
+      this.isEnable = isEnable;
+    } else {
+      this.isEnable = true;
+    }
   }
 
   public static getEmptyClass(): UniClass {
-    return new UniClass("", "", "", 0, new UniOnline(0), new UniCategory(0), 0, "");
+    return new UniClass("", "", "", 0, new UniOnline(0), new UniCategory(0), 0, "", false);
   }
 
   public getName(): string {
@@ -106,6 +112,10 @@ class UniClass {
 
   public getLength(): number {
     return this.length;
+  }
+
+  public getIsEnable(): boolean {
+    return this.isEnable;
   }
 }
 

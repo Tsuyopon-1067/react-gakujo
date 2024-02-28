@@ -29,16 +29,20 @@ const GridCell = ({ data, day, period, length }: GridCellProps) => {
   );
 }
 
-const ClassCell = ({ data }: ClassCellProps) => (
-  <div className={styles.classcell_main}>
-    <p className={`${styles.classcell_title}`}>{data.getName()}</p>
-    <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{data.getTeacher()}</p>
-    <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{data.getRoom()}</p>
-    <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{data.getOnline()}</p>
-    <p className={`${styles.classcell_credit} ${styles.classcell_subtitle}`}>{data.getCredit()}</p>
-    <p className={`${styles.classcell_category} ${styles.classcell_subtitle}`}>{data.getCategory()}</p>
-  </div>
-);
+const ClassCell = ({ data }: ClassCellProps) => {
+  if (data.getIsEnable()) {
+    return (
+      <div className={styles.classcell_main}>
+        <p className={`${styles.classcell_title}`}>{data.getName()}</p>
+        <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{data.getTeacher()}</p>
+        <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{data.getRoom()}</p>
+        <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{data.getOnline()}</p>
+        <p className={`${styles.classcell_credit} ${styles.classcell_subtitle}`}>{data.getCredit()}</p>
+        <p className={`${styles.classcell_category} ${styles.classcell_subtitle}`}>{data.getCategory()}</p>
+      </div>
+    );
+  }
+}
 
 const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   if (period === 0) {
