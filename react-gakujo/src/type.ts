@@ -27,10 +27,10 @@ class UniGrid {
   private classes: UniClass[];
 
   constructor()
-  constructor(uniClass: UniClass)
-  constructor(uniClass?: UniClass) {
-    if (uniClass) {
-      this.classes = [uniClass];
+  constructor(uniClasses: UniClass[])
+  constructor(uniClasses?: UniClass[]) {
+    if (uniClasses) {
+      this.classes = uniClasses;
     } else {
       this.classes = [UniClass.getEmptyClass()];
     }
