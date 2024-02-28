@@ -16,6 +16,11 @@ class UniTable {
   public getClasses(): UniGrid[][] {
     return this.classes;
   }
+
+  public setClass(uniClass: UniClass, day: number, period: number, index: number) {
+    const grid = this.classes[day][period];
+    grid.setClass(uniClass, index);
+  }
 }
 
 class UniGrid {
@@ -50,6 +55,10 @@ class UniGrid {
 
   public getClasses(): UniClass[] {
     return this.classes;
+  }
+
+  public setClass(uniClass: UniClass, index: number) {
+    this.classes[index] = uniClass;
   }
 }
 
@@ -102,12 +111,12 @@ class UniClass {
     return this.credit;
   }
 
-  public getOnline(): string {
-    return this.online.toString();
+  public getOnline(): UniOnline {
+    return this.online;
   }
 
-  public getCategory(): string {
-    return this.category.toString();
+  public getCategory(): UniCategory {
+    return this.category;
   }
 
   public getCategoryValue(): number {
@@ -129,8 +138,8 @@ class UniClass {
 
 class UniOnline {
   private value: number = 0;
-  private static labels: string[] = [
-    "オンライン", "対面", "オンデマンド", "ハイブリッド", "双方向オンライン", "その他"
+  public  static readonly labels: string[] = [
+    "対面", "オンライン", "オンデマンド", "ハイブリッド", "双方向オンライン", "その他"
   ];
 
   constructor(value: number) {
@@ -139,6 +148,10 @@ class UniOnline {
 
   public toString(): string {
     return UniOnline.labels[this.value];
+  }
+
+  public setValue(value: number) {
+    this.value = value;
   }
 }
 
@@ -149,7 +162,7 @@ class UniCategory {
   public static IDX_FREE: number = 2;
   public static IDX_OTHER: number = 3;
 
-  private static labels: string[] = [
+  public  static readonly labels: string[] = [
     "必修", "選択", "自由", "その他"
   ];
 

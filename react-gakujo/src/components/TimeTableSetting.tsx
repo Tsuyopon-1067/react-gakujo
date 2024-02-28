@@ -7,10 +7,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import * as React from 'react';
 import { useState } from "react";
+import { ContextApp } from '../App';
 import { UniCategory, UniClass, UniOnline, UniTable } from '../type';
 import { ClassCellProps } from './TimeTable';
 
-export default function TimeTableSetting({ data, day, period, index }: ClassCellProps) {
+export default function TimeTableSetting({ day, period, index }: ClassCellProps) {
+    const [data, setData] = React.useContext(ContextApp);
     const [open, setOpen] = useState(false);
     const dayLabels = ["", "月", "火", "水", "木", "金"];
     const classData = data.getClass(day - 1, period - 1).getClass(index);
@@ -35,7 +37,8 @@ export default function TimeTableSetting({ data, day, period, index }: ClassCell
         setOpen(false);
         const tmp = new UniClass(name, teacher, room, credit, online, category, length, memo);
         data.setClass(tmp, day - 1, period - 1, index);
-        data.update();
+        data = new UniTable(data.getClasses());
+        setData(data);
     };
 
     return (

@@ -1,20 +1,16 @@
+import { useContext } from "react";
+import { ContextApp } from "../App";
 import { UniTable } from "../type";
 import styles from "./TimeTable.module.css";
 import TimeTableSetting from "./TimeTableSetting";
 
-interface Props {
-  data: UniTable;
-}
-
 interface GridCellProps {
-  data: UniTable;
   day: number;
   period: number;
   length: number;
 }
 
 export interface ClassCellProps {
-  data: UniTable;
   day: number;
   period: number;
   index: number;
@@ -24,18 +20,24 @@ interface ClassPeriodCellProps {
   period: number;
 }
 
-const GridCell = ({ data, day, period }: GridCellProps) => {
+interface TimeTableProps {
+  data: UniTable;
+}
+
+const GridCell = ({ day, period }: GridCellProps) => {
+  const [data,] = useContext(ContextApp);
   const length = data.getClass(day - 1, period - 1).getClass(0).getLength();
   return (
     <div className={styles.main_cell} style={{ gridRow: `${period + 1} / ${period + 1 + length}`, gridColumn: `${day + 1}` }}>
       <div className={styles.class_grid_cell}>
-        <ClassCell data={data} day={day} period={period} index={0} />
+        <ClassCell day={day} period={period} index={0} />
       </div>
     </div>
   );
 }
 
-const ClassCell = ({ data, day, period, index }: ClassCellProps) => {
+const ClassCell = ({ day, period, index }: ClassCellProps) => {
+  const [data,] = useContext(ContextApp);
   const classData = data.getClass(day - 1, period - 1).getClass(index);
   if (classData.getIsEnable()) {
     const credit = classData.getCredit();
@@ -46,7 +48,7 @@ const ClassCell = ({ data, day, period, index }: ClassCellProps) => {
     return (
       <div className={styles.classcell_main}>
         <div className={styles.edit_button}>
-          <EditButton data={data} day={day} period={period} index={index} />
+          <EditButton day={day} period={period} index={index} />
         </div>
         <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
         <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{classData.getTeacher()}</p>
@@ -77,20 +79,21 @@ const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   );
 }
 
-const EditButton = ({ data, day, period, index }: ClassCellProps) => {
+const EditButton = ({ day, period, index }: ClassCellProps) => {
   return (
-    <TimeTableSetting data={data} day={day} period={period} index={index} />
+    <TimeTableSetting day={day} period={period} index={index} />
   );
 }
 
-export default function TimeTable({ data }: Props) {
+export default function TimeTable({ data }: TimeTableProps) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
+  //const [data,] = useContext(ContextApp);
   let skipCount = 0;
   return (
     <div className={styles.main_div}>
       {dayLabels.map((dayLabel, j) => (
-        periodLabels.map((periodLabel, i) => {
+        periodLabels.map((_, i) => {
           if (skipCount > 0) {
             skipCount--;
             return;
@@ -114,7 +117,7 @@ export default function TimeTable({ data }: Props) {
           const length = data.getClass(j - 1, i - 1).getClass(0).getLength();
           skipCount = length - 1;
           return (
-            <GridCell key={6 * i + j} data={data} day={j} period={i} length={length} />
+            <GridCell key={6 * i + j} day={j} period={i} length={length} />
           );
         })
       ))}
