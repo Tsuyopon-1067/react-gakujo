@@ -1,5 +1,5 @@
-import { ContentPaste, Input } from "@mui/icons-material";
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
+import { ContentPaste, Input, RestartAlt } from "@mui/icons-material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, TextField } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { ContextApp, MainLocalStorageData } from "./FixedBottomNavigation";
 import styles from "./Setting.module.css";
@@ -10,7 +10,7 @@ interface ImportDataProps {
 
 function AlertDialog({ data }: ImportDataProps) {
     const [open, setOpen] = React.useState(false);
-    const [_, setter] = useContext(ContextApp);
+    const [, setter] = useContext(ContextApp);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -62,6 +62,59 @@ function AlertDialog({ data }: ImportDataProps) {
     );
 }
 
+function ResetButton() {
+    const [open, setOpen] = React.useState(false);
+    const [, setter] = useContext(ContextApp);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleReset = () => {
+        handleClose();
+        MainLocalStorageData.resetData();
+        MainLocalStorageData.loadData();
+        setter(MainLocalStorageData.getUniTable());
+    }
+
+    return (
+        <React.Fragment>
+            <Button
+                variant="outlined"
+                fullWidth sx={{ color: "#04CBB0", borderColor: "#04CBB0", marginBottom: 2 }}
+                onClick={handleClickOpen}
+            >
+                <RestartAlt /><span className={styles.clipboard_caption}>リセット</span>
+            </Button>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle>
+                    リセットしてもよろしいですか？
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        設定データをリセットします。リセット後は元に戻せません。
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>キャンセル</Button>
+                    <Button onClick={handleReset} autoFocus>
+                        リセット
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </React.Fragment>
+    );
+}
+
 function Setting() {
     const jsonStringData = MainLocalStorageData.toJsonString();
     const [inputJsonStringData, setInputJsonStringData] = useState("");
@@ -87,11 +140,14 @@ function Setting() {
             <h3>エクスポート</h3>
             <Button
                 variant="contained"
-                fullWidth sx={{ backgroundColor: "#04CBB0" }}
+                fullWidth sx={{ backgroundColor: "#04CBB0", marginBottom: 4 }}
                 onClick={handleToClipBoard}
             >
                 <ContentPaste /><span className={styles.clipboard_caption}>設定をクリップボードにコピー</span>
             </Button>
+            <Divider />
+            <h2>リセット</h2>
+            <ResetButton />
         </div>
     );
 }

@@ -43,4 +43,9 @@ export class LocalStorageData {
   public toJsonString(): string {
     return JSON.stringify(this.data);
   }
+
+  public resetData() {
+    localStorage.removeItem("tsuyopon1067-react-gakujo");
+    this.loadData();
+  }
 }
