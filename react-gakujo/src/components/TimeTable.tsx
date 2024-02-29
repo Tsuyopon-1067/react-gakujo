@@ -25,6 +25,18 @@ interface TimeTableProps {
   data: UniTable;
 }
 
+//  1-GridCell
+//  2-ClassCell
+//  3-ClassPeriodCell
+//  4-EditButton
+//  5-handleAdd function
+//  6-handleDelete function
+//  7-handleFootAdd function
+//  8-FootTable
+//  9-CreditTable
+// 10-TimeTable
+
+// 1-GridCell: A cell in 1 period. Multiple ClassCell can be contained within.
 const GridCell = ({ day, period }: GridCellProps) => {
   const [data, setData] = useContext(ContextApp);
   const grid = data.getClass(day - 1, period - 1);
@@ -48,6 +60,7 @@ const GridCell = ({ day, period }: GridCellProps) => {
   );
 }
 
+// 2-ClassCell: A class.
 const ClassCell = ({ day, period, index }: ClassCellProps) => {
   const [data, setData] = useContext(ContextApp);
   const classData = data.getClass(day - 1, period - 1).getClass(index);
@@ -67,7 +80,9 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
             <Delete sx={{ width: 12, height: 12 }} />
           </IconButton>
         </div>
-        <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
+        <div className={styles.class_cell_title_div}>
+          <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
+        </div>
         <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{classData.getTeacher()}</p>
         <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{classData.getRoom()}</p>
         <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{classData.getOnline().toString()}</p>
@@ -85,7 +100,7 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
   );
 }
 
-// leftest column
+// 3-ClassPeriodCell: The leftest column. Display times in it.
 const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   if (period === 0) {
     return;
@@ -104,12 +119,14 @@ const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   );
 }
 
+// 4-EditButton: It is placed in the upper left corner of the ClassCell. It is also placed in the foot table.
 const EditButton = ({ day, period, index }: ClassCellProps) => {
   return (
     <TimeTableSetting day={day} period={period} index={index} />
   );
 }
 
+// 5-handleAdd function: Add a class to the grid.
 const handleAdd = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number) => {
   const grid = data.getClass(day - 1, period - 1);
   if (grid.getClasses().length === 1) {
@@ -121,6 +138,7 @@ const handleAdd = (data: UniTable, setData: (data: UniTable) => void, day: numbe
   }
 }
 
+// 6-handleDelete function: Delete a class to the grid.
 const handleDelete = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number, index: number) => {
   const grid = data.getClass(day - 1, period - 1);
   grid.delete(index);
@@ -132,6 +150,7 @@ const handleDelete = (data: UniTable, setData: (data: UniTable) => void, day: nu
   console.log(grid.getClasses().length);
 }
 
+// 7-handleFootAdd function: Add a new row to the foot table.
 const handleFootAdd = (data: UniTable, setData: (data: UniTable) => void, day: number, period: number) => {
   const grid = data.getClass(day - 1, period - 1);
   const empty = UniClass.getEmptyClass();
@@ -141,6 +160,7 @@ const handleFootAdd = (data: UniTable, setData: (data: UniTable) => void, day: n
   setData(tmp);
 }
 
+// 8-FootTable: Table under the time table.
 const FootTable = () => {
   const [data, setData] = useContext(ContextApp);
   const list = data.getClass(5, 0);
@@ -211,6 +231,27 @@ const FootTable = () => {
   );
 }
 
+// 9-CreditTable: Display credit information in the entire period.
+const CreditTable = () => {
+  let credit = 0;
+  const [data,] = useContext(ContextApp);
+  data.getClasses().map((grids) => {
+    grids.map((grid) => {
+      grid.getClasses().map((classData) => {
+        if (classData.getIsEnable()) {
+          credit += classData.getCredit();
+        }
+      })
+    })
+  });
+  return (
+    <div className={styles.credit_table_div}>
+      <p className={styles.credit_table_p}>今期履修単位数：{credit}</p>
+    </div>
+  );
+}
+
+// 10-TimeTable: The main component.
 export default function TimeTable({ data }: TimeTableProps) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
@@ -219,6 +260,7 @@ export default function TimeTable({ data }: TimeTableProps) {
   return (
     <div className={styles.main_div}>
       <h1>時間割</h1>
+      <CreditTable />
       <div className={styles.table_main_div}>
         {dayLabels.map((dayLabel, j) => (
           periodLabels.map((_, i) => {
