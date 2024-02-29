@@ -1,6 +1,9 @@
+.main_div {
+  margin: 10pt;
+}
+
 .table_main_div {
   display: grid;
-  margin: 10pt;
   grid-template-columns: 28pt 1fr 1fr 1fr 1fr 1fr;
   height: 100%;
   width: calc(100% - 20pt);
