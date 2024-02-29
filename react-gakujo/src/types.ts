@@ -2,6 +2,7 @@ import { UniTable } from "./components/timeTableTypes";
 
 interface ReactGakujoData {
   uniTable: UniTable;
+  color: ColorSettings;
 }
 
 export class LocalStorageData {
@@ -24,10 +25,24 @@ export class LocalStorageData {
     const tmp = localStorage.getItem("tsuyopon1067-react-gakujo");
     if (tmp) {
       this.data = JSON.parse(tmp);
-      this.setUniTable(UniTable.fromJson(this.data.uniTable));
+      if (this.data.uniTable) {
+        this.setUniTable(UniTable.fromJson(this.data.uniTable));
+      } else {
+        const tmp = UniTable.createEmptyUniTable();
+        this.setUniTable(tmp);
+      }
+      if (this.data.color) {
+        this.setColor(ColorSettings.fromJson(this.data.color));
+        console.log(this.data.color);
+      } else {
+        const tmp = ColorSettings.createEmptyColor();
+        this.setColor(tmp);
+      }
     } else {
-      const tmp = UniTable.createEmptyUniTable();
-      this.setUniTable(tmp);
+      const uniTable = UniTable.createEmptyUniTable();
+      this.setUniTable(uniTable);
+      const color = ColorSettings.createEmptyColor();
+      this.setColor(color);
     }
     return this.data;
   }
@@ -40,6 +55,14 @@ export class LocalStorageData {
     return this.data.uniTable;
   }
 
+  public setColor(color: ColorSettings) {
+    this.data.color = color;
+  }
+
+  public getColor(): ColorSettings {
+    return this.data.color;
+  }
+
   public toJsonString(): string {
     return JSON.stringify(this.data);
   }
@@ -47,5 +70,24 @@ export class LocalStorageData {
   public resetData() {
     localStorage.removeItem("tsuyopon1067-react-gakujo");
     this.loadData();
+  }
+}
+
+export class ColorSettings {
+  primaryColor: string = "#04CBB0";
+  constructor(primaryColor: string) {
+    this.primaryColor = primaryColor;
+  }
+
+  public static createEmptyColor(): ColorSettings {
+    return new ColorSettings("#04CBB0");
+  }
+
+  public getPrimaryColor(): string {
+    return this.primaryColor;
+  }
+
+  public static fromJson(colorSettings: ColorSettings): ColorSettings {
+    return new ColorSettings(colorSettings.primaryColor);
   }
 }
