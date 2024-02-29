@@ -25,15 +25,16 @@ interface TimeTableProps {
   data: UniTable;
 }
 
-// 1-GridCell
-// 2-ClassCell
-// 3-ClassPeriodCell
-// 4-EditButton
-// 5-handleAdd function
-// 6-handleDelete function
-// 7-handleFootAdd function
-// 8-FootTable
-// 9-TimeTable
+//  1-GridCell
+//  2-ClassCell
+//  3-ClassPeriodCell
+//  4-EditButton
+//  5-handleAdd function
+//  6-handleDelete function
+//  7-handleFootAdd function
+//  8-FootTable
+//  9-CreditTable
+// 10-TimeTable
 
 // 1-GridCell: A cell in 1 period. Multiple ClassCell can be contained within.
 const GridCell = ({ day, period }: GridCellProps) => {
@@ -228,7 +229,17 @@ const FootTable = () => {
   );
 }
 
-// 9-TimeTable: The main component.
+// 9-CreditTable: Display credit information in the entire period.
+const CreditTable = () => {
+  const credit = 0;
+  return (
+    <div className={styles.credit_table_div}>
+      <p className={styles.credit_table_p}>今期履修単位数：{credit}</p>
+    </div>
+  );
+}
+
+// 10-TimeTable: The main component.
 export default function TimeTable({ data }: TimeTableProps) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
@@ -237,6 +248,7 @@ export default function TimeTable({ data }: TimeTableProps) {
   return (
     <div className={styles.main_div}>
       <h1>時間割</h1>
+      <CreditTable />
       <div className={styles.table_main_div}>
         {dayLabels.map((dayLabel, j) => (
           periodLabels.map((_, i) => {
