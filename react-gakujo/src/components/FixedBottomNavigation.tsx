@@ -15,6 +15,7 @@ import { UniTable } from './timeTableTypes';
 
 export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), (n) => { }]);
 export const MainLocalStorageData = new LocalStorageData();
+
 export default function FixedBottomNavigation() {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);

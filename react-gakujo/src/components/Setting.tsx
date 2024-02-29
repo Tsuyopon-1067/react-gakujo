@@ -1,7 +1,7 @@
 import { ContentPaste, Input } from "@mui/icons-material";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from "@mui/material";
-import React, { useState } from "react";
-import { MainLocalStorageData } from "./FixedBottomNavigation";
+import React, { useContext, useState } from "react";
+import { ContextApp, MainLocalStorageData } from "./FixedBottomNavigation";
 import styles from "./Setting.module.css";
 
 interface ImportDataProps {
@@ -10,6 +10,7 @@ interface ImportDataProps {
 
 function AlertDialog({ data }: ImportDataProps) {
     const [open, setOpen] = React.useState(false);
+    const [_, setter] = useContext(ContextApp);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -22,6 +23,8 @@ function AlertDialog({ data }: ImportDataProps) {
     const handleImport = () => {
         handleClose();
         MainLocalStorageData.saveDataFromJson(data);
+        MainLocalStorageData.loadData();
+        setter(MainLocalStorageData.getUniTable());
     }
 
     return (
