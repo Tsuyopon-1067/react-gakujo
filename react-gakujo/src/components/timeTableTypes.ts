@@ -17,6 +17,29 @@ class UniTable {
     const grid = this.classes[day][period];
     grid.setClass(uniClass, index);
   }
+
+  public static createEmptyUniTable(): UniTable {
+    const tableData = [
+      [new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid()],
+      [new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid()],
+      [new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid()],
+      [new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid()],
+      [new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid(), new UniGrid()],
+      [new UniGrid()],
+    ];
+    return new UniTable(tableData);
+  }
+
+  public static fromJson(json: UniTable): UniTable {
+    const tmp = [[]] as UniGrid[][];
+    for (let i = 0; i < json.classes.length; i++) {
+      tmp.push([]);
+      for (let j = 0; j < json.classes[i].length; j++) {
+        tmp[i].push(UniGrid.fromJson(json.classes[i][j]));
+      }
+    }
+    return new UniTable(tmp);
+  }
 }
 
 class UniGrid {
@@ -55,6 +78,14 @@ class UniGrid {
 
   public setClass(uniClass: UniClass, index: number) {
     this.classes[index] = uniClass;
+  }
+
+  public static fromJson(json: UniGrid): UniGrid {
+    const tmp = [] as UniClass[];
+    for (let i = 0; i < json.classes.length; i++) {
+      tmp.push(UniClass.fromJson(json.classes[i]));
+    }
+    return new UniGrid(tmp);
   }
 }
 
@@ -134,10 +165,16 @@ class UniClass {
   public setIsEnable(isEnable: boolean) {
     this.isEnable = isEnable;
   }
+
+  public static fromJson(json: UniClass): UniClass {
+    const online = new UniOnline(json.online.value);
+    const category = new UniCategory(json.category.value);
+    return new UniClass(json.name, json.teacher, json.room, json.credit, online, category, json.length, json.memo, json.isEnable);
+  }
 }
 
 class UniOnline {
-  private value: number = 0;
+  public value: number = 0;
   public  static readonly labels: string[] = [
     "対面", "オンライン", "オンデマンド", "ハイブリッド", "双方向オンライン", "その他"
   ];
@@ -156,13 +193,13 @@ class UniOnline {
 }
 
 class UniCategory {
-  private value: number;
+  public readonly value: number;
   public static IDX_REQUIRED: number = 0;
   public static IDX_ELECTIVE: number = 1;
   public static IDX_FREE: number = 2;
   public static IDX_OTHER: number = 3;
 
-  public  static readonly labels: string[] = [
+  public static readonly labels: string[] = [
     "必修", "選必", "選択", "自由", "その他"
   ];
 
@@ -180,3 +217,4 @@ class UniCategory {
 }
 
 export { UniCategory, UniClass, UniGrid, UniOnline, UniTable };
+

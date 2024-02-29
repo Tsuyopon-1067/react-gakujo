@@ -7,9 +7,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import * as React from 'react';
 import { useState } from "react";
-import { UniCategory, UniClass, UniOnline, UniTable } from '../type';
-import { ContextApp } from './FixedBottomNavigation';
+import { ContextApp, MainLocalStorageData } from './FixedBottomNavigation';
 import { ClassCellProps } from './TimeTable';
+import { UniCategory, UniClass, UniOnline, UniTable } from './timeTableTypes';
 
 export default function TimeTableSetting({ day, period, index }: ClassCellProps) {
     const [data, setData] = React.useContext(ContextApp);
@@ -39,6 +39,8 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
         data.setClass(tmp, day - 1, period - 1, index);
         data = new UniTable(data.getClasses());
         setData(data);
+        MainLocalStorageData.setUniTable(data);
+        MainLocalStorageData.saveData();
     };
 
     return (
