@@ -1,7 +1,7 @@
 import { Add, AddCircleOutline, Delete } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useContext } from "react";
-import { ContextApp } from "./FixedBottomNavigation";
+import { ContextApp, MainLocalStorageData } from "./FixedBottomNavigation";
 import styles from "./TimeTable.module.css";
 import TimeTableSetting from "./TimeTableSetting";
 import { UniClass, UniTable } from "./timeTableTypes";
@@ -145,8 +145,9 @@ const FootTable = () => {
   const [data, setData] = useContext(ContextApp);
   const list = data.getClass(5, 0);
   const labels = ["科目名", "教員", "教室", "形態", "分類", "単位数"];
+  const color = MainLocalStorageData.getColor().getPrimaryColor();
   return (
-    <div className={styles.foot_div}>
+    <div className={styles.foot_div} style={{ background: color }}>
       {
         labels.map((label, i) => (
           <div key={i} className={styles.foot_title_grid} style={{ gridColumn: i + 1 }}>
@@ -213,7 +214,7 @@ const FootTable = () => {
 export default function TimeTable({ data }: TimeTableProps) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
-  //const [data,] = useContext(ContextApp);
+  const color = MainLocalStorageData.getColor().getPrimaryColor();
   let skipCount = 0;
   return (
     <div className={styles.main_div}>
@@ -227,14 +228,14 @@ export default function TimeTable({ data }: TimeTableProps) {
             }
             if (j === 0) {
               return (
-                <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color}`} style={{ gridRow: i + 1, gridColumn: 1 }}>
+                <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color}`} style={{ gridRow: i + 1, gridColumn: 1, background: color }}>
                   <ClassPeriodCell period={i} />
                 </div>
               );
             }
             if (i === 0) {
               return (
-                <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1 }}>
+                <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1, background: color }}>
                   <p className={styles.day_p}>
                     {dayLabel}
                   </p>

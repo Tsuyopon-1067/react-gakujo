@@ -29,7 +29,6 @@
 
 .cell_color {
   color: white;
-  background-color: #04CBB0;
 }
 
 .day_cell {
@@ -164,6 +163,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   background-color: #04CBB0;
   border: solid 1px black;
+  color: white;
 }
 
 .foot_title_p {
