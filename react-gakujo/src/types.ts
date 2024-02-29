@@ -16,6 +16,10 @@ export class LocalStorageData {
     localStorage.setItem("tsuyopon1067-react-gakujo", JSON.stringify(this.data));
   }
 
+  public saveDataFromJson(jsonData: string) {
+    localStorage.setItem("tsuyopon1067-react-gakujo", jsonData);
+  }
+
   public loadData(): ReactGakujoData {
     const tmp = localStorage.getItem("tsuyopon1067-react-gakujo");
     if (tmp) {
@@ -34,5 +38,9 @@ export class LocalStorageData {
 
   public getUniTable(): UniTable {
     return this.data.uniTable;
+  }
+
+  public toJsonString(): string {
+    return JSON.stringify(this.data);
   }
 }
