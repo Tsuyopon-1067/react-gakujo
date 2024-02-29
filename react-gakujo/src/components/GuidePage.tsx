@@ -65,6 +65,7 @@ const facultyCodeList: FacultyCode[] = [
 function GuidePage() {
     return (
         <div className={styles.main_div}>
+            <h1>WiFi設定・メール設定・学籍番号仕様</h1>
             <Card sx={{ mb: 2 }}>
                 <CardContent>
                     <div className={styles.title}>
