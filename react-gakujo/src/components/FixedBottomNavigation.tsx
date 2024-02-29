@@ -47,7 +47,7 @@ export default function FixedBottomNavigation() {
         >
           <BottomNavigationAction label="時間割" icon={<GridOn />} />
           <BottomNavigationAction label="行事予定" icon={<CalendarMonth />} />
-          <BottomNavigationAction label="WiFi設定等" icon={<Wifi />} />
+          <BottomNavigationAction label="WiFi等" icon={<Wifi />} />
           <BottomNavigationAction label="構内地図" icon={<Map />} />
           <BottomNavigationAction label="設定" icon={<Settings />} />
         </BottomNavigation>
