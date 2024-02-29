@@ -168,7 +168,6 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  background-color: #04CBB0;
   border: solid 1px black;
   color: white;
 }
