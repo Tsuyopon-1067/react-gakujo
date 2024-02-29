@@ -80,7 +80,9 @@ const ClassCell = ({ day, period, index }: ClassCellProps) => {
             <Delete sx={{ width: 12, height: 12 }} />
           </IconButton>
         </div>
-        <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
+        <div className={styles.class_cell_title_div}>
+          <p className={`${styles.classcell_title}`}>{classData.getName()}</p>
+        </div>
         <p className={`${styles.classcell_teacher} ${styles.classcell_subtitle}`}>{classData.getTeacher()}</p>
         <p className={`${styles.classcell_room} ${styles.classcell_subtitle}`}>{classData.getRoom()}</p>
         <p className={`${styles.classcell_online} ${styles.classcell_subtitle}`}>{classData.getOnline().toString()}</p>
