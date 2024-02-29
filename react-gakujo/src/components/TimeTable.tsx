@@ -231,7 +231,17 @@ const FootTable = () => {
 
 // 9-CreditTable: Display credit information in the entire period.
 const CreditTable = () => {
-  const credit = 0;
+  let credit = 0;
+  const [data,] = useContext(ContextApp);
+  data.getClasses().map((grids) => {
+    grids.map((grid) => {
+      grid.getClasses().map((classData) => {
+        if (classData.getIsEnable()) {
+          credit += classData.getCredit();
+        }
+      })
+    })
+  });
   return (
     <div className={styles.credit_table_div}>
       <p className={styles.credit_table_p}>今期履修単位数：{credit}</p>
