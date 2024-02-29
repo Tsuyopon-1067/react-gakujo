@@ -1,3 +1,7 @@
+.main_div {
+    margin: 10pt;
+}
+
 .title {
     display: flex;
     align-items: center;
@@ -31,5 +35,6 @@
 .thunderbird_div {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 35pt 1fr 35pt;
+    grid-template-columns: 45pt 1fr 45pt;
+    text-align: center;
 }
