@@ -6,6 +6,7 @@ import { DaliySchedule, MonthlySchedule, monthlySchedule4 } from "./EventSchedul
 function EventSchedule() {
     return (
         <div className={styles.main_div}>
+            <h1>行事予定表</h1>
             <MonthlyScheduleAccordion data={monthlySchedule4} />
         </div>
     );
