@@ -24,19 +24,19 @@ export class LocalStorageData {
   public loadData(): ReactGakujoData {
     const tmp = localStorage.getItem("tsuyopon1067-react-gakujo");
     if (tmp) {
-      this.data = JSON.parse(tmp);
+      try {
+        this.data = JSON.parse(tmp);
+      } catch (e) {
+        const uniTable = UniTable.createEmptyUniTable();
+        this.setUniTable(uniTable);
+        const color = ColorSettings.createEmptyColor();
+        this.setColor(color);
+      }
       if (this.data.uniTable) {
         this.setUniTable(UniTable.fromJson(this.data.uniTable));
-      } else {
-        const tmp = UniTable.createEmptyUniTable();
-        this.setUniTable(tmp);
       }
       if (this.data.color) {
         this.setColor(ColorSettings.fromJson(this.data.color));
-        console.log(this.data.color);
-      } else {
-        const tmp = ColorSettings.createEmptyColor();
-        this.setColor(tmp);
       }
     } else {
       const uniTable = UniTable.createEmptyUniTable();
