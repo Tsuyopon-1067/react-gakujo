@@ -1,6 +1,11 @@
+.main_div {
+  margin: 10pt;
+  padding: 0;
+  width: 100%;
+}
+
 .table_main_div {
   display: grid;
-  margin: 10pt;
   grid-template-columns: 28pt 1fr 1fr 1fr 1fr 1fr;
   height: 100%;
   width: calc(100% - 20pt);
@@ -152,7 +157,7 @@
 }
 
 .foot_div {
-  margin: 10pt;
+  margin: 10pt 0;
   width: calc(100% - 20pt);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
