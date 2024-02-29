@@ -125,7 +125,7 @@ function Setting() {
 
     return (
         <div className={styles.main_div}>
-            <h1>Setting</h1>
+            <h1>設定</h1>
             <h2>インポート / エクスポート </h2>
             <h3>インポート</h3>
             <TextField
