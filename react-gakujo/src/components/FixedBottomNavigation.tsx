@@ -13,7 +13,7 @@ import Setting from './Setting';
 import TimeTable from './TimeTable';
 import { UniTable } from './timeTableTypes';
 
-export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), (n) => { }]);
+export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), () => { }]);
 export const MainLocalStorageData = new LocalStorageData();
 
 export default function FixedBottomNavigation() {
@@ -41,7 +41,7 @@ export default function FixedBottomNavigation() {
         <BottomNavigation
           showLabels
           value={value}
-          onChange={(event, newValue) => {
+          onChange={(_, newValue) => {
             setValue(newValue);
           }}
         >

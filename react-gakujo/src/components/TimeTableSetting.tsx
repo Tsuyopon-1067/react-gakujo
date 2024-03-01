@@ -93,7 +93,7 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
                             </option>
                         ))}
                     </TextField>
-                    <TextField fullWidth id="standard-number" label="連続" type="number" InputLabelProps={{ shrink: true, }} variant="standard" value={length} onChange={(e) => setLength(e.target.value)} />
+                    <TextField fullWidth id="standard-number" label="連続" type="number" InputLabelProps={{ shrink: true, }} variant="standard" value={length} onChange={(e) => setLength(Number(e.target.value))} />
                     <TextField fullWidth label="メモ" multiline rows={8} defaultValue={"hogehoge"} sx={{ marginTop: 2 }} value={memo} onChange={(e) => setMemo(e.target.value)} />
                 </DialogContent>
                 <DialogActions>
