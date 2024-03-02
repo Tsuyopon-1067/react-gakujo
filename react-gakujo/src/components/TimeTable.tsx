@@ -259,7 +259,6 @@ export default function TimeTable({ data }: TimeTableProps) {
   let skipCount = 0;
   return (
     <div className={styles.main_div}>
-      <h1>時間割</h1>
       <CreditTable />
       <div className={styles.table_main_div}>
         {dayLabels.map((dayLabel, j) => (
