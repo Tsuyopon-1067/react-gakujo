@@ -147,7 +147,8 @@ const handleDelete = (data: UniTable, setData: (data: UniTable) => void, day: nu
   }
   const tmp = new UniTable(data.getClasses());
   setData(tmp);
-  console.log(grid.getClasses().length);
+  MainLocalStorageData.setUniTable(tmp);
+  MainLocalStorageData.saveData();
 }
 
 // 7-handleFootAdd function: Add a new row to the foot table.
