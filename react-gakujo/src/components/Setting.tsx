@@ -1,9 +1,36 @@
-import { ContentPaste, Input, RestartAlt } from "@mui/icons-material";
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, TextField } from "@mui/material";
+import { ArrowBack, ContentPaste, Input, RestartAlt } from "@mui/icons-material";
+import { AppBar, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, IconButton, TextField, Toolbar, Typography } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { ColorSettings } from "../types";
 import { ContextApp, MainLocalStorageData } from "./FixedBottomNavigation";
 import styles from "./Setting.module.css";
+
+interface SettingAppBarProps {
+    setIsSetting: (value: boolean) => void;
+}
+function SettingAppBar({ setIsSetting }: SettingAppBarProps) {
+    const color = MainLocalStorageData.getColor().getPrimaryColor();
+
+    return (
+        <AppBar position="static" sx={{ background: color }}>
+            <Toolbar sx={{ paddingLeft: 0 }}>
+                <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="inherit"
+                    onClick={() => setIsSetting(false)}
+                >
+                    <ArrowBack />
+                </IconButton>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    設定
+                </Typography>
+            </Toolbar>
+        </AppBar >
+    );
+}
 
 interface ImportDataProps {
     data: string;
@@ -124,7 +151,7 @@ function ResetButton({ setColor }: ResetButtonProps) {
     );
 }
 
-function Setting() {
+function Setting({ setIsSetting }: SettingAppBarProps) {
     const jsonStringData = MainLocalStorageData.toJsonString();
     const [inputJsonStringData, setInputJsonStringData] = useState("");
     const color = MainLocalStorageData.getColor().getPrimaryColor();
@@ -146,51 +173,54 @@ function Setting() {
 
     return (
         <div className={styles.main_div}>
-            <h2>インポート / エクスポート </h2>
-            <h3>インポート</h3>
-            <TextField
-                label="設定データをここにペーストしてください"
-                multiline
-                fullWidth
-                rows={8}
-                sx={{ marginBottom: 2 }}
-                onChange={(e) => setInputJsonStringData(e.target.value)}
-            />
-            <AlertDialog data={inputJsonStringData} />
-            <h3>エクスポート</h3>
-            <Button
-                variant="contained"
-                fullWidth sx={{ background: color, marginBottom: 4 }}
-                onClick={handleToClipBoard}
-            >
-                <ContentPaste /><span className={styles.clipboard_caption}>設定をクリップボードにコピー</span>
-            </Button>
-            <Divider />
-            <h2>カラー</h2>
-            <div className={styles.color_div}>
-                <div className={styles.color_pallet_area} >
-                    <input
-                        type="color"
-                        className={styles.color_input}
-                        value={settingColor}
-                        onChange={(e) => {
-                            handleSetColor(e.target.value);
-                        }}
-                    />
+            <SettingAppBar setIsSetting={setIsSetting} />
+            <div className={styles.content_div}>
+                <h2>インポート / エクスポート </h2>
+                <h3>インポート</h3>
+                <TextField
+                    label="設定データをここにペーストしてください"
+                    multiline
+                    fullWidth
+                    rows={8}
+                    sx={{ marginBottom: 2 }}
+                    onChange={(e) => setInputJsonStringData(e.target.value)}
+                />
+                <AlertDialog data={inputJsonStringData} />
+                <h3>エクスポート</h3>
+                <Button
+                    variant="contained"
+                    fullWidth sx={{ background: color, marginBottom: 4 }}
+                    onClick={handleToClipBoard}
+                >
+                    <ContentPaste /><span className={styles.clipboard_caption}>設定をクリップボードにコピー</span>
+                </Button>
+                <Divider />
+                <h2>カラー</h2>
+                <div className={styles.color_div}>
+                    <div className={styles.color_pallet_area} >
+                        <input
+                            type="color"
+                            className={styles.color_input}
+                            value={settingColor}
+                            onChange={(e) => {
+                                handleSetColor(e.target.value);
+                            }}
+                        />
+                    </div>
+                    <div className={styles.color_pallet_text}>
+                        <TextField
+                            label="カラーコード"
+                            variant="standard"
+                            fullWidth
+                            value={settingColor}
+                            onChange={(e) => setSettingColor(e.target.value)}
+                        />
+                    </div>
                 </div>
-                <div className={styles.color_pallet_text}>
-                    <TextField
-                        label="カラーコード"
-                        variant="standard"
-                        fullWidth
-                        value={settingColor}
-                        onChange={(e) => setSettingColor(e.target.value)}
-                    />
-                </div>
+                <Divider />
+                <h2>リセット</h2>
+                <ResetButton setColor={setSettingColor} />
             </div>
-            <Divider />
-            <h2>リセット</h2>
-            <ResetButton setColor={setSettingColor} />
         </div>
     );
 }

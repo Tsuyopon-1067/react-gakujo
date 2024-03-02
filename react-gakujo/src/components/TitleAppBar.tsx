@@ -7,9 +7,10 @@ import { MainLocalStorageData } from './FixedBottomNavigation';
 
 interface TitleAppBarProps {
     title: string;
+    setIsSetting: (value: boolean) => void;
 }
 
-export default function TitleAppBar({ title }: TitleAppBarProps) {
+export default function TitleAppBar({ title, setIsSetting }: TitleAppBarProps) {
     const color = MainLocalStorageData.getColor().getPrimaryColor();
 
     return (
@@ -24,6 +25,7 @@ export default function TitleAppBar({ title }: TitleAppBarProps) {
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     color="inherit"
+                    onClick={() => setIsSetting(true)}
                 >
                     <Settings />
                 </IconButton>
