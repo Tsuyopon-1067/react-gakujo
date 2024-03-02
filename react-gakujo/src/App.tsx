@@ -1,9 +1,9 @@
-import FixedBottomNavigation from './components/FixedBottomNavigation';
+import WindowSwitcher from './components/WindowSwitcher';
 
 function App() {
   return (
     <div>
-      <FixedBottomNavigation />
+      <WindowSwitcher />
     </div>
   )
 }
