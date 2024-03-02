@@ -1,4 +1,4 @@
-import { CalendarMonth, GridOn, Map, Wifi } from '@mui/icons-material';
+import { CalendarMonth, GridOn, Link, Map, Wifi } from '@mui/icons-material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
@@ -9,6 +9,7 @@ import { LocalStorageData } from '../types';
 import CampusMap from './CampusMap';
 import EventSchedule from './EventSchedule';
 import GuidePage from './GuidePage';
+import Links from './Links';
 import TimeTable from './TimeTable';
 import TitleAppBar from './TitleAppBar';
 import { UniTable } from './timeTableTypes';
@@ -35,12 +36,13 @@ export default function FixedBottomNavigation({ setIsSetting }: FixedBottomNavig
 
   const uniTableData = MainLocalStorageData.getUniTable();
   const [table, setTable] = React.useState(uniTableData);
-  const array = [...Array(4)].map((_, i) => i);
+  const array = [...Array(5)].map((_, i) => i);
   const bottomNavigationElement: BottomNavigationElement[] = [
     createBottomNavigationElement("時間割", <GridOn />, <TimeTable data={table} />),
     createBottomNavigationElement("行事予定", <CalendarMonth />, <EventSchedule />),
     createBottomNavigationElement("WiFi等", <Wifi />, <GuidePage />),
     createBottomNavigationElement("構内地図", <Map />, <CampusMap />),
+    createBottomNavigationElement("リンク", <Link />, <Links />),
   ]
 
 
