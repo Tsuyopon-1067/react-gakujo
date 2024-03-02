@@ -11,6 +11,7 @@ import EventSchedule from './EventSchedule';
 import GuidePage from './GuidePage';
 import Setting from './Setting';
 import TimeTable from './TimeTable';
+import TitleAppBar from './TitleAppBar';
 import { UniTable } from './timeTableTypes';
 
 export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), () => { }]);
@@ -36,6 +37,7 @@ export default function FixedBottomNavigation() {
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
       <CssBaseline />
+      <TitleAppBar title={labels[value]} />
       <ContextApp.Provider value={[table, setTable]}>
         {contents[value]}
       </ContextApp.Provider>
