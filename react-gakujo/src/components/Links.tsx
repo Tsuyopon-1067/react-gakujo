@@ -9,7 +9,7 @@ function Links() {
         <div className={styles.main_div}>
             <Button variant="contained" fullWidth sx={{ backgroundColor: "#04CBB0" }} href="https://gakujo.shizuoka.ac.jp/portal/">
                 <div className={styles.button_div}>
-                    <img src={gakujoLogo} width={200} />
+                    <img src={gakujoLogo} width={200} style={{ marginTop: 20 }} />
                     <p className={styles.caption}>
                         学務情報<br />システム
                     </p>
