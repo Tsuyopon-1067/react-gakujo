@@ -17,29 +17,38 @@ import { UniTable } from './timeTableTypes';
 export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), () => { }]);
 export const MainLocalStorageData = new LocalStorageData();
 
+interface BottomNavigationElement {
+  name: string;
+  icon: React.ReactNode;
+  content: React.ReactNode;
+}
+
+const createBottomNavigationElement = (name: string, icon: React.ReactNode, content: React.ReactNode): BottomNavigationElement => {
+  return { name, icon, content };
+}
+
 export default function FixedBottomNavigation() {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
 
   const uniTableData = MainLocalStorageData.getUniTable();
   const [table, setTable] = React.useState(uniTableData);
-  const contents = [
-    <TimeTable data={table} />,
-    <EventSchedule />,
-    <GuidePage />,
-    <CampusMap />,
-    <Setting />,
-  ];
-  const labels = ["時間割", "行事予定", "WiFi等", "構内地図", "設定"];
-  const icons = [<GridOn />, <CalendarMonth />, <Wifi />, <Map />, <Settings />];
+  const array = [...Array(5)].map((_, i) => i);
+  const bottomNavigationElement: BottomNavigationElement[] = [
+    createBottomNavigationElement("時間割", <GridOn />, <TimeTable data={table} />),
+    createBottomNavigationElement("行事予定", <CalendarMonth />, <EventSchedule />),
+    createBottomNavigationElement("WiFi等", <Wifi />, <GuidePage />),
+    createBottomNavigationElement("構内地図", <Map />, <CampusMap />),
+    createBottomNavigationElement("設定", <Settings />, <Setting />),
+  ]
 
 
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
       <CssBaseline />
-      <TitleAppBar title={labels[value]} />
+      <TitleAppBar title={bottomNavigationElement[value].name} />
       <ContextApp.Provider value={[table, setTable]}>
-        {contents[value]}
+        {bottomNavigationElement[value].content}
       </ContextApp.Provider>
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
         <BottomNavigation
@@ -50,8 +59,10 @@ export default function FixedBottomNavigation() {
           }}
         >
           {
-            labels.map((label, index) => (
-              <BottomNavigationAction label={label} icon={icons[index]} />
+            array.map((i) => (
+              <BottomNavigationAction
+                label={bottomNavigationElement[i].name}
+                icon={bottomNavigationElement[i].icon} />
             ))
           }
         </BottomNavigation>
