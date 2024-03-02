@@ -59,7 +59,7 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
                 <DialogContent>
                     <TextField fullWidth label="科目名" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
                     <TextField fullWidth label="教員名" variant="standard" value={teacher} onChange={(e) => setTeacher(e.target.value)} />
-                    <TextField fullWidth label="教室" variant="standard" onChange={(e) => setRoom(e.target.value)} />
+                    <TextField fullWidth label="教室" variant="standard" value={room} onChange={(e) => setRoom(e.target.value)} />
                     <TextField fullWidth label="単位数" type="number" InputLabelProps={{ shrink: true, }} variant="standard" value={credit} onChange={(e) => setCredit(Number(e.target.value))} />
                     <TextField fullWidth select label="授業形態" defaultValue={UniOnline.labels[0]}
                         SelectProps={{ native: true, }}

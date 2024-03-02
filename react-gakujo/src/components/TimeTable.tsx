@@ -147,7 +147,8 @@ const handleDelete = (data: UniTable, setData: (data: UniTable) => void, day: nu
   }
   const tmp = new UniTable(data.getClasses());
   setData(tmp);
-  console.log(grid.getClasses().length);
+  MainLocalStorageData.setUniTable(tmp);
+  MainLocalStorageData.saveData();
 }
 
 // 7-handleFootAdd function: Add a new row to the foot table.
@@ -259,7 +260,6 @@ export default function TimeTable({ data }: TimeTableProps) {
   let skipCount = 0;
   return (
     <div className={styles.main_div}>
-      <h1>時間割</h1>
       <CreditTable />
       <div className={styles.table_main_div}>
         {dayLabels.map((dayLabel, j) => (
