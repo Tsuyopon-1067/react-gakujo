@@ -29,6 +29,8 @@ export default function FixedBottomNavigation() {
     <CampusMap />,
     <Setting />,
   ];
+  const labels = ["時間割", "行事予定", "WiFi等", "構内地図", "設定"];
+  const icons = [<GridOn />, <CalendarMonth />, <Wifi />, <Map />, <Settings />];
 
 
   return (
@@ -45,11 +47,11 @@ export default function FixedBottomNavigation() {
             setValue(newValue);
           }}
         >
-          <BottomNavigationAction label="時間割" icon={<GridOn />} />
-          <BottomNavigationAction label="行事予定" icon={<CalendarMonth />} />
-          <BottomNavigationAction label="WiFi等" icon={<Wifi />} />
-          <BottomNavigationAction label="構内地図" icon={<Map />} />
-          <BottomNavigationAction label="設定" icon={<Settings />} />
+          {
+            labels.map((label, index) => (
+              <BottomNavigationAction label={label} icon={icons[index]} />
+            ))
+          }
         </BottomNavigation>
       </Paper>
     </Box>
