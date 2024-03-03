@@ -8,6 +8,7 @@ import styles from "./Setting.module.css";
 interface SettingAppBarProps {
     setIsSetting: (value: boolean) => void;
 }
+
 function SettingAppBar({ setIsSetting }: SettingAppBarProps) {
     const color = MainLocalStorageData.getColor().getPrimaryColor();
 
@@ -33,13 +34,14 @@ function SettingAppBar({ setIsSetting }: SettingAppBarProps) {
 }
 
 interface ImportDataProps {
+    primaryColor: string;
+    primaryColorHover: string;
     data: string;
 }
 
-function AlertDialog({ data }: ImportDataProps) {
+function AlertDialog({ data, primaryColor, primaryColorHover }: ImportDataProps) {
     const [open, setOpen] = React.useState(false);
     const [, setter] = useContext(ContextApp);
-    const color = MainLocalStorageData.getColor().getPrimaryColor();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -60,7 +62,7 @@ function AlertDialog({ data }: ImportDataProps) {
         <React.Fragment>
             <Button
                 variant="contained"
-                fullWidth sx={{ marginBottom: 2, background: color }}
+                fullWidth sx={{ marginBottom: 2, background: primaryColor, ":hover": { background: primaryColorHover } }}
                 onClick={handleClickOpen}
             >
                 <Input /><span className={styles.clipboard_caption}>設定をインポート</span>
@@ -92,13 +94,13 @@ function AlertDialog({ data }: ImportDataProps) {
 }
 
 interface ResetButtonProps {
+    primaryColor: string;
     setColor: (value: string) => void;
 }
 
-function ResetButton({ setColor }: ResetButtonProps) {
+function ResetButton({ primaryColor, setColor }: ResetButtonProps) {
     const [open, setOpen] = React.useState(false);
     const [, setter] = useContext(ContextApp);
-    const color = MainLocalStorageData.getColor().getPrimaryColor();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -121,7 +123,7 @@ function ResetButton({ setColor }: ResetButtonProps) {
         <React.Fragment>
             <Button
                 variant="outlined"
-                fullWidth sx={{ color: color, borderColor: color, marginBottom: 2 }}
+                fullWidth sx={{ color: primaryColor, borderColor: primaryColor, marginBottom: 2 }}
                 onClick={handleClickOpen}
             >
                 <RestartAlt /><span className={styles.clipboard_caption}>リセット</span>
@@ -155,16 +157,25 @@ function Setting({ setIsSetting }: SettingAppBarProps) {
     const jsonStringData = MainLocalStorageData.toJsonString();
     const [inputJsonStringData, setInputJsonStringData] = useState("");
     const color = MainLocalStorageData.getColor().getPrimaryColor();
+    const colorHover = MainLocalStorageData.getColor().getPrimaryColorHover();
     const [settingColor, setSettingColor] = useState<string>(color);
+    const [primaryColor, setPrimaryColor] = useState<string>(color);
+    const [primaryColorHover, setPrimaryColorHover] = useState<string>(colorHover);
+
     const [, setter] = useContext(ContextApp);
 
     const handleSetColor = (value: string) => {
         setSettingColor(value);
-        const newColor = new ColorSettings(value);
+    }
+
+    const handleCnfirmColor = () => {
+        const newColor = new ColorSettings(settingColor);
         MainLocalStorageData.setColor(newColor);
         MainLocalStorageData.saveData();
         MainLocalStorageData.loadData();
         setter(MainLocalStorageData.getUniTable());
+        setPrimaryColor(settingColor);
+        setPrimaryColorHover(newColor.getPrimaryColorHover());
     }
 
     const handleToClipBoard = async () => {
@@ -185,11 +196,14 @@ function Setting({ setIsSetting }: SettingAppBarProps) {
                     sx={{ marginBottom: 2 }}
                     onChange={(e) => setInputJsonStringData(e.target.value)}
                 />
-                <AlertDialog data={inputJsonStringData} />
+                <AlertDialog
+                    data={inputJsonStringData}
+                    primaryColor={primaryColor}
+                    primaryColorHover={primaryColorHover} />
                 <h3>エクスポート</h3>
                 <Button
                     variant="contained"
-                    fullWidth sx={{ background: color, marginBottom: 4 }}
+                    fullWidth sx={{ background: primaryColor, marginBottom: 4, ":hover": { background: primaryColorHover } }}
                     onClick={handleToClipBoard}
                 >
                     <ContentPaste /><span className={styles.clipboard_caption}>設定をクリップボードにコピー</span>
@@ -216,10 +230,14 @@ function Setting({ setIsSetting }: SettingAppBarProps) {
                             onChange={(e) => setSettingColor(e.target.value)}
                         />
                     </div>
+                    <Button sx={{ gridColumn: 3 }}
+                        onClick={handleCnfirmColor}>適用</Button>
                 </div>
                 <Divider />
                 <h2>リセット</h2>
-                <ResetButton setColor={setSettingColor} />
+                <ResetButton
+                    primaryColor={primaryColor}
+                    setColor={setSettingColor} />
             </div>
         </div>
     );
