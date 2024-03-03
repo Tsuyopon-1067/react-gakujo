@@ -153,28 +153,65 @@ function ResetButton({ primaryColor, setColor }: ResetButtonProps) {
     );
 }
 
+interface ColorInputProps {
+    color: string;
+    setColor: (s: string) => void;
+    handleConfirmColor: () => void;
+}
+
+function ColorInput({ color, setColor, handleConfirmColor }: ColorInputProps) {
+    return (
+        <div className={styles.color_div}>
+            <div className={styles.color_pallet_area} >
+                <input
+                    type="color"
+                    className={styles.color_input}
+                    value={color}
+                    onChange={(e) => {
+                        setColor(e.target.value);
+                    }}
+                />
+            </div>
+            <div className={styles.color_pallet_text}>
+                <TextField
+                    label="カラーコード"
+                    variant="standard"
+                    fullWidth
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                />
+            </div>
+            <Button sx={{ gridColumn: 3 }}
+                onClick={handleConfirmColor}>適用</Button>
+        </div>
+    );
+}
+
 function Setting({ setIsSetting }: SettingAppBarProps) {
     const jsonStringData = MainLocalStorageData.toJsonString();
     const [inputJsonStringData, setInputJsonStringData] = useState("");
     const color = MainLocalStorageData.getColor().getPrimaryColor();
     const colorHover = MainLocalStorageData.getColor().getPrimaryColorHover();
-    const [settingColor, setSettingColor] = useState<string>(color);
+    const [selectedPrimaryColor, setSelectedPrimaryColor] = useState<string>(color);
     const [primaryColor, setPrimaryColor] = useState<string>(color);
     const [primaryColorHover, setPrimaryColorHover] = useState<string>(colorHover);
+    //const [selectedFontColor, setSelectedFontColor] = useState<string>(color);
+    //const [fontColor, setFontColor] = useState<string>(color);
 
     const [, setter] = useContext(ContextApp);
 
-    const handleSetColor = (value: string) => {
-        setSettingColor(value);
+    const handleResetColor = (color: string) => {
+        setPrimaryColor(color);
+        setSelectedPrimaryColor(color);
     }
 
-    const handleCnfirmColor = () => {
-        const newColor = new ColorSettings(settingColor);
+    const handleConfirmColor = () => {
+        const newColor = new ColorSettings(selectedPrimaryColor);
         MainLocalStorageData.setColor(newColor);
         MainLocalStorageData.saveData();
         MainLocalStorageData.loadData();
         setter(MainLocalStorageData.getUniTable());
-        setPrimaryColor(settingColor);
+        setPrimaryColor(selectedPrimaryColor);
         setPrimaryColorHover(newColor.getPrimaryColorHover());
     }
 
@@ -210,34 +247,13 @@ function Setting({ setIsSetting }: SettingAppBarProps) {
                 </Button>
                 <Divider />
                 <h2>カラー</h2>
-                <div className={styles.color_div}>
-                    <div className={styles.color_pallet_area} >
-                        <input
-                            type="color"
-                            className={styles.color_input}
-                            value={settingColor}
-                            onChange={(e) => {
-                                handleSetColor(e.target.value);
-                            }}
-                        />
-                    </div>
-                    <div className={styles.color_pallet_text}>
-                        <TextField
-                            label="カラーコード"
-                            variant="standard"
-                            fullWidth
-                            value={settingColor}
-                            onChange={(e) => setSettingColor(e.target.value)}
-                        />
-                    </div>
-                    <Button sx={{ gridColumn: 3 }}
-                        onClick={handleCnfirmColor}>適用</Button>
-                </div>
+                <h3>テーマカラー</h3>
+                <ColorInput color={selectedPrimaryColor} setColor={setSelectedPrimaryColor} handleConfirmColor={handleConfirmColor} />
                 <Divider />
                 <h2>リセット</h2>
                 <ResetButton
                     primaryColor={primaryColor}
-                    setColor={setSettingColor} />
+                    setColor={handleResetColor} />
             </div>
         </div>
     );
