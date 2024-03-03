@@ -12,6 +12,7 @@ import GuidePage from './GuidePage';
 import Links from './Links';
 import TimeTable from './TimeTable';
 import TitleAppBar from './TitleAppBar';
+import { ColorSettingsProps } from './WindowSwitcher';
 import { UniTable } from './timeTableTypes';
 
 export const ContextApp = React.createContext<[UniTable, (u: UniTable) => void]>([new UniTable([]), () => { }]);
@@ -19,8 +20,7 @@ export const MainLocalStorageData = new LocalStorageData();
 
 interface FixedBottomNavigationProps {
   setIsSetting: (isSetting: boolean) => void;
-  primaryColor: string;
-  fontColor: string;
+  colorSettingsProps: ColorSettingsProps;
 }
 
 interface BottomNavigationElement {
@@ -33,7 +33,7 @@ const createBottomNavigationElement = (name: string, icon: React.ReactNode, cont
   return { name, icon, content };
 }
 
-export default function FixedBottomNavigation({ setIsSetting, primaryColor, fontColor }: FixedBottomNavigationProps) {
+export default function FixedBottomNavigation({ setIsSetting, colorSettingsProps }: FixedBottomNavigationProps) {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -55,8 +55,8 @@ export default function FixedBottomNavigation({ setIsSetting, primaryColor, font
       <TitleAppBar
         title={bottomNavigationElement[value].name}
         setIsSetting={setIsSetting}
-        primaryColor={primaryColor}
-        fontColor={fontColor}
+        primaryColor={colorSettingsProps.primaryColor}
+        fontColor={colorSettingsProps.fontColor}
       />
       <ContextApp.Provider value={[table, setTable]}>
         {bottomNavigationElement[value].content}

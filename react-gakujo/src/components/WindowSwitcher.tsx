@@ -16,7 +16,7 @@ function WindowSwitcher() {
     const props: ColorSettingsProps = { primaryColor, setPrimaryColor, fontColor, setFontColor };
 
     return (
-        isSetting ? <Setting setIsSetting={setIsSetting} colorSettingsProps={props} /> : <FixedBottomNavigation setIsSetting={setIsSetting} primaryColor={primaryColor} fontColor={fontColor} />
+        isSetting ? <Setting setIsSetting={setIsSetting} colorSettingsProps={props} /> : <FixedBottomNavigation setIsSetting={setIsSetting} colorSettingsProps={props} />
     );
 }
 
