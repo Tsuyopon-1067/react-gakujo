@@ -19,7 +19,10 @@ export const MainLocalStorageData = new LocalStorageData();
 
 interface FixedBottomNavigationProps {
   setIsSetting: (isSetting: boolean) => void;
+  primaryColor: string;
+  fontColor: string;
 }
+
 interface BottomNavigationElement {
   name: string;
   icon: React.ReactNode;
@@ -30,7 +33,7 @@ const createBottomNavigationElement = (name: string, icon: React.ReactNode, cont
   return { name, icon, content };
 }
 
-export default function FixedBottomNavigation({ setIsSetting }: FixedBottomNavigationProps) {
+export default function FixedBottomNavigation({ setIsSetting, primaryColor, fontColor }: FixedBottomNavigationProps) {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -49,7 +52,12 @@ export default function FixedBottomNavigation({ setIsSetting }: FixedBottomNavig
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
       <CssBaseline />
-      <TitleAppBar title={bottomNavigationElement[value].name} setIsSetting={setIsSetting} />
+      <TitleAppBar
+        title={bottomNavigationElement[value].name}
+        setIsSetting={setIsSetting}
+        primaryColor={primaryColor}
+        fontColor={fontColor}
+      />
       <ContextApp.Provider value={[table, setTable]}>
         {bottomNavigationElement[value].content}
       </ContextApp.Provider>

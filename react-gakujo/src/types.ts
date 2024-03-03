@@ -76,9 +76,11 @@ export class LocalStorageData {
 export class ColorSettings {
   primaryColor: string = "#04CBB0";
   primaryColorHover: string = "#04CBB0";
+  fontColor: string = "#FFFFFF";
 
-  constructor(primaryColor: string) {
+  constructor(primaryColor: string, fontColor: string) {
     this.primaryColor = primaryColor;
+    this.fontColor = fontColor;
 
     const primaryColorNumberStr = this.primaryColor.substring(1);
     const rStr = primaryColorNumberStr.substring(0, 2);
@@ -104,7 +106,7 @@ export class ColorSettings {
   }
 
   public static createEmptyColor(): ColorSettings {
-    return new ColorSettings("#04CBB0");
+    return new ColorSettings("#04CBB0", "#FFFFFF");
   }
 
   public getPrimaryColor(): string {
@@ -115,7 +117,11 @@ export class ColorSettings {
     return this.primaryColorHover;
   }
 
+  public getFontColor(): string {
+    return this.fontColor;
+  }
+
   public static fromJson(colorSettings: ColorSettings): ColorSettings {
-    return new ColorSettings(colorSettings.primaryColor);
+    return new ColorSettings(colorSettings.primaryColor, colorSettings.fontColor);
   }
 }
