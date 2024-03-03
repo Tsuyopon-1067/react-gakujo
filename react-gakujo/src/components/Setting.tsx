@@ -4,15 +4,19 @@ import React, { useContext, useState } from "react";
 import { ColorSettings } from "../types";
 import { ContextApp, MainLocalStorageData } from "./FixedBottomNavigation";
 import styles from "./Setting.module.css";
+import { ColorSettingsProps } from "./WindowSwitcher";
 
 interface SettingAppBarProps {
     setIsSetting: (value: boolean) => void;
+    colorSettingsProps: ColorSettingsProps;
 }
-function SettingAppBar({ setIsSetting }: SettingAppBarProps) {
-    const color = MainLocalStorageData.getColor().getPrimaryColor();
+
+function SettingAppBar({ setIsSetting, colorSettingsProps }: SettingAppBarProps) {
+    const primaryColor = colorSettingsProps.primaryColor;
+    const fontColor = colorSettingsProps.fontColor;
 
     return (
-        <AppBar position="static" sx={{ background: color }}>
+        <AppBar position="static" sx={{ color: fontColor, background: primaryColor }}>
             <Toolbar sx={{ paddingLeft: 0 }}>
                 <IconButton
                     size="large"
@@ -34,12 +38,14 @@ function SettingAppBar({ setIsSetting }: SettingAppBarProps) {
 
 interface ImportDataProps {
     data: string;
+    primaryColor: string;
+    primaryColorHover: string;
+    fontColor: string;
 }
 
-function AlertDialog({ data }: ImportDataProps) {
+function AlertDialog({ data, primaryColor, primaryColorHover, fontColor }: ImportDataProps) {
     const [open, setOpen] = React.useState(false);
     const [, setter] = useContext(ContextApp);
-    const color = MainLocalStorageData.getColor().getPrimaryColor();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -60,7 +66,7 @@ function AlertDialog({ data }: ImportDataProps) {
         <React.Fragment>
             <Button
                 variant="contained"
-                fullWidth sx={{ marginBottom: 2, background: color }}
+                fullWidth sx={{ marginBottom: 2, color: fontColor, background: primaryColor, ":hover": { background: primaryColorHover } }}
                 onClick={handleClickOpen}
             >
                 <Input /><span className={styles.clipboard_caption}>設定をインポート</span>
@@ -92,13 +98,14 @@ function AlertDialog({ data }: ImportDataProps) {
 }
 
 interface ResetButtonProps {
-    setColor: (value: string) => void;
+    primaryColor: string;
+    setPrimaryColor: (value: string) => void;
+    setFontColor: (value: string) => void;
 }
 
-function ResetButton({ setColor }: ResetButtonProps) {
+function ResetButton({ primaryColor, setPrimaryColor, setFontColor }: ResetButtonProps) {
     const [open, setOpen] = React.useState(false);
     const [, setter] = useContext(ContextApp);
-    const color = MainLocalStorageData.getColor().getPrimaryColor();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -113,15 +120,15 @@ function ResetButton({ setColor }: ResetButtonProps) {
         MainLocalStorageData.resetData();
         MainLocalStorageData.loadData();
         setter(MainLocalStorageData.getUniTable());
-        const newColor = MainLocalStorageData.getColor().getPrimaryColor();
-        setColor(newColor);
+        setPrimaryColor(MainLocalStorageData.getColor().getPrimaryColor());
+        setFontColor(MainLocalStorageData.getColor().getFontColor());
     }
 
     return (
         <React.Fragment>
             <Button
                 variant="outlined"
-                fullWidth sx={{ color: color, borderColor: color, marginBottom: 2 }}
+                fullWidth sx={{ color: primaryColor, borderColor: primaryColor, marginBottom: 2 }}
                 onClick={handleClickOpen}
             >
                 <RestartAlt /><span className={styles.clipboard_caption}>リセット</span>
@@ -151,20 +158,59 @@ function ResetButton({ setColor }: ResetButtonProps) {
     );
 }
 
-function Setting({ setIsSetting }: SettingAppBarProps) {
+interface ColorInputProps {
+    color: string;
+    setColor: (s: string) => void;
+    handleConfirmColor: () => void;
+}
+
+function ColorInput({ color, setColor, handleConfirmColor }: ColorInputProps) {
+    return (
+        <div className={styles.color_div}>
+            <div className={styles.color_pallet_area} >
+                <input
+                    type="color"
+                    className={styles.color_input}
+                    value={color}
+                    onChange={(e) => {
+                        setColor(e.target.value);
+                    }}
+                />
+            </div>
+            <div className={styles.color_pallet_text}>
+                <TextField
+                    label="カラーコード"
+                    variant="standard"
+                    fullWidth
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                />
+            </div>
+            <Button sx={{ gridColumn: 3 }}
+                onClick={handleConfirmColor}>適用</Button>
+        </div>
+    );
+}
+
+function Setting({ setIsSetting, colorSettingsProps }: SettingAppBarProps) {
     const jsonStringData = MainLocalStorageData.toJsonString();
     const [inputJsonStringData, setInputJsonStringData] = useState("");
-    const color = MainLocalStorageData.getColor().getPrimaryColor();
-    const [settingColor, setSettingColor] = useState<string>(color);
+    const [selectedPrimaryColor, setSelectedPrimaryColor] = useState<string>(colorSettingsProps.primaryColor);
+    const storageColorHover = MainLocalStorageData.getColor().getPrimaryColorHover();
+    const [primaryColorHover, setPrimaryColorHover] = useState<string>(storageColorHover);
+    const [selectedFontColor, setSelectedFontColor] = useState<string>(colorSettingsProps.fontColor);
+
     const [, setter] = useContext(ContextApp);
 
-    const handleSetColor = (value: string) => {
-        setSettingColor(value);
-        const newColor = new ColorSettings(value);
+    const handleConfirmColor = () => {
+        const newColor = new ColorSettings(selectedPrimaryColor, selectedFontColor);
         MainLocalStorageData.setColor(newColor);
         MainLocalStorageData.saveData();
         MainLocalStorageData.loadData();
         setter(MainLocalStorageData.getUniTable());
+        colorSettingsProps.setPrimaryColor(newColor.getPrimaryColor());
+        setPrimaryColorHover(newColor.getPrimaryColorHover());
+        colorSettingsProps.setFontColor(newColor.getFontColor());
     }
 
     const handleToClipBoard = async () => {
@@ -173,7 +219,9 @@ function Setting({ setIsSetting }: SettingAppBarProps) {
 
     return (
         <div className={styles.main_div}>
-            <SettingAppBar setIsSetting={setIsSetting} />
+            <SettingAppBar
+                setIsSetting={setIsSetting}
+                colorSettingsProps={colorSettingsProps} />
             <div className={styles.content_div}>
                 <h2>インポート / エクスポート </h2>
                 <h3>インポート</h3>
@@ -185,41 +233,32 @@ function Setting({ setIsSetting }: SettingAppBarProps) {
                     sx={{ marginBottom: 2 }}
                     onChange={(e) => setInputJsonStringData(e.target.value)}
                 />
-                <AlertDialog data={inputJsonStringData} />
+                <AlertDialog
+                    data={inputJsonStringData}
+                    primaryColor={colorSettingsProps.primaryColor}
+                    primaryColorHover={primaryColorHover}
+                    fontColor={colorSettingsProps.fontColor}
+                />
                 <h3>エクスポート</h3>
                 <Button
                     variant="contained"
-                    fullWidth sx={{ background: color, marginBottom: 4 }}
+                    fullWidth sx={{ color: colorSettingsProps.fontColor, background: colorSettingsProps.primaryColor, marginBottom: 4, ":hover": { background: primaryColorHover } }}
                     onClick={handleToClipBoard}
                 >
                     <ContentPaste /><span className={styles.clipboard_caption}>設定をクリップボードにコピー</span>
                 </Button>
                 <Divider />
                 <h2>カラー</h2>
-                <div className={styles.color_div}>
-                    <div className={styles.color_pallet_area} >
-                        <input
-                            type="color"
-                            className={styles.color_input}
-                            value={settingColor}
-                            onChange={(e) => {
-                                handleSetColor(e.target.value);
-                            }}
-                        />
-                    </div>
-                    <div className={styles.color_pallet_text}>
-                        <TextField
-                            label="カラーコード"
-                            variant="standard"
-                            fullWidth
-                            value={settingColor}
-                            onChange={(e) => setSettingColor(e.target.value)}
-                        />
-                    </div>
-                </div>
+                <h3>テーマカラー</h3>
+                <ColorInput color={selectedPrimaryColor} setColor={setSelectedPrimaryColor} handleConfirmColor={handleConfirmColor} />
+                <h3>フォントカラー</h3>
+                <ColorInput color={selectedFontColor} setColor={setSelectedFontColor} handleConfirmColor={handleConfirmColor} />
                 <Divider />
                 <h2>リセット</h2>
-                <ResetButton setColor={setSettingColor} />
+                <ResetButton
+                    primaryColor={colorSettingsProps.primaryColor}
+                    setPrimaryColor={(color: string) => { colorSettingsProps.setPrimaryColor(color); setSelectedPrimaryColor(color) }}
+                    setFontColor={(color: string) => { colorSettingsProps.setFontColor(color); setSelectedFontColor(color) }} />
             </div>
         </div>
     );

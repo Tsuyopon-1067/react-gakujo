@@ -107,9 +107,10 @@ const ClassPeriodCell = ({ period }: ClassPeriodCellProps) => {
   }
   const time1 = ["", "8:40", "10:20", "12:45", "14:25", "16:05"];
   const time2 = ["", "10:10", "11:50", "14:15", "15:55", "17:35"];
+  const fontColor = MainLocalStorageData.getColor().getFontColor();
   return (
     <div className={styles.period_label_container}>
-      <div>
+      <div style={{ color: fontColor }}>
         <p className={styles.period_label}>[{period}]</p>
         <p className={styles.period_label_time}>{time1[period]}</p>
         <p className={styles.period_label_time}>～</p>
@@ -167,12 +168,13 @@ const FootTable = () => {
   const list = data.getClass(5, 0);
   const labels = ["科目名", "教員", "教室", "形態", "分類", "単位数"];
   const color = MainLocalStorageData.getColor().getPrimaryColor();
+  const fontColor = MainLocalStorageData.getColor().getFontColor();
   return (
     <div className={styles.foot_div} style={{ background: color }}>
       {
         labels.map((label, i) => (
           <div key={i} className={styles.foot_title_grid} style={{ gridColumn: i + 1 }}>
-            <p className={styles.foot_title_p}>{label}</p>
+            <p className={styles.foot_title_p} style={{ color: fontColor }}>{label}</p>
           </div>
         ))
       }
@@ -257,6 +259,7 @@ export default function TimeTable({ data }: TimeTableProps) {
   const periodLabels = ["", "1", "2", "3", "4", "5"];
   const dayLabels = ["", "月", "火", "水", "木", "金"];
   const color = MainLocalStorageData.getColor().getPrimaryColor();
+  const dayOfWeekFontColor = MainLocalStorageData.getColor().getFontColor();
   let skipCount = 0;
   return (
     <div className={styles.main_div}>
@@ -278,7 +281,7 @@ export default function TimeTable({ data }: TimeTableProps) {
             if (i === 0) {
               return (
                 <div key={6 * i + j} className={`${styles.main_cell} ${styles.cell_color} ${styles.day_cell}`} style={{ gridRow: 1, gridColumn: j + 1, background: color }}>
-                  <p className={styles.day_p}>
+                  <p className={styles.day_p} style={{ color: dayOfWeekFontColor }} >
                     {dayLabel}
                   </p>
                 </div>
