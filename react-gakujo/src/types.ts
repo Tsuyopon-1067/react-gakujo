@@ -77,10 +77,12 @@ export class ColorSettings {
   primaryColor: string = "#04CBB0";
   primaryColorHover: string = "#04CBB0";
   fontColor: string = "#FFFFFF";
+  colorMode: string = "light";
 
-  constructor(primaryColor: string, fontColor: string) {
-    this.primaryColor = primaryColor;
-    this.fontColor = fontColor;
+  constructor(primaryColor: string, fontColor: string, colorMode: string) {
+    primaryColor && (this.primaryColor = primaryColor);
+    fontColor && (this.fontColor = fontColor);
+    colorMode && (this.colorMode = colorMode);
 
     const primaryColorNumberStr = this.primaryColor.substring(1);
     const rStr = primaryColorNumberStr.substring(0, 2);
@@ -106,7 +108,7 @@ export class ColorSettings {
   }
 
   public static createEmptyColor(): ColorSettings {
-    return new ColorSettings("#04CBB0", "#FFFFFF");
+    return new ColorSettings("#04CBB0", "#FFFFFF", "light");
   }
 
   public getPrimaryColor(): string {
@@ -121,7 +123,11 @@ export class ColorSettings {
     return this.fontColor;
   }
 
+  public getColorMode(): string {
+    return this.colorMode;
+  }
+
   public static fromJson(colorSettings: ColorSettings): ColorSettings {
-    return new ColorSettings(colorSettings.primaryColor, colorSettings.fontColor);
+    return new ColorSettings(colorSettings.primaryColor, colorSettings.fontColor, colorSettings.colorMode);
   }
 }
