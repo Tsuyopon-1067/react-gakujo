@@ -1,3 +1,5 @@
+import { ExpandMore } from "@mui/icons-material";
+import { Accordion, AccordionDetails, AccordionSummary, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { CSSProperties } from "styled-components";
 import styles from "./CampusMap.module.css";
 
@@ -135,10 +137,87 @@ const MapSvg = (props: PropsType) => {
 	)
 }
 
+class AccordionElement {
+	title: JSX.Element;
+	rows: JSX.Element;
+	constructor(title: string, rows: string[], color: string, start: number, prefix: string) {
+		this.title = (
+			<div style={{ display: "flex", alignItems: "center" }}>
+				<div style={{ background: color, width: 10, height: "1.3em", display: "inline-block", marginRight: 5 }}></div>{prefix}: {title}
+			</div>
+		);
+		this.rows = this.createRows(rows, start, prefix);
+	}
+
+	private createRows = (list: string[], start: number, prefix: string) => {
+		return (
+			<>
+				{
+					list.map((s: string, i: number) => (
+						<TableRow>
+							<TableCell align="center">{prefix}{start + i}</TableCell>
+							<TableCell align="center">{s}</TableCell>
+						</TableRow>
+					))
+				}
+			</>
+		);
+	};
+}
+
+const arrayA = ["附属図書館分室", "学生支援等S-Port"];
+const arrayB = ["総合研究棟", "1号館", "2号館", "3号館", "4号館", "5号館", "6号館", "7号館", "8号館", "化学実験室", "次世代ものづくり人材育成センター"];
+const arrayC = ["1号館", "2号館"];
+const arrayD = ["光創起イノベーション研究拠点", "情報基盤センター・創造科学技術大学院", "電子工学研究所", "ナノデバイス作製・評価センター"];
+const arrayE = ["生協南会館", "生協北会館"];
+const arrayF = ["イノベーション社会連携推進機構", "高柳記念未来技術創造館", "課外活動共用施設", "武道場", "佐鳴会館", "体育館", "学生団体共用施設", "教職員組合", "共通講義等"];
+
+const accordionElements = [
+	new AccordionElement("事務局", arrayA, "#0065B7", 1, "A"),
+	new AccordionElement("工学部", arrayB, "#04BAC6", 0, "B"),
+	new AccordionElement("情報学部", arrayC, "#FFA7B3", 1, "C"),
+	new AccordionElement("研究所・大学院", arrayD, "#B8DE95", 1, "D"),
+	new AccordionElement("生協", arrayE, "#B19FF4", 1, "E"),
+	new AccordionElement("その他施設", arrayF, "#F4EA7A", 1, "F"),
+]
+
+interface FacilityAccordionProps {
+	accordionElement: AccordionElement;
+}
+
+const FacilityAccordion = ({ accordionElement }: FacilityAccordionProps) => (
+	<Accordion>
+		<AccordionSummary expandIcon={<ExpandMore />} >
+			{accordionElement.title}
+		</AccordionSummary>
+		<AccordionDetails>
+			<TableContainer>
+				<Table>
+					<TableHead>
+						<TableRow>
+							<TableCell align="center">コード</TableCell>
+							<TableCell align="center" >施設名</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{accordionElement.rows}
+					</TableBody>
+				</Table>
+			</TableContainer>
+		</AccordionDetails>
+	</Accordion>
+)
+
 function CampusMap() {
 	return (
 		<div className={styles.main_div}>
 			<MapSvg style={{ width: "100%" }} />
+			<Divider sx={{ marginBottom: 2, marginTop: 2 }} />
+			{
+				accordionElements.map((e: AccordionElement, i) => (
+					<FacilityAccordion key={i} accordionElement={e} />
+				))
+			}
 		</div>
 	);
 }
