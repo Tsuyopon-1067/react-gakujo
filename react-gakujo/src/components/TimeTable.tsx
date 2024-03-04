@@ -184,7 +184,7 @@ const FootTable = () => {
             return;
           }
           return (
-            <>
+            <div className={styles.foot_table_main}>
               <div className={styles.foot_class_grid} style={{ gridColumn: 1 }}>
                 <div className={styles.foot_left_grid}>
                   <div className={styles.foot_edit_button}>
@@ -219,7 +219,7 @@ const FootTable = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           )
         })
       }

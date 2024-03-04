@@ -1,10 +1,11 @@
+import styles from "./App.module.css";
 import WindowSwitcher from './components/WindowSwitcher';
 
 function App() {
   return (
-    <div>
+    <div className={styles.main_div}>
       <WindowSwitcher />
-    </div>
+    </div >
   )
 }
 

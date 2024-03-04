@@ -78,6 +78,6 @@ export default function FixedBottomNavigation({ setIsSetting, colorSettingsProps
           }
         </BottomNavigation>
       </Paper>
-    </Box>
+    </Box >
   );
 }

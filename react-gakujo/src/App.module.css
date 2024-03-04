@@ -1,0 +1,12 @@
+.main_div {
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+    .main_div {
+        background-color: #333;
+        color: white;
+    }
+}

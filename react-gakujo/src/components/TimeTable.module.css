@@ -179,6 +179,12 @@
   text-align: center;
 }
 
+.foot_table_main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column: 1 / 7;
+}
+
 .foot_class_grid {
   border-top: 1px solid black;
   border-bottom-style: 1px solid black;
@@ -236,4 +242,36 @@
 
 .credit_table_p {
   font-size: 10pt;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main_cell {
+    border: 1px solid #888;
+    padding: 2pt;
+    text-align: center;
+  }
+
+  .foot_add {
+    border: 1px solid #888;
+    background-color: #333;
+  }
+
+  .foot_class_p {
+    font-size: 8pt;
+    color: white;
+  }
+
+  .foot_class_grid {
+    border-top: 1px solid #888;
+    background-color: #333;
+  }
+
+  .foot_class_grid:first-child {
+    border-left: 1px solid #888;
+  }
+
+  .foot_class_grid:last-child {
+    border-right: 1px solid #888;
+  }
+
 }
