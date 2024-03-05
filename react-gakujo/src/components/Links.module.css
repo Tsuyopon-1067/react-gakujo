@@ -3,8 +3,9 @@
 }
 
 .caption {
-    font-size: 24pt;
+    font-size: 20pt;
     font-weight: bold;
     color: white;
     text-align: center;
+    margin: 2pt;;
 }
