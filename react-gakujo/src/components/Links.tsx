@@ -27,7 +27,7 @@ function Links() {
             <Button variant="contained" fullWidth sx={{ backgroundColor: primaryColor, ":hover": { background: primaryColorHover } }} href="https://gakujo.shizuoka.ac.jp/portal/">
                 <div className={styles.button_div}>
                     <GakujoIcon style={{ fill: "#00000088", width: 180, height: 180, marginTop: 16, marginBottom: -16 }} />
-                    <p className={styles.caption}>
+                    <p className={styles.caption} style={{ color: fontColor }}>
                         学務情報システム
                     </p>
                 </div>
@@ -37,17 +37,17 @@ function Links() {
             <Button variant="contained" fullWidth sx={{ backgroundColor: primaryColor, ":hover": { background: primaryColorHover } }} href="https://opac.lib.shizuoka.ac.jp/simple/">
                 <div className={styles.button_div}>
                     <MenuBook sx={{ fontSize: 180 }} color="action" />
-                    <p className={styles.caption}>
+                    <p className={styles.caption} style={{ color: fontColor }}>
                         OPAC
                     </p>
                 </div>
             </Button>
             <br />
             <br />
-            <Button variant="contained" fullWidth sx={{ backgroundColor: "#04CBB0" }} href="https://www.shizuoka.ac.jp/education/affairs/handbook/">
+            <Button variant="contained" fullWidth sx={{ backgroundColor: primaryColor, ":hover": { background: primaryColorHover } }} href="https://www.shizuoka.ac.jp/education/affairs/handbook/">
                 <div className={styles.button_div}>
                     <TextSnippet sx={{ fontSize: 180 }} color="action" />
-                    <p className={styles.caption}>
+                    <p className={styles.caption} style={{ color: fontColor }}>
                         学生便覧
                     </p>
                 </div>
