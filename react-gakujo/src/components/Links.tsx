@@ -17,6 +17,25 @@ const GakujoIcon = (props: PropsType) => {
     )
 }
 
+interface LinkButtonProps {
+    title: string;
+    href: string;
+    icon: JSX.Element;
+    primaryColor: string;
+    primaryColorHover: string;
+    fontColor: string;
+}
+
+const LinkButton = ({ title, href, icon, primaryColor, primaryColorHover, fontColor }: LinkButtonProps) => (
+    <Button variant="contained" fullWidth sx={{ marginTop: 1, marginBottom: 1, backgroundColor: primaryColor, ":hover": { background: primaryColorHover } }} href={href}>
+        <div>
+            {icon}
+            <p className={styles.caption} style={{ color: fontColor }}>
+                {title}
+            </p>
+        </div>
+    </Button>
+)
 
 function Links() {
     const primaryColor = MainLocalStorageData.getColor().getPrimaryColor();
@@ -24,34 +43,27 @@ function Links() {
     const fontColor = MainLocalStorageData.getColor().getFontColor();
     return (
         <div className={styles.main_div}>
-            <Button variant="contained" fullWidth sx={{ backgroundColor: primaryColor, ":hover": { background: primaryColorHover } }} href="https://gakujo.shizuoka.ac.jp/portal/">
-                <div className={styles.button_div}>
-                    <GakujoIcon style={{ fill: "#00000088", width: 180, height: 180, marginTop: 16, marginBottom: -16 }} />
-                    <p className={styles.caption}>
-                        学務情報システム
-                    </p>
-                </div>
-            </Button>
-            <br />
-            <br />
-            <Button variant="contained" fullWidth sx={{ backgroundColor: primaryColor, ":hover": { background: primaryColorHover } }} href="https://opac.lib.shizuoka.ac.jp/simple/">
-                <div className={styles.button_div}>
-                    <MenuBook sx={{ fontSize: 180 }} color="action" />
-                    <p className={styles.caption}>
-                        OPAC
-                    </p>
-                </div>
-            </Button>
-            <br />
-            <br />
-            <Button variant="contained" fullWidth sx={{ backgroundColor: "#04CBB0" }} href="https://www.shizuoka.ac.jp/education/affairs/handbook/">
-                <div className={styles.button_div}>
-                    <TextSnippet sx={{ fontSize: 180 }} color="action" />
-                    <p className={styles.caption}>
-                        学生便覧
-                    </p>
-                </div>
-            </Button>
+            <LinkButton
+                title="学務情報システム"
+                href="https://gakujo.shizuoka.ac.jp/portal/"
+                icon={<GakujoIcon style={{ fill: "#00000088", width: 180, height: 180, marginTop: 16, marginBottom: -16 }} />}
+                primaryColor={primaryColor}
+                primaryColorHover={primaryColorHover}
+                fontColor={fontColor} />
+            <LinkButton
+                title="OPAC"
+                href="https://opac.lib.shizuoka.ac.jp/simple/"
+                icon={<MenuBook sx={{ fontSize: 180 }} color="action" />}
+                primaryColor={primaryColor}
+                primaryColorHover={primaryColorHover}
+                fontColor={fontColor} />
+            <LinkButton
+                title="学生便覧"
+                href="https://www.shizuoka.ac.jp/education/affairs/handbook/"
+                icon={<TextSnippet sx={{ fontSize: 180 }} color="action" />}
+                primaryColor={primaryColor}
+                primaryColorHover={primaryColorHover}
+                fontColor={fontColor} />
         </div>
     );
 }
