@@ -12,7 +12,7 @@
 
 .color_div {
     display: grid;
-    grid-template-columns: 50pt 1fr;
+    grid-template-columns: 50pt 1fr 50pt;
     margin-bottom: 15pt;
 }
 .color_pallet_area {
@@ -21,17 +21,19 @@
     padding: 0;
     width: 25pt;
     height: 25pt;
+    border-radius: 50%;
     grid-column: 1 / 2;
+    overflow: hidden;
 }
 
 .color_input {
     margin: 0;
     padding: 0;
-    width: 30pt;
-    height: 30pt;
-    border-radius: 50%;
+    width: 80pt;
+    height: 80pt;
     border: none;
     background: none;
+    transform: translate(-50%, -50%);
 }
 
 .color_pallet_text {
