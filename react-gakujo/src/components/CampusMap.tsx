@@ -1,5 +1,5 @@
 import { ExpandMore } from "@mui/icons-material";
-import { Accordion, AccordionDetails, AccordionSummary, Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Divider, FormControlLabel, Switch, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useState } from "react";
 import { CSSProperties } from "styled-components";
 import styles from "./CampusMap.module.css";
@@ -231,6 +231,8 @@ function CampusMap() {
 	return (
 		<div className={styles.main_div}>
 			<MapSvg arrow={iesShowArrow} style={{ width: "100%" }} />
+			<FormControlLabel control={<Switch checked={iesShowArrow} onChange={() => setIsShowArrow(!iesShowArrow)} />} label="工学部ガイドを表示" />
+
 			<Divider sx={{ marginBottom: 2, marginTop: 2 }} />
 			{
 				accordionElements.map((e: AccordionElement, i) => (
