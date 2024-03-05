@@ -6,11 +6,10 @@ import styles from "./CampusMap.module.css";
 
 interface PropsType {
 	style?: CSSProperties;
-	color?: string;
 	arrow: boolean;
 }
 
-const MapSvg = ({ style, color = '', arrow }: PropsType) => {
+const MapSvg = ({ style, arrow }: PropsType) => {
 	return (
 		<svg viewBox="0 0 131.849 105.126" version="1.1" id="svg1" style={style ? style : undefined}>
 			<g id="layer4" style={{ display: 'inline' }} transform="translate(0.00165327,-0.0019296)">
@@ -47,100 +46,100 @@ const MapSvg = ({ style, color = '', arrow }: PropsType) => {
 			</g>
 			<g id="layer5" style={{ display: 'inline' }} transform="translate(0.00165327,-0.0019296)">
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="81.017754" y="24.964365" id="text68-5">
-					<tspan id="tspan68-1" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="81.017754" y="24.964365">B0</tspan>
+					<tspan id="tspan68-1" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="81.017754" y="24.964365">B0</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="28.254217" y="59.454418" id="text68-5-4">
-					<tspan id="tspan68-1-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="28.254217" y="59.454418">B5</tspan>
+					<tspan id="tspan68-1-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="28.254217" y="59.454418">B5</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="59.852425" y="58.094383" id="text68-5-8">
-					<tspan id="tspan68-1-5" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="59.852425" y="58.094383">B2</tspan>
+					<tspan id="tspan68-1-5" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="59.852425" y="58.094383">B2</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="105.51656" y="31.369564" id="text68-5-3">
-					<tspan id="tspan68-1-3" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="105.51656" y="31.369564">B4</tspan>
+					<tspan id="tspan68-1-3" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="105.51656" y="31.369564">B4</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="67.440628" y="90.168335" id="text68-5-0">
-					<tspan id="tspan68-1-0" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="67.440628" y="90.168335">A1</tspan>
+					<tspan id="tspan68-1-0" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="67.440628" y="90.168335">A1</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="82.393112" y="100.20647" id="text68-5-0-0">
-					<tspan id="tspan68-1-0-57" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="82.393112" y="100.20647">A2</tspan>
+					<tspan id="tspan68-1-0-57" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="82.393112" y="100.20647">A2</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="27.955097" y="90.080635" id="text68-5-0-1">
-					<tspan id="tspan68-1-0-6" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="27.955097" y="90.080635">E1</tspan>
+					<tspan id="tspan68-1-0-6" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="27.955097" y="90.080635">E1</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="49.634388" y="89.353035" id="text68-5-0-4">
-					<tspan id="tspan68-1-0-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="49.634388" y="89.353035">B7</tspan>
+					<tspan id="tspan68-1-0-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="49.634388" y="89.353035">B7</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="121.75928" y="42.21825" id="text68-5-0-9">
-					<tspan id="tspan68-1-0-5" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="121.75928" y="42.21825">B6</tspan>
+					<tspan id="tspan68-1-0-5" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="121.75928" y="42.21825">B6</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="41.378681" y="70.948044" id="text68-5-0-5">
-					<tspan id="tspan68-1-0-3" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="41.378681" y="70.948044">B8</tspan>
+					<tspan id="tspan68-1-0-3" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="41.378681" y="70.948044">B8</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="123.42043" y="65.389374" id="text68-5-2">
-					<tspan id="tspan68-1-34" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="123.42043" y="65.389374">C1</tspan>
+					<tspan id="tspan68-1-34" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="123.42043" y="65.389374">C1</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="91.800308" y="74.701157" id="text68-5-2-8">
-					<tspan id="tspan68-1-34-7" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="91.800308" y="74.701157">D1</tspan>
+					<tspan id="tspan68-1-34-7" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="91.800308" y="74.701157">D1</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="99.45874" y="91.039749" id="text68-5-2-8-9">
-					<tspan id="tspan68-1-34-7-4" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="99.45874" y="91.039749">D3</tspan>
+					<tspan id="tspan68-1-34-7-4" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="99.45874" y="91.039749">D3</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="110.17437" y="88.393913" id="text68-5-2-8-3">
-					<tspan id="tspan68-1-34-7-9" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="110.17437" y="88.393913">D4</tspan>
+					<tspan id="tspan68-1-34-7-9" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="110.17437" y="88.393913">D4</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="122.90744" y="76.983757" id="text68-5-2-8-3-1">
-					<tspan id="tspan68-1-34-7-9-8" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="122.90744" y="76.983757">E2</tspan>
+					<tspan id="tspan68-1-34-7-9-8" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="122.90744" y="76.983757">E2</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.855', strokeDasharray: 'none', strokeOpacity: 1 }} x="5.6733356" y="55.815922" id="text68-5-2-8-3-2">
-					<tspan id="tspan68-1-34-7-9-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.855', strokeDasharray: 'none' }} x="5.6733356" y="55.815922">F1</tspan>
+					<tspan id="tspan68-1-34-7-9-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.855', strokeDasharray: 'none' }} x="5.6733356" y="55.815922">F1</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="2.3346107" y="73.643394" id="text68-5-2-8-3-2-1">
-					<tspan id="tspan68-1-34-7-9-2-3" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="2.3346107" y="73.643394">F2</tspan>
+					<tspan id="tspan68-1-34-7-9-2-3" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="2.3346107" y="73.643394">F2</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="5.0465899" y="88.195473" id="text68-5-2-8-3-2-6">
-					<tspan id="tspan68-1-34-7-9-2-31" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="5.0465899" y="88.195473">F3</tspan>
+					<tspan id="tspan68-1-34-7-9-2-31" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="5.0465899" y="88.195473">F3</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="13.314819" y="85.880371" id="text68-5-2-8-3-2-3">
-					<tspan id="tspan68-1-34-7-9-2-4" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="13.314819" y="85.880371">F5</tspan>
+					<tspan id="tspan68-1-34-7-9-2-4" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="13.314819" y="85.880371">F5</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="13.64555" y="74.767868" id="text68-5-2-8-3-2-17">
-					<tspan id="tspan68-1-34-7-9-2-0" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="13.64555" y="74.767868">F4</tspan>
+					<tspan id="tspan68-1-34-7-9-2-0" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="13.64555" y="74.767868">F4</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="26.410318" y="72.588379" id="text68-5-2-8-3-2-8">
-					<tspan id="tspan68-1-34-7-9-2-5" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="26.410318" y="72.588379">F6</tspan>
+					<tspan id="tspan68-1-34-7-9-2-5" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="26.410318" y="72.588379">F6</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="49.033569" y="45.200687" id="text68-5-2-8-3-2-34">
-					<tspan id="tspan68-1-34-7-9-2-7" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="49.033569" y="45.200687">F7</tspan>
+					<tspan id="tspan68-1-34-7-9-2-7" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="49.033569" y="45.200687">F7</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="63.05648" y="41.165794" id="text68-5-2-8-3-2-4">
-					<tspan id="tspan68-1-34-7-9-2-9" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="63.05648" y="41.165794">F8</tspan>
+					<tspan id="tspan68-1-34-7-9-2-9" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="63.05648" y="41.165794">F8</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="122.65387" y="28.465796" id="text68-5-2-8-3-2-5">
-					<tspan id="tspan68-1-34-7-9-2-92" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="122.65387" y="28.465796">F10</tspan>
+					<tspan id="tspan68-1-34-7-9-2-92" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="122.65387" y="28.465796">F10</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="112.62846" y="76.987099" id="text68-5-2-8-3-2-19">
-					<tspan id="tspan68-1-34-7-9-2-1" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="112.62846" y="76.987099">F9</tspan>
+					<tspan id="tspan68-1-34-7-9-2-1" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="112.62846" y="76.987099">F9</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="102.17459" y="74.044968" id="text68-5-2-3">
-					<tspan id="tspan68-1-34-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="102.17459" y="74.044968">D2</tspan>
+					<tspan id="tspan68-1-34-2" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="102.17459" y="74.044968">D2</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="111.49192" y="61.476387" id="text68-5-35">
-					<tspan id="tspan68-1-8" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="111.49192" y="61.476387">C2</tspan>
+					<tspan id="tspan68-1-8" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="111.49192" y="61.476387">C2</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="92.694023" y="41.87001" id="text68-5-38">
-					<tspan id="tspan68-1-1" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="92.694023" y="41.87001">B3</tspan>
+					<tspan id="tspan68-1-1" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="92.694023" y="41.87001">B3</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="62.020752" y="29.281183" id="text68">
-					<tspan id="tspan68" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="62.020752" y="29.281183">B1</tspan>
+					<tspan id="tspan68" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="62.020752" y="29.281183">B1</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="40.301666" y="6.7104626" id="text68-56">
-					<tspan id="tspan68-7" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="40.301666" y="6.7104626">B9</tspan>
+					<tspan id="tspan68-7" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="40.301666" y="6.7104626">B9</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="63.54155" y="7.8944407" id="text68-6">
-					<tspan id="tspan68-77" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="63.54155" y="7.8944407">B10</tspan>
+					<tspan id="tspan68-77" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="63.54155" y="7.8944407">B10</tspan>
 				</text>
 				<text style={{ fontSize: '5.64444px', fontFamily: 'HGPSoeiKakugothicUB', fill: '#04bac6', fillOpacity: 1, stroke: 'none', strokeWidth: '0.354999', strokeOpacity: 1 }} x="78.391289" y="8.4566793" id="text68-3">
-					<tspan id="tspan68-4" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', InkscapeFontSpecification: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="78.391289" y="8.4566793">B11</tspan>
+					<tspan id="tspan68-4" style={{ fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', fontSize: '5.64444px', fontFamily: '"MS Gothic"', fill: '#000000', fillOpacity: 1, strokeWidth: '0.355' }} x="78.391289" y="8.4566793">B11</tspan>
 				</text>
 			</g>
 			{
