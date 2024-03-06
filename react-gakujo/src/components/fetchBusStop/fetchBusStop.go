@@ -3,6 +3,7 @@ package main
 // go get -u github.com/gocolly/colly/...
 import (
 	"fmt"
+	"strings"
 
 	"github.com/gocolly/colly"
 )
@@ -13,11 +14,23 @@ func main() {
 
 	c := colly.NewCollector()
 
-	i := 0
 	c.OnHTML("body", func(e *colly.HTMLElement) {
 
-		i++
-		fmt.Printf("%d %s\n", i, e.DOM.Find("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(2) > a:nth-child(1)").Text())
+		for i := 3; i < 24; i++ {
+			fmt.Printf("%d:", i)
+			for j := 1; j < 20; j++ {
+				path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d)", i, j)
+				text := e.DOM.Find(path).Text()
+				text = strings.Replace(text, " ", "", -1)
+				text = strings.Replace(text, "\t", "", -1)
+				text = strings.Replace(text, "\n", "", -1)
+				if text == "" {
+					break
+				}
+				fmt.Printf("%d:%s, ", j, text)
+			}
+			fmt.Println()
+		}
 	})
 
 	c.Visit(url1)
