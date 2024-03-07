@@ -9,6 +9,23 @@ import (
 	"github.com/gocolly/colly"
 )
 
+type BusTimeTable struct {
+	weekday []*Bus
+	holiday []*Bus
+}
+
+func (b *BusTimeTable) Text() string {
+	res := "平日\n"
+	for _, bus := range b.weekday {
+		res += (*bus).Text() + "\n"
+	}
+	res += "休日\n"
+	for _, bus := range b.holiday {
+		res += (*bus).Text() + "\n"
+	}
+	return res
+}
+
 type Bus struct {
 	DepartureHour   int
 	DepartureMinute int
@@ -26,36 +43,44 @@ func (b *Bus) Text() string {
 func main() {
 	url1 := "https://info.entetsu.co.jp/navi/pc/dispjikokutable.aspx?tp=HTML&bs=290020&pn=1&nw=0"
 	//url2 := "https://info.entetsu.co.jp/navi/pc/dispjikokutable.aspx?tp=HTML&bs=290020&pn=5&nw=0"
-	data1 := []Bus{}
-	fetchTimeTable(url1, data1)
+	data1 := *fetchTimeTable(url1)
+	fmt.Println(data1.Text())
 
 }
 
-func fetchTimeTable(url string, data []Bus) {
-	c := colly.NewCollector()
+func fetchTimeTable(url string) *BusTimeTable {
+	weekday := []*Bus{}
+	holiday := []*Bus{}
 
+	c := colly.NewCollector()
 	c.OnHTML("body", func(e *colly.HTMLElement) {
 		for i := 3; i < 24; i++ {
 			path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d)", i, 1)
 			text := e.DOM.Find(path).Text()
 			text = removeSpace(text)
-			fmt.Printf("[%s]\n", text)
-			for j := 2; j <= 3; j++ {
-				fetchHour(i, j, e, data)
+			if text == "" {
+				return
 			}
+			newWeekday := fetchHour(i, 2, e)
+			newHoliday := fetchHour(i, 3, e)
+			weekday = append(weekday, *newWeekday...)
+			holiday = append(holiday, *newHoliday...)
 		}
 	})
 
 	c.Visit(url)
+	res := BusTimeTable{weekday, holiday}
+	return &res
 }
 
-func fetchHour(row int, col int, e *colly.HTMLElement, data []Bus) {
+func fetchHour(row int, col int, e *colly.HTMLElement) *[]*Bus {
+	res := []*Bus{}
 	for i := 1; i <= 20; i++ {
 		path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d) > a:nth-child(%d)", row, col, i)
 		text := e.DOM.Find(path).Text()
 		text = removeSpace(text)
 		if text == "" {
-			return
+			break
 		}
 
 		fontPath := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d) > a:nth-child(%d) > font", row, col, i)
@@ -71,13 +96,13 @@ func fetchHour(row int, col int, e *colly.HTMLElement, data []Bus) {
 		route := ""
 		if len(text) > 2 {
 			route = text[2:]
+			route = strings.Replace(route, "(", "", -1)
+			route = strings.Replace(route, ")", "", -1)
 		}
 		newData := Bus{hour, minute, route, omuni}
-		data = append(data, newData)
-
-		//fmt.Printf("%d,%d,%d: %s,%s \n", row, col, i, text, fontText)
-		fmt.Println(newData.Text())
+		res = append(res, &newData)
 	}
+	return &res
 }
 
 func removeSpace(text string) string {
