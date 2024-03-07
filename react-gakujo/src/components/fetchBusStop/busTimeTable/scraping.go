@@ -54,7 +54,7 @@ func fetchHour(row int, col int, e *colly.HTMLElement, routeText string, hour in
 			omuni = false
 		}
 
-		minute, _ := strconv.Atoi(text)
+		minute, _ := strconv.Atoi(text[:2])
 		option := ""
 		if len(text) > 2 {
 			option = text[2:]

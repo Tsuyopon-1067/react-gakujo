@@ -12,9 +12,6 @@ func main() {
 	data1 := *busTimeTable.FetchTimeTable(url1, 1, 1)
 	data2 := *busTimeTable.FetchTimeTable(url2, 1, 2)
 	data3 := *busTimeTable.FetchTimeTable(url2, 2, 2)
-	//fmt.Println(data1.Text())
-	//fmt.Println(data2.Text())
-	fmt.Println(data3.Text())
 
 	allWeekDay := append(data1.Weekday, data2.Weekday...)
 	allWeekDay = append(allWeekDay, data3.Weekday...)
@@ -24,5 +21,5 @@ func main() {
 
 	allData.Sort()
 
-	//fmt.Println(allData.Text())
+	fmt.Println(allData.Text())
 }
