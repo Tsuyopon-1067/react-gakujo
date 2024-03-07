@@ -117,8 +117,8 @@ func (b *Bus) NewDataForJson(routeToIndex map[string]int, optionToIndex map[stri
 }
 
 type Time struct {
-	Hour   int
-	Minute int
+	Hour   int `json:"hour"`
+	Minute int `json:"minute"`
 }
 
 func (t *Time) Text() string {
