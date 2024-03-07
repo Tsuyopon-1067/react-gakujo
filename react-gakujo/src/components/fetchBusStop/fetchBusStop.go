@@ -70,7 +70,7 @@ func fetchHour(row int, col int, e *colly.HTMLElement, data []Bus) {
 		minute, _ := strconv.Atoi(text)
 		route := ""
 		if len(text) > 2 {
-			route = text[3:]
+			route = text[2:]
 		}
 		newData := Bus{hour, minute, route, omuni}
 		data = append(data, newData)
