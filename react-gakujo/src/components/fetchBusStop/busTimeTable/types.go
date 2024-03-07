@@ -27,7 +27,7 @@ func (b *BusTimeTable) Sort() {
 	sort.Slice(b.Holiday, BusCompare(b.Holiday))
 }
 
-func (b *BusTimeTable) createToIndexMap() (map[string]int, map[string]int) {
+func (b *BusTimeTable) CreateToIndexMap() (map[string]int, map[string]int) {
 	routeToIndex := map[string]int{}
 	optionToIndex := map[string]int{}
 
@@ -55,7 +55,7 @@ func (b *BusTimeTable) createToIndexMap() (map[string]int, map[string]int) {
 }
 
 func (b *BusTimeTable) NewDataForJson() *BusTimeTableForJson {
-	routeToIndex, optionToIndex := b.createToIndexMap()
+	routeToIndex, optionToIndex := b.CreateToIndexMap()
 
 	weekday := make([]*BusForJson, len(b.Weekday))
 	holiday := make([]*BusForJson, len(b.Holiday))

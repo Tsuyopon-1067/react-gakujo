@@ -21,8 +21,14 @@ func main() {
 	allData := busTimeTable.BusTimeTable{Weekday: allWeekDay, Holiday: allHoliday}
 
 	allData.Sort()
-	jsonData := allData.NewDataForJson()
+	allDataJson := allData.NewDataForJson()
 
-	out, _ := json.Marshal(jsonData)
-	fmt.Println(string(out))
+	routeToIndex, optionToIndex := allData.CreateToIndexMap()
+	routeToIndexText, _ := json.Marshal(routeToIndex)
+	optionToIndexText, _ := json.Marshal(optionToIndex)
+	allDataJsonText, _ := json.Marshal(allDataJson)
+
+	fmt.Println(string(allDataJsonText))
+	fmt.Println(string(routeToIndexText))
+	fmt.Println(string(optionToIndexText))
 }
