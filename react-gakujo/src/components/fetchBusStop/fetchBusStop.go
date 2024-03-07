@@ -27,17 +27,25 @@ func (b *BusTimeTable) Text() string {
 }
 
 type Bus struct {
-	DepartureHour   int
-	DepartureMinute int
-	route           string
-	omuni           bool
+	DepartureTime Time
+	route         string
+	omuni         bool
 }
 
 func (b *Bus) Text() string {
 	if b.omuni {
-		return fmt.Sprintf("%02d:%02d %s O", b.DepartureHour, b.DepartureMinute, b.route)
+		return fmt.Sprintf("%s %s O", b.DepartureTime.Text(), b.route)
 	}
-	return fmt.Sprintf("%02d:%02d %s X", b.DepartureHour, b.DepartureMinute, b.route)
+	return fmt.Sprintf("%s %s X", b.DepartureTime.Text(), b.route)
+}
+
+type Time struct {
+	hour   int
+	minute int
+}
+
+func (t *Time) Text() string {
+	return fmt.Sprintf("%02d:%02d", t.hour, t.minute)
 }
 
 func main() {
@@ -99,7 +107,8 @@ func fetchHour(row int, col int, e *colly.HTMLElement) *[]*Bus {
 			route = strings.Replace(route, "(", "", -1)
 			route = strings.Replace(route, ")", "", -1)
 		}
-		newData := Bus{hour, minute, route, omuni}
+		time := Time{hour, minute}
+		newData := Bus{time, route, omuni}
 		res = append(res, &newData)
 	}
 	return &res
