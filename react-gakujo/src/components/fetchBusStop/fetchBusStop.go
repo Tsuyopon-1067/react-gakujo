@@ -2,6 +2,7 @@ package main
 
 // go get -u github.com/gocolly/colly/...
 import (
+	"encoding/json"
 	"fetchBusStop/busTimeTable"
 	"fmt"
 )
@@ -21,5 +22,22 @@ func main() {
 
 	allData.Sort()
 
-	fmt.Println(allData.Text())
+	optionToIndex := map[string]int{}
+	for _, bus := range allData.Weekday {
+		option := bus.Option
+		if _, ok := optionToIndex[option]; !ok {
+			fmt.Println(option, len(optionToIndex))
+		}
+	}
+	for _, bus := range allData.Holiday {
+		option := bus.Option
+		if _, ok := optionToIndex[option]; !ok {
+			optionToIndex[bus.Option] = len(optionToIndex)
+		}
+	}
+
+	out, _ := json.Marshal(allData)
+	fmt.Println(string(out))
+
+	fmt.Println(optionToIndex)
 }

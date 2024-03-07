@@ -6,8 +6,8 @@ import (
 )
 
 type BusTimeTable struct {
-	Weekday []*Bus
-	Holiday []*Bus
+	Weekday []*Bus `json:"weekday"`
+	Holiday []*Bus `json:"holiday"`
 }
 
 func (b *BusTimeTable) Text() string {
@@ -28,10 +28,10 @@ func (b *BusTimeTable) Sort() {
 }
 
 type Bus struct {
-	DepartureTime Time
-	Route         string
-	Option        string
-	Omuni         bool
+	DepartureTime Time   `json:"departureTime"`
+	Route         string `json:"route"`
+	Option        string `json:"option"`
+	Omuni         bool   `json:"omuni"`
 }
 
 func (b *Bus) Text() string {
