@@ -1,6 +1,9 @@
 package busTimeTable
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type BusTimeTable struct {
 	Weekday []*Bus
@@ -17,6 +20,11 @@ func (b *BusTimeTable) Text() string {
 		res += (*bus).Text() + "\n"
 	}
 	return res
+}
+
+func (b *BusTimeTable) Sort() {
+	sort.Slice(b.Weekday, BusCompare(b.Weekday))
+	sort.Slice(b.Holiday, BusCompare(b.Holiday))
 }
 
 type Bus struct {
@@ -41,4 +49,14 @@ type Time struct {
 
 func (t *Time) Text() string {
 	return fmt.Sprintf("%02d:%02d", t.Hour, t.Minute)
+}
+
+func (t *Time) Value() int {
+	return t.Hour*60 + t.Minute
+}
+
+func BusCompare(list []*Bus) func(i, j int) bool {
+	return func(i, j int) bool {
+		return list[i].DepartureTime.Value() < list[j].DepartureTime.Value()
+	}
 }
