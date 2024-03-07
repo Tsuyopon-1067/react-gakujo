@@ -18,13 +18,14 @@ func FetchTimeTable(url string, routeCol int, allRouteCol int) *BusTimeTable {
 		routeText := e.DOM.Find(routePath).Text()
 		for i := 3; i < 24; i++ {
 			path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d)", i, 1)
-			text := e.DOM.Find(path).Text()
-			text = removeSpace(text)
-			if text == "" {
+			hourText := e.DOM.Find(path).Text()
+			hourText = removeSpace(hourText)
+			if hourText == "" {
 				return
 			}
-			newWeekday := fetchHour(i, 1+routeCol, e, routeText)
-			newHoliday := fetchHour(i, 1+allRouteCol+routeCol, e, routeText)
+			hour, _ := strconv.Atoi(hourText)
+			newWeekday := fetchHour(i, 1+routeCol, e, routeText, hour)
+			newHoliday := fetchHour(i, 1+allRouteCol+routeCol, e, routeText, hour)
 			weekday = append(weekday, *newWeekday...)
 			holiday = append(holiday, *newHoliday...)
 		}
@@ -35,7 +36,7 @@ func FetchTimeTable(url string, routeCol int, allRouteCol int) *BusTimeTable {
 	return &res
 }
 
-func fetchHour(row int, col int, e *colly.HTMLElement, routeText string) *[]*Bus {
+func fetchHour(row int, col int, e *colly.HTMLElement, routeText string, hour int) *[]*Bus {
 	res := []*Bus{}
 	for i := 1; i <= 20; i++ {
 		path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d) > a:nth-child(%d)", row, col, i)
@@ -53,7 +54,6 @@ func fetchHour(row int, col int, e *colly.HTMLElement, routeText string) *[]*Bus
 			omuni = false
 		}
 
-		hour := row + 2
 		minute, _ := strconv.Atoi(text)
 		option := ""
 		if len(text) > 2 {
