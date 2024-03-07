@@ -32,23 +32,23 @@ func (b *BusTimeTable) CreateToIndexMap() (map[string]int, map[string]int) {
 	optionToIndex := map[string]int{}
 
 	for _, bus := range b.Weekday {
+		route := bus.Route
+		if _, ok := routeToIndex[route]; !ok {
+			routeToIndex[route] = len(routeToIndex)
+		}
 		option := bus.Option
 		if _, ok := optionToIndex[option]; !ok {
 			optionToIndex[option] = len(optionToIndex)
-		}
-		route := bus.Route
-		if _, ok := optionToIndex[route]; !ok {
-			routeToIndex[route] = len(routeToIndex)
 		}
 	}
 	for _, bus := range b.Holiday {
+		route := bus.Route
+		if _, ok := routeToIndex[route]; !ok {
+			routeToIndex[route] = len(routeToIndex)
+		}
 		option := bus.Option
 		if _, ok := optionToIndex[option]; !ok {
 			optionToIndex[option] = len(optionToIndex)
-		}
-		route := bus.Route
-		if _, ok := optionToIndex[route]; !ok {
-			routeToIndex[route] = len(routeToIndex)
 		}
 	}
 	return routeToIndex, optionToIndex
