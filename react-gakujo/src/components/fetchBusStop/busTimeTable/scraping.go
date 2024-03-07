@@ -8,7 +8,7 @@ import (
 	"github.com/gocolly/colly"
 )
 
-func FetchTimeTable(url string) *BusTimeTable {
+func FetchTimeTable(url string, routeCol int, allRouteCol int) *BusTimeTable {
 	weekday := []*Bus{}
 	holiday := []*Bus{}
 
@@ -21,8 +21,8 @@ func FetchTimeTable(url string) *BusTimeTable {
 			if text == "" {
 				return
 			}
-			newWeekday := fetchHour(i, 2, e)
-			newHoliday := fetchHour(i, 3, e)
+			newWeekday := fetchHour(i, 1+routeCol, e)
+			newHoliday := fetchHour(i, 1+allRouteCol+routeCol, e)
 			weekday = append(weekday, *newWeekday...)
 			holiday = append(holiday, *newHoliday...)
 		}
