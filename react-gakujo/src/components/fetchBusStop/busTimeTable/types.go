@@ -22,14 +22,16 @@ func (b *BusTimeTable) Text() string {
 type Bus struct {
 	DepartureTime Time
 	Route         string
+	Option        string
 	Omuni         bool
 }
 
 func (b *Bus) Text() string {
+	omuniText := "X"
 	if b.Omuni {
-		return fmt.Sprintf("%s %s O", b.DepartureTime.Text(), b.Route)
+		omuniText = "O"
 	}
-	return fmt.Sprintf("%s %s X", b.DepartureTime.Text(), b.Route)
+	return fmt.Sprintf("%s: %s | %s | %s", b.DepartureTime.Text(), b.Route, b.Option, omuniText)
 }
 
 type Time struct {
