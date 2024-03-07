@@ -2,51 +2,13 @@ package main
 
 // go get -u github.com/gocolly/colly/...
 import (
+	busTimeTable "fetchBusStop/types"
 	"fmt"
 	"strconv"
 	"strings"
 
 	"github.com/gocolly/colly"
 )
-
-type BusTimeTable struct {
-	weekday []*Bus
-	holiday []*Bus
-}
-
-func (b *BusTimeTable) Text() string {
-	res := "平日\n"
-	for _, bus := range b.weekday {
-		res += (*bus).Text() + "\n"
-	}
-	res += "休日\n"
-	for _, bus := range b.holiday {
-		res += (*bus).Text() + "\n"
-	}
-	return res
-}
-
-type Bus struct {
-	DepartureTime Time
-	route         string
-	omuni         bool
-}
-
-func (b *Bus) Text() string {
-	if b.omuni {
-		return fmt.Sprintf("%s %s O", b.DepartureTime.Text(), b.route)
-	}
-	return fmt.Sprintf("%s %s X", b.DepartureTime.Text(), b.route)
-}
-
-type Time struct {
-	hour   int
-	minute int
-}
-
-func (t *Time) Text() string {
-	return fmt.Sprintf("%02d:%02d", t.hour, t.minute)
-}
 
 func main() {
 	url1 := "https://info.entetsu.co.jp/navi/pc/dispjikokutable.aspx?tp=HTML&bs=290020&pn=1&nw=0"
@@ -56,9 +18,9 @@ func main() {
 
 }
 
-func fetchTimeTable(url string) *BusTimeTable {
-	weekday := []*Bus{}
-	holiday := []*Bus{}
+func fetchTimeTable(url string) *busTimeTable.BusTimeTable {
+	weekday := []*busTimeTable.Bus{}
+	holiday := []*busTimeTable.Bus{}
 
 	c := colly.NewCollector()
 	c.OnHTML("body", func(e *colly.HTMLElement) {
@@ -77,12 +39,12 @@ func fetchTimeTable(url string) *BusTimeTable {
 	})
 
 	c.Visit(url)
-	res := BusTimeTable{weekday, holiday}
+	res := busTimeTable.BusTimeTable{Weekday: weekday, Holiday: holiday}
 	return &res
 }
 
-func fetchHour(row int, col int, e *colly.HTMLElement) *[]*Bus {
-	res := []*Bus{}
+func fetchHour(row int, col int, e *colly.HTMLElement) *[]*busTimeTable.Bus {
+	res := []*busTimeTable.Bus{}
 	for i := 1; i <= 20; i++ {
 		path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d) > a:nth-child(%d)", row, col, i)
 		text := e.DOM.Find(path).Text()
@@ -107,8 +69,8 @@ func fetchHour(row int, col int, e *colly.HTMLElement) *[]*Bus {
 			route = strings.Replace(route, "(", "", -1)
 			route = strings.Replace(route, ")", "", -1)
 		}
-		time := Time{hour, minute}
-		newData := Bus{time, route, omuni}
+		time := busTimeTable.Time{Hour: hour, Minute: minute}
+		newData := busTimeTable.Bus{DepartureTime: time, Route: route, Omuni: omuni}
 		res = append(res, &newData)
 	}
 	return &res
