@@ -3,14 +3,24 @@ package main
 // go get -u github.com/gocolly/colly/...
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/gocolly/colly"
 )
 
 type Bus struct {
-	Departure string
-	route string
+	DepartureHour   int
+	DepartureMinute int
+	route           string
+	omuni           bool
+}
+
+func (b *Bus) Text() string {
+	if b.omuni {
+		return fmt.Sprintf("%02d:%02d %s O", b.DepartureHour, b.DepartureMinute, b.route)
+	}
+	return fmt.Sprintf("%02d:%02d %s X", b.DepartureHour, b.DepartureMinute, b.route)
 }
 
 func main() {
@@ -31,7 +41,7 @@ func fetchTimeTable(url string, data []Bus) {
 			text = removeSpace(text)
 			fmt.Printf("[%s]\n", text)
 			for j := 2; j <= 3; j++ {
-				fetchHour(i, j, e)
+				fetchHour(i, j, e, data)
 			}
 		}
 	})
@@ -39,7 +49,7 @@ func fetchTimeTable(url string, data []Bus) {
 	c.Visit(url)
 }
 
-func fetchHour(row int, col int, e *colly.HTMLElement) {
+func fetchHour(row int, col int, e *colly.HTMLElement, data []Bus) {
 	for i := 1; i <= 20; i++ {
 		path := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d) > a:nth-child(%d)", row, col, i)
 		text := e.DOM.Find(path).Text()
@@ -47,7 +57,26 @@ func fetchHour(row int, col int, e *colly.HTMLElement) {
 		if text == "" {
 			return
 		}
-		fmt.Printf("%d,%d,%d: %s, \n", row, col, i, text)
+
+		fontPath := fmt.Sprintf("body > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(%d) > td:nth-child(%d) > a:nth-child(%d) > font", row, col, i)
+		fontText := e.DOM.Find(fontPath).Text()
+		fontText = removeSpace(fontText)
+		omuni := true
+		if fontText == "" {
+			omuni = false
+		}
+
+		hour := row + 2
+		minute, _ := strconv.Atoi(text)
+		route := ""
+		if len(text) > 2 {
+			route = text[3:]
+		}
+		newData := Bus{hour, minute, route, omuni}
+		data = append(data, newData)
+
+		//fmt.Printf("%d,%d,%d: %s,%s \n", row, col, i, text, fontText)
+		fmt.Println(newData.Text())
 	}
 }
 
