@@ -27,6 +27,48 @@ func (b *BusTimeTable) Sort() {
 	sort.Slice(b.Holiday, BusCompare(b.Holiday))
 }
 
+func (b *BusTimeTable) createToIndexMap() (map[string]int, map[string]int) {
+	routeToIndex := map[string]int{}
+	optionToIndex := map[string]int{}
+
+	for _, bus := range b.Weekday {
+		option := bus.Option
+		if _, ok := optionToIndex[option]; !ok {
+			optionToIndex[option] = len(optionToIndex)
+		}
+		route := bus.Route
+		if _, ok := optionToIndex[route]; !ok {
+			routeToIndex[route] = len(routeToIndex)
+		}
+	}
+	for _, bus := range b.Holiday {
+		option := bus.Option
+		if _, ok := optionToIndex[option]; !ok {
+			optionToIndex[option] = len(optionToIndex)
+		}
+		route := bus.Route
+		if _, ok := optionToIndex[route]; !ok {
+			routeToIndex[route] = len(routeToIndex)
+		}
+	}
+	return routeToIndex, optionToIndex
+}
+
+func (b *BusTimeTable) NewDataForJson() *BusTimeTableForJson {
+	routeToIndex, optionToIndex := b.createToIndexMap()
+
+	weekday := make([]*BusForJson, len(b.Weekday))
+	holiday := make([]*BusForJson, len(b.Holiday))
+	for i, bus := range b.Weekday {
+		weekday[i] = bus.NewDataForJson(routeToIndex, optionToIndex)
+	}
+	for i, bus := range b.Holiday {
+		holiday[i] = bus.NewDataForJson(routeToIndex, optionToIndex)
+	}
+
+	return &BusTimeTableForJson{Weekday: weekday, Holiday: holiday}
+}
+
 type Bus struct {
 	DepartureTime Time   `json:"departureTime"`
 	Route         string `json:"route"`
@@ -40,6 +82,12 @@ func (b *Bus) Text() string {
 		omuniText = "O"
 	}
 	return fmt.Sprintf("%s: %s | %s | %s", b.DepartureTime.Text(), b.Route, b.Option, omuniText)
+}
+
+func (b *Bus) NewDataForJson(routeToIndex map[string]int, optionToIndex map[string]int) *BusForJson {
+	route := routeToIndex[b.Route]
+	option := optionToIndex[b.Option]
+	return &BusForJson{DepartureTime: b.DepartureTime, Route: route, Option: option, Omuni: b.Omuni}
 }
 
 type Time struct {
