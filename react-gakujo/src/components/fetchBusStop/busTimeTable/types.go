@@ -69,6 +69,32 @@ func (b *BusTimeTable) NewDataForJson() *BusTimeTableForJson {
 	return &BusTimeTableForJson{Weekday: weekday, Holiday: holiday}
 }
 
+func (b *BusTimeTable) MapToArray() (string, string) {
+	routeToIndex, optionToIndex := b.CreateToIndexMap()
+
+	routeArray := make([]string, len(routeToIndex))
+	optionArray := make([]string, len(optionToIndex))
+	for v, i := range routeToIndex {
+		routeArray[i] = v
+	}
+	for v, i := range optionToIndex {
+		optionArray[i] = v
+	}
+
+	routeRes := "["
+	optionRes := "["
+	for _, v := range routeArray {
+		routeRes += "\"" + v + "\"" + ","
+	}
+	for _, v := range optionArray {
+		optionRes += "\"" + v + "\"" + ","
+	}
+	routeRes = routeRes[:len(routeRes)-1] + "]"
+	optionRes = optionRes[:len(optionRes)-1] + "]"
+
+	return routeRes, optionRes
+}
+
 type Bus struct {
 	DepartureTime Time   `json:"departureTime"`
 	Route         string `json:"route"`

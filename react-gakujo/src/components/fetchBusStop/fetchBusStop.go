@@ -23,12 +23,10 @@ func main() {
 	allData.Sort()
 	allDataJson := allData.NewDataForJson()
 
-	routeToIndex, optionToIndex := allData.CreateToIndexMap()
-	routeToIndexText, _ := json.Marshal(routeToIndex)
-	optionToIndexText, _ := json.Marshal(optionToIndex)
+	routeToIndexText, optionToIndexText := allData.MapToArray()
 	allDataJsonText, _ := json.Marshal(allDataJson)
 
 	fmt.Println(string(allDataJsonText))
-	fmt.Println(string(routeToIndexText))
-	fmt.Println(string(optionToIndexText))
+	fmt.Println(routeToIndexText)
+	fmt.Println(optionToIndexText)
 }
