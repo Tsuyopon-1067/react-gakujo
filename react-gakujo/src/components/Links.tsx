@@ -76,8 +76,6 @@ const GakujoButton = ({ colorSettings }: WrapedLinkButtonProps) => (
                     fill: "#00000088",
                     width: fontSize,
                     height: fontSize,
-                    marginTop: 10,
-                    marginBottom: -10,
                 }}
             />
         }
