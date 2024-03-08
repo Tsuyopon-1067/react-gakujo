@@ -3,6 +3,7 @@ import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
+    Input,
     Table,
     TableBody,
     TableCell,
@@ -11,6 +12,7 @@ import {
     TableRow,
 } from "@mui/material";
 import styles from "./StudentNumberPage.module.css";
+import { useState } from "react";
 
 class StudentNumberCode {
     type: string;
@@ -63,7 +65,7 @@ const facultyCodeList: FacultyCode[] = [
     new FacultyCode("工学部", "機械工学科", 0),
     new FacultyCode("工学部", "電気電子工学科", 1),
     new FacultyCode("工学部", "電子物質科学科", 4),
-    new FacultyCode("工学部", "科学バイオ工学科", 5),
+    new FacultyCode("工学部", "化学バイオ工学科", 5),
     new FacultyCode("工学部", "数理システム工学科", 6),
     new FacultyCode("農学部", "生物資源科学化", 0),
     new FacultyCode("農学部", "応用生命化学化", 1),
@@ -72,9 +74,90 @@ const facultyCodeList: FacultyCode[] = [
     new FacultyCode("情報学部", "行動情報学科", 2),
 ];
 
+interface Facility {
+    name: string;
+    code: number;
+    departNumbers: number[];
+    departMap: Map<number, string>;
+}
+
+const humanitiesAndSocialSciencesStudentNumberToDepart = new Map([
+    [0, "社会学科"],
+    [1, "言語文化学科"],
+    [2, "法学科"],
+    [3, "経済学科"],
+]);
+const scienceStudentNumberToDepart = new Map([
+    [0, "数学科"],
+    [1, "物理学科"],
+    [2, "化学科"],
+    [3, "生物化学科"],
+    [4, "地球科学科"],
+    [5, "創造理学コース"],
+]);
+const engineeringStudentNumberToDepart = new Map([
+    [0, "機械降雨学科"],
+    [1, "電気電子工学科"],
+    [4, "電子物質科学科"],
+    [5, "化学バイオ工学科"],
+    [6, "数理システム工学科"],
+]);
+const informaticsStudentNumberToDepart = new Map([
+    [0, "情報科学科"],
+    [1, "情報社会学科"],
+    [2, "行動情報学科"],
+]);
+
+const humanitiesAndSocialSciencesFacility: Facility = {
+    name: "人文社会科学部",
+    code: 20,
+    departNumbers: [0, 1, 2, 3],
+    departMap: humanitiesAndSocialSciencesStudentNumberToDepart,
+};
+const educationFacility: Facility = {
+    name: "教育学部",
+    code: 30,
+    departNumbers: [],
+    departMap: {} as Map<number, string>,
+};
+const scienceFacility: Facility = {
+    name: "理学部",
+    code: 40,
+    departNumbers: [0, 1, 2, 3, 4, 5],
+    departMap: scienceStudentNumberToDepart,
+};
+const engineeringFacility: Facility = {
+    name: "工学部",
+    code: 50,
+    departNumbers: [0, 1, 4, 5, 6],
+    departMap: engineeringStudentNumberToDepart,
+};
+const agricultureFacility: Facility = {
+    name: "農学部",
+    code: 60,
+    departNumbers: [],
+    departMap: {} as Map<number, string>,
+};
+const informaticsFacility: Facility = {
+    name: "情報学部",
+    code: 70,
+    departNumbers: [0, 1, 2],
+    departMap: informaticsStudentNumberToDepart,
+};
+
+const facilityCodeList = [
+    humanitiesAndSocialSciencesFacility,
+    educationFacility,
+    scienceFacility,
+    engineeringFacility,
+    agricultureFacility,
+    informaticsFacility,
+];
+
 function StudentNumberPage() {
     return (
         <div className={styles.main_div}>
+            <h1 className={styles.h1}>判例</h1>
             <h2 className={styles.h2}>AABC-DEEE</h2>
             <Accordion>
                 <AccordionSummary expandIcon={<ExpandMore />}>
@@ -90,13 +173,13 @@ function StudentNumberPage() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {studentNumberList.map((studentNumber) => (
+                                {facilityCodeList.map((facility) => (
                                     <TableRow>
                                         <TableCell align="center">
-                                            {studentNumber.type}
+                                            {facility.name}
                                         </TableCell>
                                         <TableCell align="center">
-                                            {studentNumber.code}
+                                            {facility.code}
                                         </TableCell>
                                     </TableRow>
                                 ))}
@@ -149,25 +232,69 @@ function StudentNumberPage() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align="center">学部</TableCell>
-                                    <TableCell align="center">学科</TableCell>
-                                    <TableCell align="center">コード</TableCell>
+                                    <TableCell
+                                        align="center"
+                                        sx={{
+                                            paddingLeft: 0.5,
+                                            paddingRight: 0.5,
+                                        }}
+                                    >
+                                        学部
+                                    </TableCell>
+                                    <TableCell
+                                        align="center"
+                                        sx={{
+                                            paddingLeft: 0.5,
+                                            paddingRight: 0.5,
+                                        }}
+                                    >
+                                        学科
+                                    </TableCell>
+                                    <TableCell
+                                        align="center"
+                                        sx={{
+                                            paddingLeft: 0.5,
+                                            paddingRight: 0.5,
+                                        }}
+                                    >
+                                        コード
+                                    </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {facultyCodeList.map((facultyCode) => (
-                                    <TableRow>
-                                        <TableCell align="center">
-                                            {facultyCode.faculty}
-                                        </TableCell>
-                                        <TableCell align="center">
-                                            {facultyCode.department}
-                                        </TableCell>
-                                        <TableCell align="center">
-                                            {facultyCode.code}
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
+                                {facilityCodeList.map((facility) =>
+                                    facility.departNumbers.map((code) => (
+                                        <TableRow>
+                                            <TableCell
+                                                align="center"
+                                                sx={{
+                                                    paddingLeft: 0.5,
+                                                    paddingRight: 0.5,
+                                                }}
+                                            >
+                                                {facility.name}
+                                            </TableCell>
+                                            <TableCell
+                                                align="center"
+                                                sx={{
+                                                    paddingLeft: 0.5,
+                                                    paddingRight: 0.5,
+                                                }}
+                                            >
+                                                {facility.departMap.get(code)}
+                                            </TableCell>
+                                            <TableCell
+                                                align="center"
+                                                sx={{
+                                                    paddingLeft: 0.5,
+                                                    paddingRight: 0.5,
+                                                }}
+                                            >
+                                                {code}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                )}
                             </TableBody>
                         </Table>
                     </TableContainer>
