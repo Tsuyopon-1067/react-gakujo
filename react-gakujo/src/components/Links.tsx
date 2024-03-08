@@ -1,4 +1,4 @@
-import { MenuBook, TextSnippet } from "@mui/icons-material";
+import { Business, MenuBook, TextSnippet } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 import { MainLocalStorageData } from "./FixedBottomNavigation";
@@ -51,6 +51,13 @@ function Links() {
                 primaryColorHover={primaryColorHover}
                 fontColor={fontColor} />
             <LinkButton
+                title="教務システム"
+                href="https://gakujo.shizuoka.ac.jp/kyoumu/sso/loginStudent.do"
+                icon={<Business sx={{ fontSize: 180 }} color="action" />}
+                primaryColor={primaryColor}
+                primaryColorHover={primaryColorHover}
+                fontColor={fontColor} />
+            <LinkButton
                 title="OPAC"
                 href="https://opac.lib.shizuoka.ac.jp/simple/"
                 icon={<MenuBook sx={{ fontSize: 180 }} color="action" />}
@@ -64,6 +71,7 @@ function Links() {
                 primaryColor={primaryColor}
                 primaryColorHover={primaryColorHover}
                 fontColor={fontColor} />
+
         </div>
     );
 }
