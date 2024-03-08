@@ -1,17 +1,20 @@
-import { jsx } from "@emotion/react";
-import styles from "./BusTimeTable.module.css";
 import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
+    Box,
+    Tab,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
     TableRow,
+    Tabs,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
+import { useState } from "react";
+import * as React from "react";
 
 interface BusTimeTable {
     weekday: Bus[];
@@ -41,7 +44,7 @@ function BusTimeTable() {
     const weekdayList = table.weekday;
     const holidayList = table.holiday;
 
-    const ToBusTimeTableComponent = ({ list }: BusTimeTableProps) => {
+    const BusTimeTableAcordion = ({ list }: BusTimeTableProps) => {
         const splitList: Bus[][] = [];
         let hour = -1;
         let tmpList: Bus[] = [] as Bus[];
@@ -71,12 +74,39 @@ function BusTimeTable() {
         );
     };
 
+    const handleChange = () => {};
+    const [value, setValue] = React.useState(0);
     return (
-        <>
-            <ToBusTimeTableComponent list={weekdayList} />
-        </>
+        <Box sx={{ width: "100%" }}>
+            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                >
+                    <Tab label="平日" onClick={() => setValue(0)} />
+                    <Tab label="休日" onClick={() => setValue(1)} />
+                </Tabs>
+            </Box>
+            <TabPanel value={value} index={0}>
+                <BusTimeTableAcordion list={weekdayList} />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <BusTimeTableAcordion list={holidayList} />
+            </TabPanel>
+        </Box>
     );
 }
+
+interface TabPanelProps {
+    value: number;
+    index: number;
+    children?: React.ReactNode;
+}
+
+const TabPanel = ({ value, index, children }: TabPanelProps) => {
+    return value === index && <div>{children}</div>;
+};
 
 interface HourAccordionProps {
     hour: number;
