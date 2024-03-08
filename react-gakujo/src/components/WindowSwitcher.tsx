@@ -14,7 +14,6 @@ export interface ColorSettingsProps {
 }
 
 function WindowSwitcher() {
-    const [isSetting, setIsSetting] = useState(false);
     const [primaryColor, setPrimaryColor] = useState(
         MainLocalStorageData.getColor().getPrimaryColor()
     );
@@ -33,14 +32,7 @@ function WindowSwitcher() {
         setPrimaryHover,
     };
 
-    return isSetting ? (
-        <Setting setIsSetting={setIsSetting} colorSettingsProps={props} />
-    ) : (
-        <FixedBottomNavigation
-            setIsSetting={setIsSetting}
-            colorSettingsProps={props}
-        />
-    );
+    return <FixedBottomNavigation colorSettingsProps={props} />;
 }
 
 export default WindowSwitcher;

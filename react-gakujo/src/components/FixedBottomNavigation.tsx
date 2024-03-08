@@ -4,6 +4,7 @@ import {
     GridOn,
     Link,
     Map,
+    Settings,
     Wifi,
 } from "@mui/icons-material";
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -21,6 +22,7 @@ import TitleAppBar from "./TitleAppBar";
 import { ColorSettingsProps } from "./WindowSwitcher";
 import { UniTable } from "./timeTableTypes";
 import MiscPage from "./MiscPage";
+import Setting from "./Setting";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
@@ -28,7 +30,6 @@ export const ContextApp = React.createContext<
 export const MainLocalStorageData = new LocalStorageData();
 
 interface FixedBottomNavigationProps {
-    setIsSetting: (isSetting: boolean) => void;
     colorSettingsProps: ColorSettingsProps;
 }
 
@@ -47,7 +48,6 @@ const createBottomNavigationElement = (
 };
 
 export default function FixedBottomNavigation({
-    setIsSetting,
     colorSettingsProps,
 }: FixedBottomNavigationProps) {
     const [value, setValue] = React.useState(0);
@@ -67,9 +67,13 @@ export default function FixedBottomNavigation({
             <CalendarMonth />,
             <EventSchedule />
         ),
-        createBottomNavigationElement("WiFi等", <Wifi />, <GuidePage />),
         createBottomNavigationElement("構内地図", <Map />, <CampusMap />),
         createBottomNavigationElement("その他", <Apps />, <MiscPage />),
+        createBottomNavigationElement(
+            "設定",
+            <Settings />,
+            <Setting colorSettingsProps={colorSettingsProps} />
+        ),
     ];
 
     return (
@@ -77,7 +81,6 @@ export default function FixedBottomNavigation({
             <CssBaseline />
             <TitleAppBar
                 title={bottomNavigationElement[value].name}
-                setIsSetting={setIsSetting}
                 primaryColor={colorSettingsProps.primaryColor}
                 fontColor={colorSettingsProps.fontColor}
             />
