@@ -114,4 +114,29 @@ const HandBookButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     />
 );
 
-export { GakujoButton, AcademicAffairsButton, OpacButton, HandBookButton };
+const HamaXButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="生協（浜松）X"
+        href="https://x.com/hama_coop"
+        icon={<TextSnippet sx={{ fontSize: fontSize }} color="action" />}
+        colorSettings={colorSettings}
+    />
+);
+
+const OfficialSiteButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="静岡大学公式サイト"
+        href="https://www.shizuoka.ac.jp/"
+        icon={<TextSnippet sx={{ fontSize: fontSize }} color="action" />}
+        colorSettings={colorSettings}
+    />
+);
+
+export {
+    GakujoButton,
+    AcademicAffairsButton,
+    OpacButton,
+    HandBookButton,
+    HamaXButton,
+    OfficialSiteButton,
+};
