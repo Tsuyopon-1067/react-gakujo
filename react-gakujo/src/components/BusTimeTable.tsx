@@ -13,8 +13,8 @@ import {
     Tabs,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
-import { useState } from "react";
 import * as React from "react";
+import styles from "./BusTimeTable.module.css";
 
 interface BusTimeTable {
     weekday: Bus[];
@@ -88,12 +88,14 @@ function BusTimeTable() {
                     <Tab label="休日" onClick={() => setValue(1)} />
                 </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
-                <BusTimeTableAcordion list={weekdayList} />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <BusTimeTableAcordion list={holidayList} />
-            </TabPanel>
+            <div className={styles.main_div}>
+                <TabPanel value={value} index={0}>
+                    <BusTimeTableAcordion list={weekdayList} />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <BusTimeTableAcordion list={holidayList} />
+                </TabPanel>
+            </div>
         </Box>
     );
 }
