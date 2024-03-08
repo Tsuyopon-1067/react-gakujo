@@ -1,8 +1,25 @@
-import { Button } from "@mui/material";
+import { Button, Color } from "@mui/material";
 import styles from "./MiscPage.module.css";
+import {
+    AcademicAffairsButton,
+    GakujoButton,
+    HandBookButton,
+    OpacButton,
+} from "./Links";
+import { ColorSettings } from "../types";
+import { ColorSettingsProps } from "./WindowSwitcher";
 
-function MiscPage() {
-    const buttons = [<p>hogehoge1</p>, <p>hogehoge2</p>, <p>hogehoge3</p>];
+interface MiscPageProps {
+    colorSettings: ColorSettingsProps;
+}
+
+function MiscPage({ colorSettings }: MiscPageProps) {
+    const buttons = [
+        <GakujoButton colorSettings={colorSettings} />,
+        <AcademicAffairsButton colorSettings={colorSettings} />,
+        <OpacButton colorSettings={colorSettings} />,
+        <HandBookButton colorSettings={colorSettings} />,
+    ];
     return (
         <div className={styles.main_div}>
             {buttons.map((element, index) => (
