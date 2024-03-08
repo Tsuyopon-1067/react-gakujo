@@ -18,11 +18,11 @@ function WindowSwitcher() {
     const [primaryColor, setPrimaryColor] = useState(
         MainLocalStorageData.getColor().getPrimaryColor()
     );
-    const [primaryColorHover, setPrimaryHover] = useState(
-        MainLocalStorageData.getColor().getPrimaryColorHover()
-    );
     const [fontColor, setFontColor] = useState(
         MainLocalStorageData.getColor().getFontColor()
+    );
+    const [primaryColorHover, setPrimaryHover] = useState(
+        MainLocalStorageData.getColor().getPrimaryColorHover()
     );
     const props: ColorSettingsProps = {
         primaryColor,
@@ -33,9 +33,8 @@ function WindowSwitcher() {
         setPrimaryHover,
     };
 
-    return isSetting ? (
-        <Setting setIsSetting={setIsSetting} colorSettingsProps={props} />
-    ) : (
+    return (
+        //isSetting ? <Setting setIsSetting={setIsSetting} colorSettingsProps={props} /> : <FixedBottomNavigation setIsSetting={setIsSetting} colorSettingsProps={props} />
         <FixedBottomNavigation
             setIsSetting={setIsSetting}
             colorSettingsProps={props}
