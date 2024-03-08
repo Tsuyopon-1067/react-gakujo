@@ -1,0 +1,17 @@
+.main_div {
+    margin: 10pt;
+}
+
+.h2 {
+    margin: 5pt 0 0 0;
+}
+
+.wifi_p {
+    height: 8pt;
+}
+
+.wifi_div {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 70pt 1fr;
+}

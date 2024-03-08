@@ -2,26 +2,15 @@
     margin: 10pt;
 }
 
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.title_p {
-    margin: 0 10pt;
-    font-size: 32pt;
-}
-
 .h2 {
     margin: 5pt 0 0 0;
 }
 
-.wifi_p {
+.table_p {
     height: 8pt;
 }
 
-.wifi_div {
+.mail_div {
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 70pt 1fr;
@@ -32,6 +21,7 @@
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 70pt 1fr;
 }
+
 .thunderbird_div {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
