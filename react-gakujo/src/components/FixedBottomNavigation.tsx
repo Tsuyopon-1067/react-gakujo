@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import {
     Apps,
     CalendarMonth,
@@ -7,9 +6,6 @@ import {
     Map,
     Wifi,
 } from "@mui/icons-material";
-=======
-import { CalendarMonth, GridOn, Link, Map, Wifi } from "@mui/icons-material";
->>>>>>> Stashed changes
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Box from "@mui/material/Box";
@@ -20,11 +16,11 @@ import { LocalStorageData } from "../types";
 import CampusMap from "./CampusMap";
 import EventSchedule from "./EventSchedule";
 import GuidePage from "./GuidePage";
-import Links from "./Links";
 import TimeTable from "./TimeTable";
 import TitleAppBar from "./TitleAppBar";
 import { ColorSettingsProps } from "./WindowSwitcher";
 import { UniTable } from "./timeTableTypes";
+import MiscPage from "./MiscPage";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
@@ -71,10 +67,9 @@ export default function FixedBottomNavigation({
             <CalendarMonth />,
             <EventSchedule />
         ),
+        createBottomNavigationElement("WiFi等", <Wifi />, <GuidePage />),
         createBottomNavigationElement("構内地図", <Map />, <CampusMap />),
-        createBottomNavigationElement("リンク", <Link />, <Links />),
-        createBottomNavigationElement("その他", <Misc />, <GuidePage />),
-        createBottomNavigationElement("設定", <Settings />, <Setting />),
+        createBottomNavigationElement("その他", <Apps />, <MiscPage />),
     ];
 
     return (
