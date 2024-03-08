@@ -1545,8 +1545,6 @@ function CampusMap() {
             {accordionElements.map((e: AccordionElement, i) => (
                 <FacilityAccordion key={i} accordionElement={e} />
             ))}
-            <Divider sx={{ marginBottom: 2, marginTop: 2 }} />
-            <BusTimeTable />
         </div>
     );
 }

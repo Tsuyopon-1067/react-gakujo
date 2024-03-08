@@ -27,6 +27,7 @@ import Setting from "./Setting";
 import WifiPage from "./subPage/WifiPage";
 import MailPage from "./subPage/MailPage";
 import StudentNumberPage from "./subPage/StudentNumberPage";
+import BusTimeTable from "./BusTimeTable";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
@@ -87,7 +88,11 @@ export default function FixedBottomNavigation({
             <Settings />,
             <Setting colorSettingsProps={colorSettingsProps} />
         ),
-        createBottomNavigationElement("六間坂上時刻表", <></>, <></>),
+        createBottomNavigationElement(
+            "六間坂上時刻表",
+            <></>,
+            <BusTimeTable />
+        ),
         createBottomNavigationElement("Wifi", <></>, <WifiPage />),
         createBottomNavigationElement("メール", <></>, <MailPage />),
         createBottomNavigationElement("学籍番号", <></>, <StudentNumberPage />),
