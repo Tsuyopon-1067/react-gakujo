@@ -48,8 +48,11 @@ const LinkButton = ({ title, href, icon, colorSettings }: LinkButtonProps) => {
             href={href}
         >
             <div>
-                {icon}
-                <p className={styles.caption} style={{ color: fontColor }}>
+                <p className={styles.link_button_icon_p}>{icon}</p>
+                <p
+                    className={styles.link_button_pcaption}
+                    style={{ color: fontColor }}
+                >
                     {title}
                 </p>
             </div>
@@ -61,6 +64,8 @@ interface WrapedLinkButtonProps {
     colorSettings: ColorSettingsProps;
 }
 
+const fontSize = 110;
+
 const GakujoButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
         title="学務情報システム"
@@ -69,10 +74,10 @@ const GakujoButton = ({ colorSettings }: WrapedLinkButtonProps) => (
             <GakujoIcon
                 style={{
                     fill: "#00000088",
-                    width: 180,
-                    height: 180,
-                    marginTop: 16,
-                    marginBottom: -16,
+                    width: fontSize,
+                    height: fontSize,
+                    marginTop: 10,
+                    marginBottom: -10,
                 }}
             />
         }
@@ -84,7 +89,7 @@ const AcademicAffairsButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
         title="教務システム"
         href="https://gakujo.shizuoka.ac.jp/kyoumu/sso/loginStudent.do"
-        icon={<Business sx={{ fontSize: 180 }} color="action" />}
+        icon={<Business sx={{ fontSize: fontSize }} color="action" />}
         colorSettings={colorSettings}
     />
 );
@@ -93,7 +98,7 @@ const OpacButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
         title="OPAC"
         href="https://opac.lib.shizuoka.ac.jp/simple/"
-        icon={<MenuBook sx={{ fontSize: 180 }} color="action" />}
+        icon={<MenuBook sx={{ fontSize: fontSize }} color="action" />}
         colorSettings={colorSettings}
     />
 );
@@ -102,7 +107,7 @@ const HandBookButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
         title="学生便覧"
         href="https://www.shizuoka.ac.jp/education/affairs/handbook/"
-        icon={<TextSnippet sx={{ fontSize: 180 }} color="action" />}
+        icon={<TextSnippet sx={{ fontSize: fontSize }} color="action" />}
         colorSettings={colorSettings}
     />
 );

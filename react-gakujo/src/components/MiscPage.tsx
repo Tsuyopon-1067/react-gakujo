@@ -22,16 +22,26 @@ function MiscPage({ colorSettings }: MiscPageProps) {
     ];
     return (
         <div className={styles.main_div}>
-            {buttons.map((element, index) => (
-                <div
-                    style={{
-                        gridColumn: (index % 2) + 1,
-                        gridRow: index / 2 + 1,
-                    }}
-                >
-                    {element}
-                </div>
-            ))}
+            {buttons.map((element, index) => {
+                let col;
+                if (index % 2 === 0) {
+                    col = "1/2";
+                } else {
+                    col = "2/3";
+                }
+                const row = index / 2 + 1;
+                return (
+                    <div
+                        style={{
+                            gridColumn: col,
+                            gridRow: row,
+                        }}
+                        className={styles.button_area}
+                    >
+                        {element}
+                    </div>
+                );
+            })}
         </div>
     );
 }

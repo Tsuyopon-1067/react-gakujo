@@ -1,11 +1,11 @@
-.main_div {
-    margin: 10pt;
-}
-
-.caption {
-    font-size: 20pt;
+.link_button_pcaption {
+    font-size: 12pt;
     font-weight: bold;
     color: white;
     text-align: center;
     margin: 2pt;
+}
+
+.link_button_icon_p {
+    text-align: center;
 }
