@@ -25,55 +25,12 @@ class StudentNumberCode {
     }
 }
 
-class FacultyCode {
-    faculty: string;
-    department: string;
-    code: number;
-    constructor(faculty: string, department: string, code: number) {
-        this.faculty = faculty;
-        this.department = department;
-        this.code = code;
-    }
-}
-
-const studentNumberList: StudentNumberCode[] = [
-    new StudentNumberCode("人文社会科学部", 20),
-    new StudentNumberCode("教育学部", 30),
-    new StudentNumberCode("理学部", 40),
-    new StudentNumberCode("工学部", 50),
-    new StudentNumberCode("農学部", 60),
-    new StudentNumberCode("情報学部", 70),
-];
-
 const studentTypeList: StudentNumberCode[] = [
     new StudentNumberCode("一般学生", 1),
     new StudentNumberCode("夜間主コース", 2),
     new StudentNumberCode("科目等履修生", 5),
     new StudentNumberCode("聴講生等", 7),
     new StudentNumberCode("特別聴講学生", 8),
-];
-
-const facultyCodeList: FacultyCode[] = [
-    new FacultyCode("人文社会科学部", "社会学科", 0),
-    new FacultyCode("人文社会科学部", "言語文化学科", 1),
-    new FacultyCode("人文社会科学部", "法学科", 2),
-    new FacultyCode("人文社会科学部", "経済学科", 3),
-    new FacultyCode("理学部", "数学科", 0),
-    new FacultyCode("理学部", "物理学科", 1),
-    new FacultyCode("理学部", "化学科", 2),
-    new FacultyCode("理学部", "生物科学科", 3),
-    new FacultyCode("理学部", "地球科学科", 4),
-    new FacultyCode("理学部", "創造理学コース", 5),
-    new FacultyCode("工学部", "機械工学科", 0),
-    new FacultyCode("工学部", "電気電子工学科", 1),
-    new FacultyCode("工学部", "電子物質科学科", 4),
-    new FacultyCode("工学部", "化学バイオ工学科", 5),
-    new FacultyCode("工学部", "数理システム工学科", 6),
-    new FacultyCode("農学部", "生物資源科学化", 0),
-    new FacultyCode("農学部", "応用生命化学化", 1),
-    new FacultyCode("情報学部", "情報科学科", 0),
-    new FacultyCode("情報学部", "情報社会学科", 1),
-    new FacultyCode("情報学部", "行動情報学科", 2),
 ];
 
 interface Facility {
@@ -373,6 +330,7 @@ const StudentNumberChecker = () => {
                 value={inputValue}
                 onChange={handleOnChange}
                 label="学籍番号"
+                variant="filled"
                 variant="standard"
                 sx={{ marginTop: 2 }}
             />
