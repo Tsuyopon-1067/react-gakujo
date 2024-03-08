@@ -141,10 +141,10 @@ interface SubPageButtonElement {
 const fontSize = 120;
 const BusButton = {
     title: (
-        <p>
+        <>
             <span>六間坂上時刻表</span>
             <span>（浜松駅方面）</span>
-        </p>
+        </>
     ),
     icon: (
         <DirectionsBus

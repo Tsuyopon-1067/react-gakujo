@@ -1,17 +1,28 @@
+.link_button_div {
+    display: grid;
+    grid-template-rows: 1fr 50pt;
+    place-content: center;
+}
+
+.link_button_icon_p {
+    text-align: center;
+    grid-row: 1;
+    margin: 0;
+}
+
+.link_button_caption_area {
+    display: grid;
+    place-content: center;
+    grid-row: 2;
+    gap: 2pt;
+}
+
 .link_button_caption {
     font-size: 16pt;
     font-weight: bold;
     color: white;
     text-align: center;
     margin: 2pt;
-}
-
-.link_button_icon_p {
-    text-align: center;
-}
-
-.gakujo_button_caption_p {
-    margin: 0;
 }
 
 .gakujo_button_caption_span {

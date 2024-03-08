@@ -46,14 +46,16 @@ const LinkButton = ({ title, href, icon, colorSettings }: LinkButtonProps) => {
             }}
             href={href}
         >
-            <div>
+            <div className={styles.link_button_div}>
                 <p className={styles.link_button_icon_p}>{icon}</p>
-                <p
-                    className={styles.link_button_caption}
-                    style={{ color: fontColor }}
-                >
-                    {title}
-                </p>
+                <div className={styles.link_button_caption_area}>
+                    <p
+                        className={styles.link_button_caption}
+                        style={{ color: fontColor }}
+                    >
+                        {title}
+                    </p>
+                </div>
             </div>
         </Button>
     );
@@ -67,10 +69,10 @@ const fontSize = 110;
 
 const GakujoButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
-        title=<p className={styles.gakujo_button_caption_p}>
+        title=<>
             <span className={styles.gakujo_button_caption_span}>学務情報</span>
             <span className={styles.gakujo_button_caption_span}>システム</span>
-        </p>
+        </>
         href="https://gakujo.shizuoka.ac.jp/portal/"
         icon={
             <GakujoIcon
