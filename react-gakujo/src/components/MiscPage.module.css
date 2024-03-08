@@ -11,3 +11,15 @@
     height: 170pt;
     margin: 0;
 }
+
+.button_caption {
+    font-size: 14pt;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 2pt;
+}
+
+.button_icon_p {
+    text-align: center;
+}

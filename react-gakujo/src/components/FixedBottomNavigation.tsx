@@ -1,9 +1,11 @@
 import {
     Apps,
     CalendarMonth,
+    DirectionsBus,
     GridOn,
-    Link,
+    Mail,
     Map,
+    PermIdentity,
     Settings,
     Wifi,
 } from "@mui/icons-material";
@@ -16,13 +18,15 @@ import * as React from "react";
 import { LocalStorageData } from "../types";
 import CampusMap from "./CampusMap";
 import EventSchedule from "./EventSchedule";
-import GuidePage from "./GuidePage";
 import TimeTable from "./TimeTable";
 import TitleAppBar from "./TitleAppBar";
 import { ColorSettingsProps } from "./WindowSwitcher";
 import { UniTable } from "./timeTableTypes";
 import MiscPage from "./MiscPage";
 import Setting from "./Setting";
+import WifiPage from "./subPage/WifiPage";
+import MailPage from "./subPage/MailPage";
+import StudentNumberPage from "./subPage/StudentNumberPage";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
@@ -52,6 +56,7 @@ export default function FixedBottomNavigation({
 }: FixedBottomNavigationProps) {
     const [value, setValue] = React.useState(0);
     const ref = React.useRef<HTMLDivElement>(null);
+    const [isSubPage, setIsSubPage] = React.useState(false);
 
     const uniTableData = MainLocalStorageData.getUniTable();
     const [table, setTable] = React.useState(uniTableData);
@@ -71,13 +76,21 @@ export default function FixedBottomNavigation({
         createBottomNavigationElement(
             "その他",
             <Apps />,
-            <MiscPage colorSettings={colorSettingsProps} />
+            <MiscPage
+                colorSettings={colorSettingsProps}
+                setIsSubPage={setIsSubPage}
+                setValue={setValue}
+            />
         ),
         createBottomNavigationElement(
             "設定",
             <Settings />,
             <Setting colorSettingsProps={colorSettingsProps} />
         ),
+        createBottomNavigationElement("六間坂上時刻表", <></>, <></>),
+        createBottomNavigationElement("Wifi", <></>, <WifiPage />),
+        createBottomNavigationElement("メール", <></>, <MailPage />),
+        createBottomNavigationElement("学籍番号", <></>, <StudentNumberPage />),
     ];
 
     return (
@@ -87,13 +100,18 @@ export default function FixedBottomNavigation({
                 title={bottomNavigationElement[value].name}
                 primaryColor={colorSettingsProps.primaryColor}
                 fontColor={colorSettingsProps.fontColor}
+                handleBackButton={() => {
+                    setValue(3);
+                    setIsSubPage(false);
+                }}
+                isSubPage={isSubPage}
             />
             <ContextApp.Provider value={[table, setTable]}>
                 {bottomNavigationElement[value].content}
             </ContextApp.Provider>
             <Paper
                 sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-                elevation={3}
+                elevation={2}
             >
                 <BottomNavigation
                     showLabels
@@ -113,3 +131,73 @@ export default function FixedBottomNavigation({
         </Box>
     );
 }
+
+interface SubPageButtonElement {
+    title: string | JSX.Element;
+    icon: JSX.Element;
+    value: number;
+}
+
+const fontSize = 120;
+const BusButton = {
+    title: (
+        <p>
+            <span>六間坂上時刻表</span>
+            <span>（浜松駅方面）</span>
+        </p>
+    ),
+    icon: (
+        <DirectionsBus
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 5,
+} as SubPageButtonElement;
+
+const WifiButton = {
+    title: "Wi-Fi",
+    icon: (
+        <Wifi
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 6,
+} as SubPageButtonElement;
+
+const MailButton = {
+    title: "メール",
+    icon: (
+        <Mail
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 7,
+} as SubPageButtonElement;
+
+const StudentNumberButton = {
+    title: "学籍番号",
+    icon: (
+        <PermIdentity
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 8,
+} as SubPageButtonElement;
+
+export { BusButton, WifiButton, MailButton, StudentNumberButton };
