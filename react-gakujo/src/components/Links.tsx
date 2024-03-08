@@ -40,8 +40,6 @@ const LinkButton = ({ title, href, icon, colorSettings }: LinkButtonProps) => {
             variant="contained"
             fullWidth
             sx={{
-                marginTop: 1,
-                marginBottom: 1,
                 backgroundColor: primaryColor,
                 ":hover": { background: primaryColorHover },
                 height: "100%",
@@ -51,7 +49,7 @@ const LinkButton = ({ title, href, icon, colorSettings }: LinkButtonProps) => {
             <div>
                 <p className={styles.link_button_icon_p}>{icon}</p>
                 <p
-                    className={styles.link_button_pcaption}
+                    className={styles.link_button_caption}
                     style={{ color: fontColor }}
                 >
                     {title}
