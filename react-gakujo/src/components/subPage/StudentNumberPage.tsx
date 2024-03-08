@@ -3,6 +3,7 @@ import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
+    Divider,
     Input,
     Table,
     TableBody,
@@ -10,6 +11,7 @@ import {
     TableContainer,
     TableHead,
     TableRow,
+    TextField,
 } from "@mui/material";
 import styles from "./StudentNumberPage.module.css";
 import { useState } from "react";
@@ -96,7 +98,7 @@ const scienceStudentNumberToDepart = new Map([
     [5, "創造理学コース"],
 ]);
 const engineeringStudentNumberToDepart = new Map([
-    [0, "機械降雨学科"],
+    [0, "機械工学科"],
     [1, "電気電子工学科"],
     [4, "電子物質科学科"],
     [5, "化学バイオ工学科"],
@@ -154,10 +156,21 @@ const facilityCodeList = [
     informaticsFacility,
 ];
 
+const facultyCodeMap = new Map([
+    [20, humanitiesAndSocialSciencesFacility],
+    [30, educationFacility],
+    [40, scienceFacility],
+    [50, engineeringFacility],
+    [60, agricultureFacility],
+    [70, informaticsFacility],
+]);
+
 function StudentNumberPage() {
     return (
         <div className={styles.main_div}>
-            <h1 className={styles.h1}>判例</h1>
+            <StudentNumberChecker />
+            <Divider sx={{ marginTop: 4, marginBottom: 4 }} />
+            <h1 className={styles.h1}>凡例</h1>
             <h2 className={styles.h2}>AABC-DEEE</h2>
             <Accordion>
                 <AccordionSummary expandIcon={<ExpandMore />}>
@@ -313,5 +326,88 @@ function StudentNumberPage() {
         </div>
     );
 }
+
+const StudentNumberChecker = () => {
+    const [inputValue, setInputValue] = useState("");
+    const [faculty, setFaculty] = useState("");
+    const [entry, setEntry] = useState("");
+    const [type, setType] = useState("");
+    const [department, setDepartment] = useState("");
+    const parse = (str: string): number => {
+        const res = parseInt(str);
+        if (isNaN(res)) {
+            return -1;
+        }
+        return res;
+    };
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let valueStr = e.target.value;
+        setInputValue(valueStr);
+        valueStr = valueStr.replace("-", "");
+        const a = parse(valueStr.substring(0, 2));
+        const b = parse(valueStr.substring(2, 3));
+        const c = parse(valueStr.substring(3, 4));
+        const d = parse(valueStr.substring(4, 5));
+
+        const facultyObject = facultyCodeMap.get(a);
+        setFaculty(facultyObject?.name ?? "");
+        setDepartment(facultyObject?.departMap.get(d) ?? "");
+        let entryNumber = 2020 + b;
+        const currentYear = new Date().getFullYear();
+        if (entryNumber > currentYear) {
+            entryNumber -= 10;
+        }
+        setEntry(entryNumber.toString() + "年");
+        if (b === -1) {
+            setEntry("");
+        }
+        setType(
+            studentTypeList.find((element) => element.code === c)?.type ?? ""
+        );
+    };
+    return (
+        <>
+            <h1 className={styles.h1}>学籍番号チェッカー</h1>
+            <TextField
+                fullWidth
+                value={inputValue}
+                onChange={handleOnChange}
+                label="学籍番号"
+                variant="standard"
+                sx={{ marginTop: 2 }}
+            />
+            <Table sx={{ marginTop: 2 }}>
+                <TableHead>
+                    <TableRow>
+                        <TableCell width={140} align="center">
+                            項目
+                        </TableCell>
+                        <TableCell align="center">内容</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableRow>
+                        <TableCell width={140} align="center">
+                            学部
+                        </TableCell>
+                        <TableCell align="center">{faculty}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell align="center">学科</TableCell>
+                        <TableCell align="center">{department}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell align="center">入学年度</TableCell>
+                        <TableCell align="center">{entry}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell align="center">種別</TableCell>
+                        <TableCell align="center">{type}</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </>
+    );
+};
 
 export default StudentNumberPage;
