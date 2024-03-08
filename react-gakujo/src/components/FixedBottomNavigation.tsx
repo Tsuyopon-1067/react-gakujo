@@ -68,7 +68,11 @@ export default function FixedBottomNavigation({
             <EventSchedule />
         ),
         createBottomNavigationElement("構内地図", <Map />, <CampusMap />),
-        createBottomNavigationElement("その他", <Apps />, <MiscPage />),
+        createBottomNavigationElement(
+            "その他",
+            <Apps />,
+            <MiscPage colorSettings={colorSettingsProps} />
+        ),
         createBottomNavigationElement(
             "設定",
             <Settings />,

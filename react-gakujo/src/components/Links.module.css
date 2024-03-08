@@ -1,11 +1,19 @@
-.main_div {
-    margin: 10pt;
-}
-
-.caption {
-    font-size: 20pt;
+.link_button_pcaption {
+    font-size: 16pt;
     font-weight: bold;
     color: white;
     text-align: center;
     margin: 2pt;
+}
+
+.link_button_icon_p {
+    text-align: center;
+}
+
+.gakujo_button_caption_p {
+    margin: 0;
+}
+
+.gakujo_button_caption_span {
+    display: inline-block;
 }
