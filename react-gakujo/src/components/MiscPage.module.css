@@ -3,7 +3,7 @@
     display: grid;
     place-content: center;
     grid-template-columns: 1fr 1fr;
-    column-gap: 10pt;
+    gap: 10pt;
 }
 
 .button_area {

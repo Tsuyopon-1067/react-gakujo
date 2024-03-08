@@ -27,7 +27,7 @@ const GakujoIcon = (props: PropsType) => {
 };
 
 interface LinkButtonProps {
-    title: string;
+    title: string | JSX.Element;
     href: string;
     icon: JSX.Element;
     colorSettings: ColorSettingsProps;
@@ -44,6 +44,7 @@ const LinkButton = ({ title, href, icon, colorSettings }: LinkButtonProps) => {
                 marginBottom: 1,
                 backgroundColor: primaryColor,
                 ":hover": { background: primaryColorHover },
+                height: "100%",
             }}
             href={href}
         >
@@ -68,7 +69,10 @@ const fontSize = 110;
 
 const GakujoButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
-        title="学務情報システム"
+        title=<p className={styles.gakujo_button_caption_p}>
+            <span className={styles.gakujo_button_caption_span}>学務情報</span>
+            <span className={styles.gakujo_button_caption_span}>システム</span>
+        </p>
         href="https://gakujo.shizuoka.ac.jp/portal/"
         icon={
             <GakujoIcon

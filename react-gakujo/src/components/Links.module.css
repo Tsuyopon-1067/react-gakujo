@@ -1,5 +1,5 @@
 .link_button_pcaption {
-    font-size: 12pt;
+    font-size: 16pt;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -8,4 +8,12 @@
 
 .link_button_icon_p {
     text-align: center;
+}
+
+.gakujo_button_caption_p {
+    margin: 0;
+}
+
+.gakujo_button_caption_span {
+    display: inline-block;
 }
