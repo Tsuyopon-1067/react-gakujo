@@ -1,4 +1,4 @@
-import { Business, MenuBook, TextSnippet } from "@mui/icons-material";
+import { Business, Egg, MenuBook, TextSnippet, Web } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 import styles from "./Links.module.css";
@@ -118,7 +118,7 @@ const HamaXButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
         title="生協（浜松）X"
         href="https://x.com/hama_coop"
-        icon={<TextSnippet sx={{ fontSize: fontSize }} color="action" />}
+        icon={<Egg sx={{ fontSize: fontSize }} color="action" />}
         colorSettings={colorSettings}
     />
 );
@@ -127,7 +127,7 @@ const OfficialSiteButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
         title="静岡大学公式サイト"
         href="https://www.shizuoka.ac.jp/"
-        icon={<TextSnippet sx={{ fontSize: fontSize }} color="action" />}
+        icon={<Web sx={{ fontSize: fontSize }} color="action" />}
         colorSettings={colorSettings}
     />
 );
