@@ -3,6 +3,7 @@ import styles from "./ClassTimerPage.module.css";
 import CircularWithValueLabel from "./CircularProgressWithLabel";
 import CircularProgressWithLabel from "./CircularProgressWithLabel";
 import { ColorSettingsProps } from "../WindowSwitcher";
+import { Step, StepButton, Stepper } from "@mui/material";
 
 class HourMinuteSecond {
     private hour: number;
@@ -40,6 +41,10 @@ class HourMinuteSecond {
 
     public isEnd(): boolean {
         return this.type === HourMinuteSecond.TYPE_END;
+    }
+
+    public getPriod(): number {
+        return this.period;
     }
 
     public toString(): string {
@@ -113,6 +118,7 @@ const classStartEndTimeList: HourMinuteSecond[] = [
     new HourMinuteSecond(15, 55, 0, HourMinuteSecond.TYPE_END, 4),
     new HourMinuteSecond(16, 5, 0, HourMinuteSecond.TYPE_START, 5),
     new HourMinuteSecond(17, 35, 0, HourMinuteSecond.TYPE_END, 5),
+    new HourMinuteSecond(8 + 24, 40, 0, HourMinuteSecond.TYPE_NORMAL, 1),
 ];
 
 interface CircularProgressWithLabelProps {
@@ -124,6 +130,10 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
     const [time, setTime] = useState<string>("");
     const [remainingTime, setRemainingTime] = useState<string>("");
     const [ratio, setRatio] = useState<number>(0);
+
+    const steps = [...Array(5)].map((_, i) => (i + 1).toString() + "コマ");
+    const [activeStep, setActiveStep] = useState(-1);
+    const [completed, setCompleted] = useState(steps.map(() => false));
 
     useEffect(() => {
         const intervalId = setInterval(updateTimer, 50);
@@ -166,6 +176,9 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
         } else if (nextClassTime?.isEnd()) {
             nextClassCaption = "終了";
             maxMiliSecond = 90 * 60 * 1000;
+        } else {
+            nextClassCaption = "開始";
+            maxMiliSecond = 905 * 60 * 1000; // 1735->0840 = 0535->2040 = 15:05 = 900+5 = 905
         }
         setRemainingTime(
             `残り${remain.toString()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
@@ -173,7 +186,24 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
         //setRatio(`${((remain.toValue() * 100) / maxMiliSecond).toFixed(2)}%`);
         const newRaitio = 1 - remain.toValue() / maxMiliSecond;
         setRatio(newRaitio * 100);
+
+        let newActiveStep = activeStep;
+        classStartEndTimeList.map((t) => {
+            if (t.toValue() <= currentTime.toValue() && t.isStart()) {
+                newActiveStep = t.getPriod() - 1;
+            }
+        });
+        if (newActiveStep !== activeStep) {
+            completed.fill(false);
+            classStartEndTimeList.map((t) => {
+                if (t.toValue() <= currentTime.toValue() && t.isEnd()) {
+                    completed[t.getPriod() - 1] = true;
+                }
+            });
+            setActiveStep(newActiveStep);
+        }
     };
+
     return (
         <div className={styles.main_div}>
             <div className={styles.progress_circle_area}>
@@ -188,6 +218,13 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                 <span>{time}</span>
             </p>
             <p className={styles.remain_text}>{remainingTime}</p>
+            <Stepper activeStep={activeStep}>
+                {steps.map((label, index) => (
+                    <Step key={label} completed={completed[index]}>
+                        <StepButton>{label}</StepButton>
+                    </Step>
+                ))}
+            </Stepper>
         </div>
     );
 }
