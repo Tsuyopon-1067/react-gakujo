@@ -1,3 +1,8 @@
 .main_div {
     margin: 10pt;
 }
+
+.progress_circle_area {
+    width: 80%;
+    margin: 10pt auto;
+}

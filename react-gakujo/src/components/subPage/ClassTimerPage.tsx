@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./ClassTimerPage.module.css";
+import CircularWithValueLabel from "./CircularProgressWithLabel";
+import CircularProgressWithLabel from "./CircularProgressWithLabel";
+import { ColorSettingsProps } from "../WindowSwitcher";
 
 class HourMinuteSecond {
     private hour: number;
@@ -112,11 +115,15 @@ const classStartEndTimeList: HourMinuteSecond[] = [
     new HourMinuteSecond(17, 35, 0, HourMinuteSecond.TYPE_END, 5),
 ];
 
-function ClassTimerPage() {
+interface CircularProgressWithLabelProps {
+    colorsettings: ColorSettingsProps;
+}
+
+function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
     const [date, setDate] = useState<string>("");
     const [time, setTime] = useState<string>("");
     const [remainingTime, setRemainingTime] = useState<string>("");
-    const [ratio, setRatio] = useState<string>("");
+    const [ratio, setRatio] = useState<number>(0);
 
     useEffect(() => {
         const intervalId = setInterval(updateTimer, 50);
@@ -163,7 +170,9 @@ function ClassTimerPage() {
         setRemainingTime(
             `残り${remain.toString()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
         );
-        setRatio(`${((remain.toValue() * 100) / maxMiliSecond).toFixed(2)}%`);
+        //setRatio(`${((remain.toValue() * 100) / maxMiliSecond).toFixed(2)}%`);
+        const newRaitio = 1 - remain.toValue() / maxMiliSecond;
+        setRatio(newRaitio * 100);
     };
     return (
         <div className={styles.main_div}>
@@ -171,6 +180,12 @@ function ClassTimerPage() {
             <p>{time}</p>
             <p>{remainingTime}</p>
             <p>{ratio}</p>
+            <div className={styles.progress_circle_area}>
+                <CircularProgressWithLabel
+                    value={ratio}
+                    colorSettings={colorsettings}
+                />
+            </div>
         </div>
     );
 }

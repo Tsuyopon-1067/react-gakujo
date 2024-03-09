@@ -96,7 +96,7 @@ export default function FixedBottomNavigation({
         createBottomNavigationElement(
             "授業時間タイマー",
             <></>,
-            <ClassTimerPage />
+            <ClassTimerPage colorsettings={colorSettingsProps} />
         ),
     ];
 
