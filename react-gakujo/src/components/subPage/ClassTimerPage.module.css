@@ -18,3 +18,12 @@
     text-align: center;
     margin: 5pt 0;
 }
+
+.h1 {
+    font-size: 14pt;
+    margin: 0;
+}
+
+.table_div {
+    margin: 20pt 0;
+}

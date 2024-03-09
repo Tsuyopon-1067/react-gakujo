@@ -3,7 +3,17 @@ import styles from "./ClassTimerPage.module.css";
 import CircularWithValueLabel from "./CircularProgressWithLabel";
 import CircularProgressWithLabel from "./CircularProgressWithLabel";
 import { ColorSettingsProps } from "../WindowSwitcher";
-import { Step, StepButton, Stepper } from "@mui/material";
+import {
+    Divider,
+    Step,
+    StepButton,
+    Stepper,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+} from "@mui/material";
 
 class HourMinuteSecond {
     private hour: number;
@@ -69,6 +79,14 @@ class HourMinuteSecond {
         );
     }
 
+    public toHourMinuteString(): string {
+        return (
+            this.hour.toString().padStart(2, "0") +
+            ":" +
+            this.minute.toString().padStart(2, "0")
+        );
+    }
+
     public toPeriodString(): string {
         return String(this.period) + "コマ";
     }
@@ -120,6 +138,44 @@ const classStartEndTimeList: HourMinuteSecond[] = [
     new HourMinuteSecond(17, 35, 0, HourMinuteSecond.TYPE_END, 5),
     new HourMinuteSecond(8 + 24, 40, 0, HourMinuteSecond.TYPE_NORMAL, 1),
 ];
+
+const classStartEndTimeListForTable: HourMinuteSecond[][] = [
+    [classStartEndTimeList[0], classStartEndTimeList[1]],
+    [classStartEndTimeList[2], classStartEndTimeList[3]],
+    [classStartEndTimeList[4], classStartEndTimeList[5]],
+    [classStartEndTimeList[6], classStartEndTimeList[7]],
+    [classStartEndTimeList[8], classStartEndTimeList[9]],
+];
+
+const ClassStartEndTimeTable = () => (
+    <div className={styles.table_div}>
+        <h1 className={styles.h1}>講義開始・終了時刻</h1>
+        <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell align="center">コマ</TableCell>
+                    <TableCell align="center">開始時刻</TableCell>
+                    <TableCell align="center">終了時刻</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {classStartEndTimeListForTable.map((t, i) => (
+                    <TableRow key={i}>
+                        <TableCell align="center">
+                            {(i + 1).toString() + "コマ"}
+                        </TableCell>
+                        <TableCell align="center">
+                            {t[0].toHourMinuteString()}
+                        </TableCell>
+                        <TableCell align="center">
+                            {t[1].toHourMinuteString()}
+                        </TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
+    </div>
+);
 
 interface CircularProgressWithLabelProps {
     colorsettings: ColorSettingsProps;
@@ -242,6 +298,8 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                     </Step>
                 ))}
             </Stepper>
+            <Divider sx={{ marginTop: 3 }} />
+            <ClassStartEndTimeTable />
         </div>
     );
 }
