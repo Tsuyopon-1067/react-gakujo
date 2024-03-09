@@ -218,9 +218,9 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                 <span>{time}</span>
             </p>
             <p className={styles.remain_text}>{remainingTime}</p>
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => (
-                    <Step key={label} completed={completed[index]}>
+                    <Step key={index} completed={completed[index]}>
                         <StepButton>{label}</StepButton>
                     </Step>
                 ))}
