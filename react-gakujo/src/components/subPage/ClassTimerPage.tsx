@@ -176,16 +176,18 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
     };
     return (
         <div className={styles.main_div}>
-            <p>{date}</p>
-            <p>{time}</p>
-            <p>{remainingTime}</p>
-            <p>{ratio}</p>
             <div className={styles.progress_circle_area}>
                 <CircularProgressWithLabel
                     value={ratio}
                     colorSettings={colorsettings}
                 />
             </div>
+            <p className={styles.date_time_text}>
+                <span className={styles.text_date}>{date}</span>
+                &nbsp;
+                <span>{time}</span>
+            </p>
+            <p className={styles.remain_text}>{remainingTime}</p>
         </div>
     );
 }
