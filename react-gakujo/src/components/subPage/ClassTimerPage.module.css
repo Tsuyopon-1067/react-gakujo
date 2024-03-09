@@ -3,18 +3,6 @@
 }
 
 .progress_circle_area {
-    width: 75%;
+    width: 80%;
     margin: 10pt auto;
-}
-
-.date_time_text {
-    font-size: 20pt;
-    text-align: center;
-    margin: 15pt 0;
-}
-
-.remain_text {
-    font-size: 20pt;
-    text-align: center;
-    margin: 15pt 0;
 }

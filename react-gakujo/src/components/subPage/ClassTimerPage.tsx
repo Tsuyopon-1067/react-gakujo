@@ -144,9 +144,9 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                 "月" +
                 day +
                 "日" +
-                "(" +
+                "[" +
                 weekday[dayOfWeek] +
-                ")"
+                "]"
         );
         const currentTime = HourMinuteSecond.fromDate(d);
         setTime(currentTime.toString());
@@ -176,12 +176,10 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
     };
     return (
         <div className={styles.main_div}>
-            <p className={styles.date_time_text}>
-                <span className={styles.text_date}>{date}</span>
-                &nbsp;
-                <span>{time}</span>
-            </p>
-            <p className={styles.remain_text}>{remainingTime}</p>
+            <p>{date}</p>
+            <p>{time}</p>
+            <p>{remainingTime}</p>
+            <p>{ratio}</p>
             <div className={styles.progress_circle_area}>
                 <CircularProgressWithLabel
                     value={ratio}
