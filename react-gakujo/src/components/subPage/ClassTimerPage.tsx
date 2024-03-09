@@ -154,9 +154,9 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                 "月" +
                 day +
                 "日" +
-                "[" +
+                "(" +
                 weekday[dayOfWeek] +
-                "]"
+                ")"
         );
         const currentTime = HourMinuteSecond.fromDate(d);
         setTime(currentTime.toString());
