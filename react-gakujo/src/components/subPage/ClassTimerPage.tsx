@@ -219,9 +219,25 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                 <span>{time}</span>
             </p>
             <p className={styles.remain_text}>{remainingTime}</p>
-            <Stepper activeStep={activeStep} alternativeLabel>
+            <Stepper
+                activeStep={activeStep}
+                alternativeLabel
+                sx={{ color: "red" }}
+            >
                 {steps.map((label, index) => (
-                    <Step key={index} completed={completed[index]}>
+                    <Step
+                        key={index}
+                        completed={completed[index]}
+                        sx={{
+                            "& .MuiStepLabel-root .Mui-completed": {
+                                color: colorsettings.primaryColor,
+                            },
+                            "& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel":
+                                {
+                                    color: "black",
+                                },
+                        }}
+                    >
                         <StepButton>{label}</StepButton>
                     </Step>
                 ))}
