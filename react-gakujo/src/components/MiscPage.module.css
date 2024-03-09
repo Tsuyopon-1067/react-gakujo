@@ -2,6 +2,7 @@
     margin: 10pt;
     display: grid;
     place-content: center;
+    place-items: center;
     grid-template-columns: 1fr 1fr;
     gap: 10pt;
 }
@@ -12,14 +13,29 @@
     margin: 0;
 }
 
-.button_caption {
+.sub_page_button_div {
+    display: grid;
+    grid-template-rows: 1fr 50pt;
+    place-content: center;
+    gap: 2pt;
+}
+
+.sub_page_button_icon_p {
+    text-align: center;
+    grid-row: 1;
+    margin: 0;
+}
+
+.sub_page_button_caption_area {
+    display: grid;
+    place-content: center;
+    grid-row: 2;
+}
+
+.sub_page_button_caption {
     font-size: 14pt;
     font-weight: bold;
     color: white;
     text-align: center;
     margin: 2pt;
-}
-
-.button_icon_p {
-    text-align: center;
 }

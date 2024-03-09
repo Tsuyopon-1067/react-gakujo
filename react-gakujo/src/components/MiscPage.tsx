@@ -3,11 +3,12 @@ import styles from "./MiscPage.module.css";
 import {
     AcademicAffairsButton,
     GakujoButton,
+    HamaXButton,
     HandBookButton,
+    OfficialSiteButton,
     OpacButton,
 } from "./Links";
 import { ColorSettingsProps } from "./WindowSwitcher";
-import { MenuBook } from "@mui/icons-material";
 import {
     BusButton,
     MailButton,
@@ -43,14 +44,16 @@ const SubPageButton = ({
             onClick(value);
         }}
     >
-        <div>
-            <p className={styles.button_icon_p}>{icon}</p>
-            <p
-                className={styles.button_caption}
-                style={{ color: colorSettings.fontColor }}
-            >
-                {title}
-            </p>
+        <div className={styles.sub_page_button_div}>
+            <div className={styles.sub_page_button_icon_p}>{icon}</div>
+            <div className={styles.sub_page_button_caption_area}>
+                <p
+                    className={styles.sub_page_button_caption}
+                    style={{ color: colorSettings.fontColor }}
+                >
+                    {title}
+                </p>
+            </div>
         </div>
     </Button>
 );
@@ -77,6 +80,8 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
             title={BusButton.title}
             icon={BusButton.icon}
         />,
+        <OfficialSiteButton colorSettings={colorSettings} />,
+        <HamaXButton colorSettings={colorSettings} />,
         <SubPageButton
             onClick={onClick}
             value={WifiButton.value}
