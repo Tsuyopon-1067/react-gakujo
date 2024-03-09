@@ -141,6 +141,7 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
     }, []);
 
     const updateTimer = () => {
+        // fetch date
         const d = new Date();
         const year = d.getFullYear();
         const month = d.getMonth() + 1;
@@ -168,8 +169,8 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
         const remain = HourMinuteSecond.fromValue(
             nextClassValue - currentTime.toValue()
         );
-        let nextClassCaption = "";
-        let maxMiliSecond = 0;
+        let nextClassCaption = ""; // 開始 or 終了
+        let maxMiliSecond = 0; // [0, 1000)
         if (nextClassTime?.isStart()) {
             nextClassCaption = "開始";
             maxMiliSecond = 10 * 60 * 1000;
@@ -178,15 +179,15 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
             maxMiliSecond = 90 * 60 * 1000;
         } else {
             nextClassCaption = "開始";
-            maxMiliSecond = 905 * 60 * 1000; // 1735->0840 = 0535->2040 = 15:05 = 900+5 = 905
+            maxMiliSecond = 905 * 60 * 1000; // (1735->0840) = (0535->2040) = 15:05 = 900+5 = 905
         }
         setRemainingTime(
             `残り${remain.toString()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
         );
-        //setRatio(`${((remain.toValue() * 100) / maxMiliSecond).toFixed(2)}%`);
         const newRaitio = 1 - remain.toValue() / maxMiliSecond;
         setRatio(newRaitio * 100);
 
+        // update stepper
         let newActiveStep = activeStep;
         classStartEndTimeList.map((t) => {
             if (t.toValue() <= currentTime.toValue() && t.isStart()) {
