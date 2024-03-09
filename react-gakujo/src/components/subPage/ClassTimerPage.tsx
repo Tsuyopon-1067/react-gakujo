@@ -116,9 +116,10 @@ function ClassTimerPage() {
     const [date, setDate] = useState<string>("");
     const [time, setTime] = useState<string>("");
     const [remainingTime, setRemainingTime] = useState<string>("");
+    const [ratio, setRatio] = useState<string>("");
 
     useEffect(() => {
-        const intervalId = setInterval(updateTimer, 200);
+        const intervalId = setInterval(updateTimer, 50);
         return () => clearInterval(intervalId);
     }, []);
 
@@ -141,7 +142,7 @@ function ClassTimerPage() {
                 "]"
         );
         const currentTime = HourMinuteSecond.fromDate(d);
-        setTime(currentTime.toStringWithMilisecond());
+        setTime(currentTime.toString());
 
         const nextClassTime = classStartEndTimeList.find(
             (t) => t.toValue() > currentTime.toValue()
@@ -151,20 +152,25 @@ function ClassTimerPage() {
             nextClassValue - currentTime.toValue()
         );
         let nextClassCaption = "";
+        let maxMiliSecond = 0;
         if (nextClassTime?.isStart()) {
             nextClassCaption = "開始";
+            maxMiliSecond = 10 * 60 * 1000;
         } else if (nextClassTime?.isEnd()) {
             nextClassCaption = "終了";
+            maxMiliSecond = 90 * 60 * 1000;
         }
         setRemainingTime(
-            `残り${remain.toStringWithMilisecond()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
+            `残り${remain.toString()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
         );
+        setRatio(`${((remain.toValue() * 100) / maxMiliSecond).toFixed(2)}%`);
     };
     return (
         <div className={styles.main_div}>
             <p>{date}</p>
             <p>{time}</p>
             <p>{remainingTime}</p>
+            <p>{ratio}</p>
         </div>
     );
 }
