@@ -2,7 +2,6 @@ import { useState } from "react";
 import FixedBottomNavigation, {
     MainLocalStorageData,
 } from "./FixedBottomNavigation";
-import Setting from "./Setting";
 
 export interface ColorSettingsProps {
     primaryColor: string;

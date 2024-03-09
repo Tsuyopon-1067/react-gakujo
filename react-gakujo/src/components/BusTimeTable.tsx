@@ -13,8 +13,8 @@ import {
     Tabs,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
-import { useState } from "react";
 import * as React from "react";
+import styles from "./BusTimeTable.module.css";
 
 interface BusTimeTable {
     weekday: Bus[];
@@ -88,12 +88,14 @@ function BusTimeTable() {
                     <Tab label="休日" onClick={() => setValue(1)} />
                 </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
-                <BusTimeTableAcordion list={weekdayList} />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <BusTimeTableAcordion list={holidayList} />
-            </TabPanel>
+            <div className={styles.main_div}>
+                <TabPanel value={value} index={0}>
+                    <BusTimeTableAcordion list={weekdayList} />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <BusTimeTableAcordion list={holidayList} />
+                </TabPanel>
+            </div>
         </Box>
     );
 }
@@ -127,36 +129,86 @@ const HourAccordion = ({ hour, list }: HourAccordionProps) => (
 );
 
 const HourTable = ({ list }: HourAccordionProps) => {
-    const routeLabels = [
-        "市役所 尾張町 浜松駅",
-        "市役所 ゆりの木通り 浜松駅",
-        "市役所 常盤町 浜松駅",
+    const routeLabels = ["尾張町・田町", "ゆりの木通り", "尾張町・常盤町"];
+    const optionLabels = [
+        <></>,
+        <>
+            <span className={styles.table_cell_span}>下池川</span>
+            <span className={styles.table_cell_span}>経由</span>
+        </>,
+        <>
+            <span className={styles.table_cell_span}>開校日</span>
+            <span className={styles.table_cell_span}>のみ</span>
+        </>,
+        <>
+            <span className={styles.table_cell_span}>浜松</span>
+            <span className={styles.table_cell_span}>北高行</span>
+            <span className={styles.table_cell_span}>・</span>
+            <span className={styles.table_cell_span}>開校日</span>
+            <span className={styles.table_cell_span}>のみ</span>
+        </>,
+        <>
+            <span className={styles.table_cell_span}>北高</span>
+            <span className={styles.table_cell_span}>・</span>
+            <span className={styles.table_cell_span}>聖星高</span>
+            <span className={styles.table_cell_span}>・</span>
+            <span className={styles.table_cell_span}>西高行</span>
+            <span className={styles.table_cell_span}>・</span>
+            <span className={styles.table_cell_span}>開校日</span>
+            <span className={styles.table_cell_span}>のみ</span>
+        </>,
+        <>
+            <span className={styles.table_cell_span}>伝馬町</span>
+            <span className={styles.table_cell_span}>経由</span>
+        </>,
+        <></>, // 浜松北高経由 下池川経由ではない
     ];
-    const optionLabels = ["", "下", "学", "学キ", "学星", "伝", "浜"];
     return (
         <Table>
             <TableHead>
                 <TableRow>
-                    <TableCell align="center">分</TableCell>
-                    <TableCell align="center">オムニ</TableCell>
-                    <TableCell align="center">経由</TableCell>
-                    <TableCell align="center">備考</TableCell>
+                    <TableCell align="center" sx={{ width: 20, padding: 0.5 }}>
+                        <p className={styles.table_cell_p}>分</p>
+                    </TableCell>
+                    <TableCell align="center" sx={{ width: 60, padding: 0.5 }}>
+                        <p className={styles.table_cell_p}>オムニ</p>
+                    </TableCell>
+                    <TableCell align="center" sx={{ width: 120, padding: 1 }}>
+                        <p className={styles.table_cell_p}>経由</p>
+                    </TableCell>
+                    <TableCell align="center" sx={{ padding: 1 }}>
+                        <p className={styles.table_cell_p}>備考</p>
+                    </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
                 {list.map((element) => (
                     <TableRow>
-                        <TableCell align="center">
-                            {element.departureTime.minute}
+                        <TableCell
+                            align="center"
+                            sx={{ width: 20, padding: 0.5 }}
+                        >
+                            <p className={styles.table_cell_p}>
+                                {element.departureTime.minute}
+                            </p>
                         </TableCell>
-                        <TableCell align="center">
-                            {element.omuni ? "O" : "X"}
+                        <TableCell
+                            align="center"
+                            sx={{ width: 60, padding: 0.5 }}
+                        >
+                            <p className={styles.table_cell_p}>
+                                {element.omuni ? "O" : "X"}
+                            </p>
                         </TableCell>
-                        <TableCell align="center">
-                            {routeLabels[element.route]}
+                        <TableCell align="center" sx={{ padding: 1 }}>
+                            <p className={styles.table_cell_p}>
+                                {routeLabels[element.route]}
+                            </p>
                         </TableCell>
-                        <TableCell align="center">
-                            {optionLabels[element.option]}
+                        <TableCell align="center" sx={{ padding: 1 }}>
+                            <p className={styles.table_cell_p}>
+                                {optionLabels[element.option]}
+                            </p>
                         </TableCell>
                     </TableRow>
                 ))}
