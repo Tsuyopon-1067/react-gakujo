@@ -7,31 +7,28 @@ class HourMinuteSecond {
     private second: number;
     private type: number;
     private period: number;
+    private milisecond: number;
 
-    constructor(hour: number, minute: number, second: number);
     constructor(
         hour: number,
         minute: number,
         second: number,
         type: number,
         period: number
-    );
-    constructor(
-        hour: number,
-        minute: number,
-        second: number,
-        type?: number,
-        period?: number
     ) {
         this.hour = hour;
         this.minute = minute;
         this.second = second;
-        this.type = type ? type : 0;
-        this.period = period ? period : 0;
+        this.type = type;
+        this.period = period;
+        this.milisecond = 0;
     }
 
     public toValue(): number {
-        return this.hour * 3600 + this.minute * 60 + this.second;
+        return (
+            (this.hour * 3600 + this.minute * 60 + this.second) * 1000 +
+            this.milisecond
+        );
     }
 
     public isStart(): boolean {
@@ -52,16 +49,49 @@ class HourMinuteSecond {
         );
     }
 
+    public toStringWithMilisecond(): string {
+        return (
+            this.hour.toString().padStart(2, "0") +
+            ":" +
+            this.minute.toString().padStart(2, "0") +
+            ":" +
+            this.second.toString().padStart(2, "0") +
+            "." +
+            this.milisecond.toString().padStart(3, "0")
+        );
+    }
+
     public toPeriodString(): string {
         return String(this.period) + "コマ";
     }
 
     public static fromValue(value: number): HourMinuteSecond {
-        return new HourMinuteSecond(
-            Math.floor(value / 3600),
-            Math.floor((value % 3600) / 60),
-            value % 60
+        const valueSecond = Math.floor(value / 1000);
+        const res = new HourMinuteSecond(
+            Math.floor(valueSecond / 3600),
+            Math.floor((valueSecond % 3600) / 60),
+            valueSecond % 60,
+            HourMinuteSecond.TYPE_NORMAL,
+            0
         );
+        res.setMilisecond(value % 1000);
+        return res;
+    }
+
+    public static fromDate(date: Date): HourMinuteSecond {
+        const res = new HourMinuteSecond(
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+            HourMinuteSecond.TYPE_NORMAL,
+            0
+        );
+        res.setMilisecond(date.getMilliseconds());
+        return res;
+    }
+
+    private setMilisecond(milisecond: number): void {
+        this.milisecond = milisecond;
     }
 
     public static readonly TYPE_NORMAL = 0;
@@ -110,12 +140,8 @@ function ClassTimerPage() {
                 weekday[dayOfWeek] +
                 "]"
         );
-        const currentTime = new HourMinuteSecond(
-            d.getHours(),
-            d.getMinutes(),
-            d.getSeconds()
-        );
-        setTime(currentTime.toString());
+        const currentTime = HourMinuteSecond.fromDate(d);
+        setTime(currentTime.toStringWithMilisecond());
 
         const nextClassTime = classStartEndTimeList.find(
             (t) => t.toValue() > currentTime.toValue()
@@ -131,7 +157,7 @@ function ClassTimerPage() {
             nextClassCaption = "終了";
         }
         setRemainingTime(
-            `残り${remain.toString()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
+            `残り${remain.toStringWithMilisecond()}で${nextClassTime?.toPeriodString()}${nextClassCaption}`
         );
     };
     return (
