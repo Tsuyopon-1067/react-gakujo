@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./ClassTimerPage.module.css";
-import CircularWithValueLabel from "./CircularProgressWithLabel";
 import CircularProgressWithLabel from "./CircularProgressWithLabel";
 import { ColorSettingsProps } from "../WindowSwitcher";
 import {
     Divider,
     Step,
-    StepButton,
+    StepLabel,
     Stepper,
     Table,
     TableBody,
@@ -290,7 +289,7 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                                 },
                         }}
                     >
-                        <StepButton>{label}</StepButton>
+                        <StepLabel>{label}</StepLabel>
                     </Step>
                 ))}
             </Stepper>
