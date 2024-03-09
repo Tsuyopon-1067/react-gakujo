@@ -7,6 +7,7 @@ import {
     Map,
     PermIdentity,
     Settings,
+    Timer,
     Wifi,
 } from "@mui/icons-material";
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -27,6 +28,7 @@ import Setting from "./Setting";
 import WifiPage from "./subPage/WifiPage";
 import MailPage from "./subPage/MailPage";
 import StudentNumberPage from "./subPage/StudentNumberPage";
+import ClassTimerPage from "./subPage/ClassTimerPage";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
@@ -91,6 +93,11 @@ export default function FixedBottomNavigation({
         createBottomNavigationElement("Wifi", <></>, <WifiPage />),
         createBottomNavigationElement("メール", <></>, <MailPage />),
         createBottomNavigationElement("学籍番号", <></>, <StudentNumberPage />),
+        createBottomNavigationElement(
+            "授業時間タイマー",
+            <></>,
+            <ClassTimerPage />
+        ),
     ];
 
     return (
@@ -200,4 +207,24 @@ const StudentNumberButton = {
     value: 8,
 } as SubPageButtonElement;
 
-export { BusButton, WifiButton, MailButton, StudentNumberButton };
+const ClassTimerButton = {
+    title: "授業時間タイマー",
+    icon: (
+        <Timer
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 9,
+} as SubPageButtonElement;
+
+export {
+    BusButton,
+    WifiButton,
+    MailButton,
+    StudentNumberButton,
+    ClassTimerButton,
+};
