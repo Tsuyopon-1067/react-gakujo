@@ -1,0 +1,3 @@
+%s/InkscapeFontSpecification: 'Onyx', /
+%s/InkscapeFontSpecification: '"MS Gothic"', /
+%s/writingMode: 'tb-rl', /writingMode: "vertical-lr", 

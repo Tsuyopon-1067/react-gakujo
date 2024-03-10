@@ -1,0 +1,29 @@
+.main_div {
+    margin: 10pt;
+}
+
+.progress_circle_area {
+    width: 75%;
+    margin: 40pt auto;
+}
+
+.date_time_text {
+    font-size: 16pt;
+    text-align: center;
+    margin: 5pt 0;
+}
+
+.remain_text {
+    font-size: 16pt;
+    text-align: center;
+    margin: 5pt 0;
+}
+
+.h1 {
+    font-size: 14pt;
+    margin: 0;
+}
+
+.table_div {
+    margin: 20pt 0;
+}

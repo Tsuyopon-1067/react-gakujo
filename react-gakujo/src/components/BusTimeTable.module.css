@@ -1,0 +1,15 @@
+.main_div {
+    margin: 10pt;
+}
+
+.table_cell_p {
+    margin: 0;
+}
+
+.table_cell_span {
+    display: inline-block;
+}
+
+.map_div {
+    margin: 15pt 5pt;
+}
