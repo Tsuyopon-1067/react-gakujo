@@ -31,39 +31,6 @@ const MapSvg = ({ style, arrow }: PropsType) => {
             id="svg1"
             style={style ? style : undefined}
         >
-            <g
-                id="layer4"
-                style={{ display: "inline" }}
-                transform="translate(0.00165327,-0.0019296)"
-            >
-                <image
-                    width="132.11259"
-                    height="105.16164"
-                    preserveAspectRatio="none"
-                    id="image1"
-                    x="1.5997671"
-                    y="2.2717755"
-                    style={{ display: "none" }}
-                />
-                <image
-                    width="136.04741"
-                    height="136.04741"
-                    preserveAspectRatio="none"
-                    id="image961"
-                    x="-0.57892001"
-                    y="-0.4835017"
-                    style={{ display: "none" }}
-                />
-                <image
-                    width="132.11259"
-                    height="105.16164"
-                    preserveAspectRatio="none"
-                    id="image1-6"
-                    x="1.5997671"
-                    y="2.2717755"
-                    style={{ display: "none" }}
-                />
-            </g>
             <image
                 width="132.70702"
                 height="105.7198"
@@ -1530,6 +1497,10 @@ function CampusMap() {
     return (
         <div className={styles.main_div}>
             <MapSvg arrow={iesShowArrow} style={{ width: "100%" }} />
+            <div className={styles.usage_grid_area}>
+                <span className={styles.usage_grid_area_element}><div className={styles.park_icon} />駐輪場</span>
+                <span className={styles.usage_grid_area_element}><div className={styles.bicycle_park_icon} />駐車場</span>
+            </div>
             <FormControlLabel
                 control={
                     <Switch
