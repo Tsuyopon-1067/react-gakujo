@@ -7,6 +7,7 @@ import {
     Map,
     PermIdentity,
     Settings,
+    Timer,
     Wifi,
 } from "@mui/icons-material";
 import BottomNavigation from "@mui/material/BottomNavigation";
@@ -16,22 +17,23 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import * as React from "react";
 import { LocalStorageData } from "../types";
+import BusTimeTable from "./BusTimeTable";
 import CampusMap from "./CampusMap";
 import EventSchedule from "./EventSchedule";
+import MiscPage from "./MiscPage";
+import Setting from "./Setting";
 import TimeTable from "./TimeTable";
 import TitleAppBar from "./TitleAppBar";
 import { ColorSettingsProps } from "./WindowSwitcher";
-import { UniTable } from "./timeTableTypes";
-import MiscPage from "./MiscPage";
-import Setting from "./Setting";
-import WifiPage from "./subPage/WifiPage";
+import ClassTimerPage from "./subPage/ClassTimerPage";
 import MailPage from "./subPage/MailPage";
 import StudentNumberPage from "./subPage/StudentNumberPage";
-import BusTimeTable from "./BusTimeTable";
+import WifiPage from "./subPage/WifiPage";
+import { UniTable } from "./timeTableTypes";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
->([new UniTable([]), () => {}]);
+>([new UniTable([]), () => { }]);
 export const MainLocalStorageData = new LocalStorageData();
 
 interface FixedBottomNavigationProps {
@@ -96,6 +98,11 @@ export default function FixedBottomNavigation({
         createBottomNavigationElement("Wifi", <></>, <WifiPage />),
         createBottomNavigationElement("メール", <></>, <MailPage />),
         createBottomNavigationElement("学籍番号", <></>, <StudentNumberPage />),
+        createBottomNavigationElement(
+            "授業時間タイマー",
+            <></>,
+            <ClassTimerPage colorsettings={colorSettingsProps} />
+        ),
     ];
 
     return (
@@ -146,10 +153,10 @@ interface SubPageButtonElement {
 const fontSize = 120;
 const BusButton = {
     title: (
-        <p>
+        <>
             <span>六間坂上時刻表</span>
             <span>（浜松駅方面）</span>
-        </p>
+        </>
     ),
     icon: (
         <DirectionsBus
@@ -205,4 +212,22 @@ const StudentNumberButton = {
     value: 8,
 } as SubPageButtonElement;
 
-export { BusButton, WifiButton, MailButton, StudentNumberButton };
+const ClassTimerButton = {
+    title: "授業時間タイマー",
+    icon: (
+        <Timer
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 9,
+} as SubPageButtonElement;
+
+export {
+    BusButton, ClassTimerButton, MailButton,
+    StudentNumberButton, WifiButton
+};
+

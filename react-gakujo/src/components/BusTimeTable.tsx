@@ -121,7 +121,7 @@ interface HourAccordionProps {
 
 const HourAccordion = ({ hour, list }: HourAccordionProps) => (
     <Accordion>
-        <AccordionSummary expandIcon={<ExpandMore />}>
+        <AccordionSummary expandIcon={<ExpandMore />} sx={{ justifyContent: "center" }} >
             {hour}時
         </AccordionSummary>
         <AccordionDetails>
@@ -129,7 +129,7 @@ const HourAccordion = ({ hour, list }: HourAccordionProps) => (
                 <HourTable list={list} hour={hour} />
             </TableContainer>
         </AccordionDetails>
-    </Accordion>
+    </Accordion >
 );
 
 const HourTable = ({ list }: HourAccordionProps) => {

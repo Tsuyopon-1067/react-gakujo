@@ -1,4 +1,4 @@
-import { ArrowBack, ArrowLeft, Settings } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import AppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";

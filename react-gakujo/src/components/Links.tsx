@@ -1,4 +1,4 @@
-import { Business, MenuBook, TextSnippet } from "@mui/icons-material";
+import { Business, Egg, MenuBook, TextSnippet, Web } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 import styles from "./Links.module.css";
@@ -46,14 +46,16 @@ const LinkButton = ({ title, href, icon, colorSettings }: LinkButtonProps) => {
             }}
             href={href}
         >
-            <div>
+            <div className={styles.link_button_div}>
                 <p className={styles.link_button_icon_p}>{icon}</p>
-                <p
-                    className={styles.link_button_caption}
-                    style={{ color: fontColor }}
-                >
-                    {title}
-                </p>
+                <div className={styles.link_button_caption_area}>
+                    <p
+                        className={styles.link_button_caption}
+                        style={{ color: fontColor }}
+                    >
+                        {title}
+                    </p>
+                </div>
             </div>
         </Button>
     );
@@ -67,10 +69,10 @@ const fontSize = 110;
 
 const GakujoButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     <LinkButton
-        title=<p className={styles.gakujo_button_caption_p}>
+        title=<>
             <span className={styles.gakujo_button_caption_span}>学務情報</span>
             <span className={styles.gakujo_button_caption_span}>システム</span>
-        </p>
+        </>
         href="https://gakujo.shizuoka.ac.jp/portal/"
         icon={
             <GakujoIcon
@@ -112,4 +114,29 @@ const HandBookButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     />
 );
 
-export { GakujoButton, AcademicAffairsButton, OpacButton, HandBookButton };
+const HamaXButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="生協（浜松）X"
+        href="https://x.com/hama_coop"
+        icon={<Egg sx={{ fontSize: fontSize }} color="action" />}
+        colorSettings={colorSettings}
+    />
+);
+
+const OfficialSiteButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="静岡大学公式サイト"
+        href="https://www.shizuoka.ac.jp/"
+        icon={<Web sx={{ fontSize: fontSize }} color="action" />}
+        colorSettings={colorSettings}
+    />
+);
+
+export {
+    GakujoButton,
+    AcademicAffairsButton,
+    OpacButton,
+    HandBookButton,
+    HamaXButton,
+    OfficialSiteButton,
+};
