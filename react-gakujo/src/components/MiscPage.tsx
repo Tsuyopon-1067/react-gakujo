@@ -92,13 +92,6 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
         <HamaXButton colorSettings={colorSettings} />,
         <SubPageButton
             onClick={onClick}
-            value={ClassTimerButton.value}
-            colorSettings={colorSettings}
-            title={ClassTimerButton.title}
-            icon={ClassTimerButton.icon}
-        />,
-        <SubPageButton
-            onClick={onClick}
             value={WifiButton.value}
             colorSettings={colorSettings}
             title={WifiButton.title}
