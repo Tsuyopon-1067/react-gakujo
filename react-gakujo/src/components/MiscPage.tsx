@@ -1,6 +1,11 @@
 import { Button } from "@mui/material";
-<<<<<<< Updated upstream
-import styles from "./MiscPage.module.css";
+import {
+    BusButton,
+    ClassTimerButton,
+    MailButton,
+    StudentNumberButton,
+    WifiButton,
+} from "./FixedBottomNavigation";
 import {
     AcademicAffairsButton,
     GakujoButton,
@@ -9,28 +14,8 @@ import {
     OfficialSiteButton,
     OpacButton,
 } from "./Links";
-import { ColorSettingsProps } from "./WindowSwitcher";
-=======
->>>>>>> Stashed changes
-import {
-    BusButton,
-    ClassTimerButton,
-    MailButton,
-    StudentNumberButton,
-    WifiButton,
-} from "./FixedBottomNavigation";
-<<<<<<< Updated upstream
-import ClassTimer from "./subPage/ClassTimer";
-=======
-import {
-    AcademicAffairsButton,
-    GakujoButton,
-    HandBookButton,
-    OpacButton,
-} from "./Links";
 import styles from "./MiscPage.module.css";
 import { ColorSettingsProps } from "./WindowSwitcher";
->>>>>>> Stashed changes
 
 interface SubPageButtonProps {
     colorSettings: ColorSettingsProps;
@@ -95,6 +80,13 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
             colorSettings={colorSettings}
             title={BusButton.title}
             icon={BusButton.icon}
+        />,
+        <SubPageButton
+            onClick={onClick}
+            value={ClassTimerButton.value}
+            colorSettings={colorSettings}
+            title={ClassTimerButton.title}
+            icon={ClassTimerButton.icon}
         />,
         <OfficialSiteButton colorSettings={colorSettings} />,
         <HamaXButton colorSettings={colorSettings} />,
