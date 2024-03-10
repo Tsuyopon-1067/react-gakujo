@@ -1,8 +1,8 @@
+import Box from "@mui/material/Box";
 import CircularProgress, {
     CircularProgressProps,
 } from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 import { ColorSettingsProps } from "../WindowSwitcher";
 
 export default function CircularProgressWithLabel(
