@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2500"
+   height="2500"
+   viewBox="0 0 2500 2500"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="busRoute.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.21519227"
+     inkscape:cx="-1428.9547"
+     inkscape:cy="2606.971"
+     inkscape:window-width="2706"
+     inkscape:window-height="1528"
+     inkscape:window-x="93"
+     inkscape:window-y="183"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="m 500,859.99954 1690,0"
+       id="path3-3"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1210,1014.9995 h 559.4253"
+       id="path3-3-7"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#989898;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="M 525,96.941 V 864.48459"
+       id="path1"
+       sodipodi:nodetypes="cc" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2"
+       cx="525"
+       cy="139.99954"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1"
+       cx="525"
+       cy="219.99954"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-18"
+       cx="525"
+       cy="299.99954"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0"
+       cx="525"
+       cy="379.99954"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-4"
+       cx="525"
+       cy="459.99954"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-5"
+       cx="525"
+       cy="539.99957"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3"
+       cx="525"
+       cy="699.99957"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="158.43704"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         x="567.75"
+         y="158.43704"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">和合町</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="238.43704"
+       id="text2-1"><tspan
+         sodipodi:role="line"
+         id="tspan2-7"
+         x="567.75"
+         y="238.43704"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">住吉町</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="314.2435"
+       id="text2-7"><tspan
+         sodipodi:role="line"
+         id="tspan2-6"
+         x="567.75"
+         y="314.2435"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">和地山上</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="398.43704"
+       id="text2-1-0"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7"
+         x="567.75"
+         y="398.43704"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">和地山</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="478.43704"
+       id="text2-4"><tspan
+         sodipodi:role="line"
+         id="tspan2-2"
+         x="567.75"
+         y="478.43704"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">静岡大学</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="558.43707"
+       id="text2-1-3"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8"
+         x="567.75"
+         y="558.43707"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">六間坂上</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="841.5625"
+       y="341.75003"
+       id="text2-1-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3"
+         x="841.5625"
+         y="341.75003"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">追分小学校</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-9"
+       cx="525"
+       cy="779.99957"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="798.43707"
+       id="text2-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-1"
+         x="567.75"
+         y="798.43707"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">浜松北高</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="878.43707"
+       id="text2-1-30"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-6"
+         x="567.75"
+         y="878.43707"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">鹿谷町</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="567.75"
+       y="718.43707"
+       id="text2-1-0-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0"
+         x="567.75"
+         y="718.43707"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">さいが崖</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="m 500,619.99954 h 758.3485"
+       id="path3"
+       sodipodi:nodetypes="cc" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6"
+       cx="840"
+       cy="620.00006"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="921.5625"
+       y="342.12503"
+       id="text2-1-3-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-2"
+         x="921.5625"
+         y="342.12503"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">城北一丁目</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-1"
+       cx="920"
+       cy="620.00006"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1001.5625"
+       y="392.00003"
+       id="text2-1-3-3-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-4"
+         x="1001.5625"
+         y="392.00003"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">Ｕホール</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-8"
+       cx="1000"
+       cy="620"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1081.5625"
+       y="390.87503"
+       id="text2-1-3-3-3-2"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-2-8"
+         x="1081.5625"
+         y="390.87503"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">下池川町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-1-5"
+       cx="1080"
+       cy="620"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1682.5"
+       y="680.43707"
+       id="text2-1-3-3-61"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-27"
+         x="1682.5"
+         y="680.43707"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">尾張町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-0"
+       cx="1680.9375"
+       cy="859.99963"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1561.5625"
+       y="1050.687"
+       id="text2-1-3-3-61-4"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-27-6"
+         x="1561.5625"
+         y="1050.687"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">ゆりの木通り</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-0-0"
+       cx="1560"
+       cy="1014.4802"
+       r="20" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1210,1384.9995 h 975.7481"
+       id="path3-3-7-9"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1561.5626"
+       y="1420.6871"
+       id="text2-1-3-3-61-4-9"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-27-6-8"
+         x="1561.5626"
+         y="1420.6871"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">かじ町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-0-0-4"
+       cx="1560.0001"
+       cy="1384.4802"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1961.9375"
+       y="682.49957"
+       id="text2-1-3-3-6-4"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-4-30"
+         x="1961.9375"
+         y="682.49957"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">常磐町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-8-9"
+       cx="1960.3755"
+       cy="859.99957"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1161.5625"
+       y="438.31253"
+       id="text2-1-3-3-3-2-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-2-8-4"
+         x="1161.5625"
+         y="438.31253"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">消防局</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-1-5-6"
+       cx="1160"
+       cy="619.99957"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="841.56201"
+       y="897.74957"
+       id="text2-1-3-3-34"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-3"
+         x="841.56201"
+         y="897.74957"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">鹿谷町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-5"
+       cx="840"
+       cy="860.00006"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="921.56201"
+       y="898.12457"
+       id="text2-1-3-3-3-1"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-2-85"
+         x="921.56201"
+         y="898.12457"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">鹿谷町南</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-1-54"
+       cx="920"
+       cy="860.00006"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1001.562"
+       y="898.12457"
+       id="text2-1-3-3-6-5"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-4-3"
+         x="1001.562"
+         y="898.12457"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">美術館</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-8-2"
+       cx="1000"
+       cy="860"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1081.562"
+       y="896.81207"
+       id="text2-1-3-3-3-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-8-3-2-8-0"
+         x="1081.562"
+         y="896.81207"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';writing-mode:tb-rl;baseline-shift:baseline;fill:#000000;fill-opacity:1">市役所南</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-6-1-5-2"
+       cx="1080"
+       cy="860"
+       r="20" />
+    <path
+       style="fill:#989898;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="M 1235,595.00004 V 1382.766"
+       id="path1-1"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:#989898;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="M 1765,839.99954 V 1393.4574"
+       id="path1-1-3"
+       sodipodi:nodetypes="cc" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-9"
+       cx="1235"
+       cy="700.56207"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-9-3"
+       cx="1235"
+       cy="780.56207"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1277.75"
+       y="798.99957"
+       id="text2-2-4"><tspan
+         sodipodi:role="line"
+         id="tspan2-1-0"
+         x="1277.75"
+         y="798.99957"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">市役所前</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1277.75"
+       y="718.99957"
+       id="text2-1-0-2-9"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8"
+         x="1277.75"
+         y="718.99957"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">浜松城公園入口</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-9-4"
+       cx="1235"
+       cy="940.56207"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1277.75"
+       y="958.99957"
+       id="text2-1-0-2-9-0"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8-0"
+         x="1277.75"
+         y="958.99957"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">元城町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-9-4-3"
+       cx="1765"
+       cy="940.56207"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1807.75"
+       y="958.99957"
+       id="text2-1-0-2-9-0-1"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8-0-8"
+         x="1807.75"
+         y="958.99957"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">田町</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-9-4-6"
+       cx="1235"
+       cy="1150.938"
+       r="20" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-9-3-8-1"
+       cx="1235"
+       cy="1230.938"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1277.75"
+       y="1249.3755"
+       id="text2-2-4-9-6"><tspan
+         sodipodi:role="line"
+         id="tspan2-1-0-5-9"
+         x="1277.75"
+         y="1249.3755"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">伝馬町</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1277.75"
+       y="1169.3755"
+       id="text2-1-0-2-9-0-7"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8-0-2"
+         x="1277.75"
+         y="1169.3755"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">連尺</tspan></text>
+    <path
+       style="fill:#989898;stroke:#000000;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       d="M 2165,839.99954 V 1382.7655"
+       id="path1-1-0"
+       sodipodi:nodetypes="cc" />
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-9-4-6-1"
+       cx="2165"
+       cy="1150.9375"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="2207.75"
+       y="1169.375"
+       id="text2-1-0-2-9-0-7-9"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8-0-2-8"
+         x="2207.75"
+         y="1169.375"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">広小路</tspan></text>
+    <circle
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       id="path2-1-0-3-9-4-6-3"
+       cx="1765"
+       cy="1150.938"
+       r="20" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="1807.75"
+       y="1169.3755"
+       id="text2-1-0-2-9-0-7-0"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8-0-2-5"
+         x="1807.75"
+         y="1169.3755"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">田町中央通り</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:7.43;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3"
+       width="204.91917"
+       height="98.417603"
+       x="2074.5415"
+       y="1328.7073"
+       ry="8.6329861" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;font-family:Onyx;-inkscape-font-specification:Onyx;fill:#000000;fill-opacity:1;stroke:none;stroke-width:50;stroke-dasharray:none;stroke-opacity:1"
+       x="2104.7197"
+       y="1394.6035"
+       id="text2-1-0-2-9-0-7-9-5"><tspan
+         sodipodi:role="line"
+         id="tspan2-7-7-0-8-0-2-8-1"
+         x="2104.7197"
+         y="1394.6035"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:'MS Gothic';-inkscape-font-specification:'MS Gothic';fill:#000000;fill-opacity:1">浜松駅</tspan></text>
+  </g>
+</svg>

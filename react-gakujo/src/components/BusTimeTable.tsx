@@ -1,3 +1,4 @@
+import { ExpandMore } from "@mui/icons-material";
 import {
     Accordion,
     AccordionDetails,
@@ -12,9 +13,9 @@ import {
     TableRow,
     Tabs,
 } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
 import * as React from "react";
 import styles from "./BusTimeTable.module.css";
+import BusRoute from "./subPage/BusRoute";
 
 interface BusTimeTable {
     weekday: Bus[];
@@ -74,7 +75,7 @@ function BusTimeTable() {
         );
     };
 
-    const handleChange = () => {};
+    const handleChange = () => { };
     const [value, setValue] = React.useState(0);
     return (
         <Box sx={{ width: "100%" }}>
@@ -95,6 +96,9 @@ function BusTimeTable() {
                 <TabPanel value={value} index={1}>
                     <BusTimeTableAcordion list={holidayList} />
                 </TabPanel>
+                <div className={styles.map_div}>
+                    <BusRoute style={{ width: "100%" }} />
+                </div>
             </div>
         </Box>
     );
