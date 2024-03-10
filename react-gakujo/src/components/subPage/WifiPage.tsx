@@ -31,7 +31,7 @@ function WifiPage() {
                     静大IDのパスワード（学情と同じ）
                 </p>
             </div>
-            <Divider />
+            <Divider sx={{ marginTop: 2, marginBottom: 2 }} />
             <h2 className={styles.h2}>eduroam</h2>
             <div className={styles.wifi_div}>
                 <p
