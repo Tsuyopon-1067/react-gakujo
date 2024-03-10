@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import styles from "./BusTimeTable.module.css";
+import BusRoute from "./subPage/BusRoute";
 
 interface BusTimeTable {
     weekday: Bus[];
@@ -95,6 +96,9 @@ function BusTimeTable() {
                 <TabPanel value={value} index={1}>
                     <BusTimeTableAcordion list={holidayList} />
                 </TabPanel>
+                <div className={styles.map_div}>
+                    <BusRoute style={{ width: "100%" }} />
+                </div>
             </div>
         </Box>
     );

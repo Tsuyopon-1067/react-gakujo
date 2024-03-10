@@ -9,3 +9,7 @@
 .table_cell_span {
     display: inline-block;
 }
+
+.map_div {
+    margin: 15pt 5pt;
+}
