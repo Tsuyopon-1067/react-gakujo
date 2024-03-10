@@ -188,7 +188,7 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
 
     const steps = [...Array(5)].map((_, i) => (i + 1).toString() + "コマ");
     const [activeStep, setActiveStep] = useState(-1);
-    const [completed, setCompleted] = useState(steps.map(() => false));
+    const [completed,] = useState(steps.map(() => false));
 
     useEffect(() => {
         const intervalId = setInterval(updateTimer, 50);

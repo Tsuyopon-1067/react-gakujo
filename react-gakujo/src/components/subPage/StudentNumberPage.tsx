@@ -4,7 +4,6 @@ import {
     AccordionDetails,
     AccordionSummary,
     Divider,
-    Input,
     Table,
     TableBody,
     TableCell,
@@ -13,8 +12,8 @@ import {
     TableRow,
     TextField,
 } from "@mui/material";
-import styles from "./StudentNumberPage.module.css";
 import { useState } from "react";
+import styles from "./StudentNumberPage.module.css";
 
 class StudentNumberCode {
     type: string;
@@ -331,7 +330,6 @@ const StudentNumberChecker = () => {
                 onChange={handleOnChange}
                 label="学籍番号"
                 variant="filled"
-                variant="standard"
                 sx={{ marginTop: 2 }}
             />
             <Table sx={{ marginTop: 2 }}>
