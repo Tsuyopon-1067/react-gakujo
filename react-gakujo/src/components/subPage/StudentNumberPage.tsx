@@ -329,7 +329,7 @@ const StudentNumberChecker = () => {
                 value={inputValue}
                 onChange={handleOnChange}
                 label="学籍番号"
-                variant="filled"
+                variant="standard"
                 sx={{ marginTop: 2 }}
             />
             <Table sx={{ marginTop: 2 }}>
