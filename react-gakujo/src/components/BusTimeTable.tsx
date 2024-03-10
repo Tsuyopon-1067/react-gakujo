@@ -1,3 +1,4 @@
+import { ExpandMore } from "@mui/icons-material";
 import {
     Accordion,
     AccordionDetails,
@@ -12,7 +13,6 @@ import {
     TableRow,
     Tabs,
 } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
 import * as React from "react";
 import styles from "./BusTimeTable.module.css";
 
@@ -74,7 +74,7 @@ function BusTimeTable() {
         );
     };
 
-    const handleChange = () => {};
+    const handleChange = () => { };
     const [value, setValue] = React.useState(0);
     return (
         <Box sx={{ width: "100%" }}>
@@ -117,7 +117,7 @@ interface HourAccordionProps {
 
 const HourAccordion = ({ hour, list }: HourAccordionProps) => (
     <Accordion>
-        <AccordionSummary expandIcon={<ExpandMore />}>
+        <AccordionSummary expandIcon={<ExpandMore />} sx={{ justifyContent: "center" }} >
             {hour}時
         </AccordionSummary>
         <AccordionDetails>
@@ -125,7 +125,7 @@ const HourAccordion = ({ hour, list }: HourAccordionProps) => (
                 <HourTable list={list} hour={hour} />
             </TableContainer>
         </AccordionDetails>
-    </Accordion>
+    </Accordion >
 );
 
 const HourTable = ({ list }: HourAccordionProps) => {

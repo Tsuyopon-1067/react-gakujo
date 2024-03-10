@@ -17,23 +17,23 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import * as React from "react";
 import { LocalStorageData } from "../types";
+import BusTimeTable from "./BusTimeTable";
 import CampusMap from "./CampusMap";
 import EventSchedule from "./EventSchedule";
+import MiscPage from "./MiscPage";
+import Setting from "./Setting";
 import TimeTable from "./TimeTable";
 import TitleAppBar from "./TitleAppBar";
 import { ColorSettingsProps } from "./WindowSwitcher";
-import { UniTable } from "./timeTableTypes";
-import MiscPage from "./MiscPage";
-import Setting from "./Setting";
-import WifiPage from "./subPage/WifiPage";
+import ClassTimerPage from "./subPage/ClassTimerPage";
 import MailPage from "./subPage/MailPage";
 import StudentNumberPage from "./subPage/StudentNumberPage";
-import ClassTimerPage from "./subPage/ClassTimerPage";
-import BusTimeTable from "./BusTimeTable";
+import WifiPage from "./subPage/WifiPage";
+import { UniTable } from "./timeTableTypes";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
->([new UniTable([]), () => {}]);
+>([new UniTable([]), () => { }]);
 export const MainLocalStorageData = new LocalStorageData();
 
 interface FixedBottomNavigationProps {
@@ -227,9 +227,7 @@ const ClassTimerButton = {
 } as SubPageButtonElement;
 
 export {
-    BusButton,
-    WifiButton,
-    MailButton,
-    StudentNumberButton,
-    ClassTimerButton,
+    BusButton, ClassTimerButton, MailButton,
+    StudentNumberButton, WifiButton
 };
+
