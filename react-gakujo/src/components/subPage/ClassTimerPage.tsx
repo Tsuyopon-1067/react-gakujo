@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import styles from "./ClassTimerPage.module.css";
-import CircularProgressWithLabel from "./CircularProgressWithLabel";
-import { ColorSettingsProps } from "../WindowSwitcher";
 import {
     Divider,
     Step,
@@ -13,6 +9,10 @@ import {
     TableHead,
     TableRow,
 } from "@mui/material";
+import { useEffect, useState } from "react";
+import { ColorSettingsProps } from "../WindowSwitcher";
+import CircularProgressWithLabel from "./CircularProgressWithLabel";
+import styles from "./ClassTimerPage.module.css";
 
 class HourMinuteSecond {
     private hour: number;
@@ -205,14 +205,14 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
         const weekday: string[] = ["日", "月", "火", "水", "木", "金", "土"];
         setDate(
             year +
-                "年" +
-                month +
-                "月" +
-                day +
-                "日" +
-                "(" +
-                weekday[dayOfWeek] +
-                ")"
+            "年" +
+            month +
+            "月" +
+            day +
+            "日" +
+            "(" +
+            weekday[dayOfWeek] +
+            ")"
         );
         const currentTime = HourMinuteSecond.fromDate(d);
         setTime(currentTime.toString());
@@ -283,10 +283,17 @@ function ClassTimerPage({ colorsettings }: CircularProgressWithLabelProps) {
                             "& .MuiStepLabel-root .Mui-completed": {
                                 color: colorsettings.primaryColor,
                             },
+                            '& .MuiStepLabel-root .Mui-active': {
+                                color: colorsettings.primaryColor,
+                            },
                             "& .MuiStepLabel-label.Mui-completed.MuiStepLabel-alternativeLabel":
-                                {
-                                    color: "black",
-                                },
+                            {
+                                color: "black",
+                            },
+                            '& .MuiStepLabel-label.Mui-active.MuiStepLabel-alternativeLabel':
+                            {
+                                color: "black",
+                            },
                         }}
                     >
                         <StepLabel>{label}</StepLabel>
