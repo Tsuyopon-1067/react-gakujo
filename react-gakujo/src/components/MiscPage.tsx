@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+<<<<<<< Updated upstream
 import styles from "./MiscPage.module.css";
 import {
     AcademicAffairsButton,
@@ -9,6 +10,8 @@ import {
     OpacButton,
 } from "./Links";
 import { ColorSettingsProps } from "./WindowSwitcher";
+=======
+>>>>>>> Stashed changes
 import {
     BusButton,
     ClassTimerButton,
@@ -16,7 +19,18 @@ import {
     StudentNumberButton,
     WifiButton,
 } from "./FixedBottomNavigation";
+<<<<<<< Updated upstream
 import ClassTimer from "./subPage/ClassTimer";
+=======
+import {
+    AcademicAffairsButton,
+    GakujoButton,
+    HandBookButton,
+    OpacButton,
+} from "./Links";
+import styles from "./MiscPage.module.css";
+import { ColorSettingsProps } from "./WindowSwitcher";
+>>>>>>> Stashed changes
 
 interface SubPageButtonProps {
     colorSettings: ColorSettingsProps;

@@ -1,11 +1,9 @@
 import {
-    ArrowBack,
     ContentPaste,
     Input,
     RestartAlt,
 } from "@mui/icons-material";
 import {
-    AppBar,
     Button,
     Dialog,
     DialogActions,
@@ -13,10 +11,7 @@ import {
     DialogContentText,
     DialogTitle,
     Divider,
-    IconButton,
     TextField,
-    Toolbar,
-    Typography,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { ColorSettings } from "../types";

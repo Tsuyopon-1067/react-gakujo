@@ -16,7 +16,6 @@ import {
 import { useState } from "react";
 import { CSSProperties } from "styled-components";
 import styles from "./CampusMap.module.css";
-import BusTimeTable from "./BusTimeTable";
 
 interface PropsType {
     style?: CSSProperties;
@@ -24,7 +23,7 @@ interface PropsType {
     arrow: boolean;
 }
 
-const MapSvg = ({ style, color = "", arrow }: PropsType) => {
+const MapSvg = ({ style, arrow }: PropsType) => {
     return (
         <svg
             viewBox="0 0 131.849 105.126"
