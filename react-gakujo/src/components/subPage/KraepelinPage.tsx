@@ -22,9 +22,12 @@ const NumPad = ({ onClick }: NumPadProps) => {
     );
 }
 function KraepelinPage() {
+    const createRandomArray = (n: number): number[] => {
+        return Array.from({ length: n }, () => Math.floor(Math.random() * 10));
+    }
     const [currentScore, setCurrentScore] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [queryList, setQueryList] = useState([1, 2, 3, 4, 5, 6, 7]);
+    const [queryList, setQueryList] = useState(createRandomArray(200));
     const handleOnClick = (n: number) => {
         const digit = (queryList[currentIndex] + queryList[currentIndex + 1]) % 10;
         if (n === digit) {
@@ -33,10 +36,46 @@ function KraepelinPage() {
         const newIndex = (currentIndex + 1) % (queryList.length - 1);
         setCurrentIndex(newIndex);
     }
+
+    interface QueryDisplayProps {
+        length: number;
+    }
+
+    const QueryDisplay = ({ length }: QueryDisplayProps) => {
+        let start = currentIndex - Math.floor(length / 2) + 1;
+        let end = start + length - 1;
+        if (start < 0) {
+            const diff = -start;
+            start += diff;
+            end += diff;
+        }
+
+        const queryLength = queryList.length - 1;
+        if (end > queryLength) {
+            const diff = end - queryLength;
+            start -= diff
+            end -= diff;
+        }
+
+        const spans = [];
+        for (let i = start; i <= end; i++) {
+            if (i === currentIndex || i === currentIndex + 1) {
+                spans.push(<span key={i} className={`${styles.query_span} ${styles.query_span_current}`}>{queryList[i]}</span>);
+            } else {
+                spans.push(<span key={i} className={styles.query_span}>{queryList[i]}</span>);
+            }
+        }
+
+        return (
+            <div>
+                {spans}
+            </div>
+        );
+    }
     return (
         <div className={styles.main_div}>
             <div className={styles.query_div}>
-                {queryList[currentIndex]} {queryList[currentIndex + 1]}
+                <QueryDisplay length={12} />
             </div>
             <NumPad onClick={handleOnClick} />
             {currentScore}- {currentIndex}
