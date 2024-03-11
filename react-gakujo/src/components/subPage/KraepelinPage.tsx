@@ -23,9 +23,23 @@ const NumPad = ({ onClick }: NumPadProps) => {
 }
 function KraepelinPage() {
     const [currentScore, setCurrentScore] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [queryList, setQueryList] = useState([1, 2, 3, 4, 5, 6, 7]);
+    const handleOnClick = (n: number) => {
+        const digit = (queryList[currentIndex] + queryList[currentIndex + 1]) % 10;
+        if (n === digit) {
+            setCurrentScore(currentScore + 1);
+        }
+        const newIndex = (currentIndex + 1) % (queryList.length - 1);
+        setCurrentIndex(newIndex);
+    }
     return (
         <div className={styles.main_div}>
-            <NumPad onClick={(n) => setCurrentScore(currentScore + n)} />
+            <div className={styles.query_div}>
+                {queryList[currentIndex]} {queryList[currentIndex + 1]}
+            </div>
+            <NumPad onClick={handleOnClick} />
+            {currentScore}- {currentIndex}
         </div>
     );
 }
