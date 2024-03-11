@@ -26,6 +26,7 @@ import TimeTable from "./TimeTable";
 import TitleAppBar from "./TitleAppBar";
 import { ColorSettingsProps } from "./WindowSwitcher";
 import ClassTimerPage from "./subPage/ClassTimerPage";
+import KraepelinPage from "./subPage/KraepelinPage";
 import MailPage from "./subPage/MailPage";
 import StudentNumberPage from "./subPage/StudentNumberPage";
 import WifiPage from "./subPage/WifiPage";
@@ -103,6 +104,7 @@ export default function FixedBottomNavigation({
             <></>,
             <ClassTimerPage colorsettings={colorSettingsProps} />
         ),
+        createBottomNavigationElement("クレペリン検査練習", <></>, <KraepelinPage />),
     ];
 
     return (
@@ -226,8 +228,22 @@ const ClassTimerButton = {
     value: 9,
 } as SubPageButtonElement;
 
+const KraepelinButton = {
+    title: "クレペリン検査練習",
+    icon: (
+        <Timer
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 10,
+} as SubPageButtonElement;
+
 export {
-    BusButton, ClassTimerButton, MailButton,
+    BusButton, ClassTimerButton, KraepelinButton, MailButton,
     StudentNumberButton, WifiButton
 };
 
