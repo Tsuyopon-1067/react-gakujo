@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import {
     BusButton,
     ClassTimerButton,
+    GradeCalculatorButton,
     MailButton,
     StudentNumberButton,
     WifiButton,
@@ -110,6 +111,13 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
             colorSettings={colorSettings}
             title={StudentNumberButton.title}
             icon={StudentNumberButton.icon}
+        />,
+        <SubPageButton
+            onClick={onClick}
+            value={GradeCalculatorButton.value}
+            colorSettings={colorSettings}
+            title={GradeCalculatorButton.title}
+            icon={GradeCalculatorButton.icon}
         />,
     ];
     return (
