@@ -70,7 +70,28 @@ function GradeCalculatorPage() {
         updateEnteranceGraduationYearList(birthDay);
     };
 
-    const updateEnteranceGraduationYearList = (argBirthDay: YearMonthDay) => {};
+    const updateEnteranceGraduationYearList = (argBirthDay: YearMonthDay) => {
+        let year = argBirthDay.year;
+        const month = argBirthDay.month;
+        const date = argBirthDay.date;
+        if (month <= 3 || (month === 4 && date === 1)) {
+            year--;
+        }
+
+        const newList = [] as DelayEnrolled[];
+        delayEnrolledList.map((delayEnrolled) => newList.push(delayEnrolled));
+
+        newList[0].entranceYear = year + 7 + newList[0].delay;
+        newList[0].graduationYear =
+            newList[0].entranceYear + newList[0].enrolledYear;
+        for (let i = 1; i < 5; i++) {
+            newList[i].entranceYear =
+                newList[i - 1].graduationYear + newList[i].delay;
+            newList[i].graduationYear =
+                newList[i].entranceYear + newList[i].enrolledYear;
+        }
+        setDelayEnrolledList(newList);
+    };
 
     return (
         <div className={styles.main_div}>
