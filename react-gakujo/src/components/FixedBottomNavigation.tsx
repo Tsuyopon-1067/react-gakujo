@@ -31,6 +31,7 @@ import StudentNumberPage from "./subPage/StudentNumberPage";
 import WifiPage from "./subPage/WifiPage";
 import { UniTable } from "./timeTableTypes";
 import GradeCalculatorPage from "./subPage/GradeCalculatorPage";
+import GradeCalcIcon from "./subPage/GradeCalcIcon";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
@@ -235,7 +236,7 @@ const ClassTimerButton = {
 const GradeCalculatorButton = {
     title: "卒業年度チェック",
     icon: (
-        <Timer
+        <GradeCalcIcon
             style={{
                 fill: "#00000088",
                 width: fontSize,

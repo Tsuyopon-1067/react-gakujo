@@ -77,6 +77,13 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
         <HandBookButton colorSettings={colorSettings} />,
         <SubPageButton
             onClick={onClick}
+            value={GradeCalculatorButton.value}
+            colorSettings={colorSettings}
+            title={GradeCalculatorButton.title}
+            icon={GradeCalculatorButton.icon}
+        />,
+        <SubPageButton
+            onClick={onClick}
             value={BusButton.value}
             colorSettings={colorSettings}
             title={BusButton.title}
