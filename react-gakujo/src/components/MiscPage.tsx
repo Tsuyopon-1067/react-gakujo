@@ -119,13 +119,6 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
             title={StudentNumberButton.title}
             icon={StudentNumberButton.icon}
         />,
-        <SubPageButton
-            onClick={onClick}
-            value={GradeCalculatorButton.value}
-            colorSettings={colorSettings}
-            title={GradeCalculatorButton.title}
-            icon={GradeCalculatorButton.icon}
-        />,
     ];
     return (
         <div className={styles.main_div}>
