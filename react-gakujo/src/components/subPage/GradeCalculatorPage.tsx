@@ -8,47 +8,18 @@ import {
     TextField,
 } from "@mui/material";
 import styles from "./GradeCalculatorPage.module.css";
-import { useState } from "react";
-
-// for input birth day
-interface YearMonthDay {
-    year: number;
-    month: number;
-    date: number;
-}
-
-// for SchoolRow component
-class DelayEnrolled {
-    name: string;
-    delay: number;
-    enrolledYear: number;
-    entranceYear: number;
-    graduationYear: number;
-
-    constructor(name: string, delay: number, enrolledYear: number) {
-        this.name = name;
-        this.delay = delay;
-        this.enrolledYear = enrolledYear;
-        this.entranceYear = 0;
-        this.graduationYear = 0;
-    }
-}
+import { useEffect, useState } from "react";
+import { DelayEnrolled, YearMonthDay } from "../../types";
+import { MainLocalStorageData } from "../FixedBottomNavigation";
 
 // main component
 function GradeCalculatorPage() {
-    const [birthDay, setBirthDay] = useState({
-        year: 2000,
-        month: 1,
-        date: 1,
-    } as YearMonthDay);
-
-    const [delayEnrolledList, setDelayEnrolledList] = useState([
-        new DelayEnrolled("小学校", 0, 6),
-        new DelayEnrolled("中学校", 0, 3),
-        new DelayEnrolled("高校", 0, 3),
-        new DelayEnrolled("大学", 0, 4),
-        new DelayEnrolled("大学院", 0, 2),
-    ]);
+    const [birthDay, setBirthDay] = useState(
+        MainLocalStorageData.getGradeCalc().getBirthDay()
+    );
+    const [delayEnrolledList, setDelayEnrolledList] = useState(
+        MainLocalStorageData.getGradeCalc().getDelayEnrolled()
+    );
     // for option of year
     const currentYear = new Date().getFullYear();
     const yearList: number[] = [...Array<number>(16)].map(
@@ -62,13 +33,17 @@ function GradeCalculatorPage() {
     const dayList: number[] = [...Array<number>(31)].map(
         (_, i): number => i + 1
     );
-    const [lastDayOfMonth, setLastDayOfMonth] = useState(0);
+    const [lastDayOfMonth, setLastDayOfMonth] = useState(
+        new Date(birthDay.year, birthDay.month, 0).getDate()
+    );
     const handleOnChaneBirthDay = (birthDay: YearMonthDay) => {
         setBirthDay(birthDay);
         const lastDay = new Date(birthDay.year, birthDay.month, 0).getDate();
         setLastDayOfMonth(lastDay);
         updateEnteranceGraduationYearList(birthDay);
     };
+
+    useEffect(() => updateEnteranceGraduationYearList(birthDay), []);
 
     const updateEnteranceGraduationYearList = (argBirthDay: YearMonthDay) => {
         let year = argBirthDay.year;
@@ -268,7 +243,6 @@ const SchoolRow = ({ delayEnrolled, update, birthDay }: SchoolRowProps) => {
                             setEnrolledYearLabelIndex(index);
                             delayEnrolled.enrolledYear = index + 1;
                             update(birthDay);
-                            console.log(index + 1);
                         }}
                     >
                         {enrolledYearLabel.map((option) => (
