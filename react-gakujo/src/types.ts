@@ -41,13 +41,21 @@ export class LocalStorageData {
             }
             if (this.data.uniTable) {
                 this.setUniTable(UniTable.fromJson(this.data.uniTable));
+            } else {
+                this.setUniTable(UniTable.createEmptyUniTable());
             }
             if (this.data.color) {
                 this.setColor(ColorSettings.fromJson(this.data.color));
+            } else {
+                this.setColor(ColorSettings.createEmptyColor());
             }
             if (this.data.gradeCalc) {
                 this.setGradeCalc(
                     GraduateCalcData.fromJson(this.data.gradeCalc)
+                );
+            } else {
+                this.setGradeCalc(
+                    GraduateCalcData.createEmptyGraduateCalcData()
                 );
             }
         } else {
