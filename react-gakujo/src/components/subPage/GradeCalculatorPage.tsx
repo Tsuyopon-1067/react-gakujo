@@ -1,4 +1,5 @@
 import {
+    Divider,
     Table,
     TableBody,
     TableCell,
@@ -7,14 +8,33 @@ import {
     TextField,
 } from "@mui/material";
 import styles from "./GradeCalculatorPage.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
+// for input birth day
 interface YearMonthDay {
     year: number;
     month: number;
     date: number;
 }
 
+// for SchoolRow component
+class DelayEnrolled {
+    name: string;
+    delay: number;
+    enrolledYear: number;
+    entranceYear: number;
+    graduationYear: number;
+
+    constructor(name: string, delay: number, enrolledYear: number) {
+        this.name = name;
+        this.delay = delay;
+        this.enrolledYear = enrolledYear;
+        this.entranceYear = 0;
+        this.graduationYear = 0;
+    }
+}
+
+// main component
 function GradeCalculatorPage() {
     const [birthDay, setBirthDay] = useState({
         year: 2000,
@@ -22,29 +42,40 @@ function GradeCalculatorPage() {
         date: 1,
     } as YearMonthDay);
 
-    const [highSchoolExtra, setHighSchoolExtra] = useState(0);
-    const [universitySchoolExtra, setUniversitySchoolExtra] = useState(0);
-    const [lastDayOfMonth, setLastDayOfMonth] = useState(0);
-    useEffect(() => {
-        const lastDay = new Date(birthDay.year, birthDay.month, 0).getDate();
-        setLastDayOfMonth(lastDay);
-    }, [birthDay]);
-
+    const [delayEnrolledList, setDelayEnrolledList] = useState([
+        new DelayEnrolled("小学校", 0, 6),
+        new DelayEnrolled("中学校", 0, 3),
+        new DelayEnrolled("高校", 0, 3),
+        new DelayEnrolled("大学", 0, 4),
+        new DelayEnrolled("大学院", 0, 2),
+    ]);
+    // for option of year
     const currentYear = new Date().getFullYear();
     const yearList: number[] = [...Array<number>(16)].map(
         (_, i: number): number => currentYear - 30 + i
     );
+    // for option of month
     const monthList: number[] = [...Array<number>(12)].map(
         (_, i): number => i + 1
     );
+    // for option of date
     const dayList: number[] = [...Array<number>(31)].map(
         (_, i): number => i + 1
     );
-    for (let i = currentYear - 30; i < currentYear - 15; i++) {}
+    const [lastDayOfMonth, setLastDayOfMonth] = useState(0);
+    const handleOnChaneBirthDay = (birthDay: YearMonthDay) => {
+        setBirthDay(birthDay);
+        const lastDay = new Date(birthDay.year, birthDay.month, 0).getDate();
+        setLastDayOfMonth(lastDay);
+        updateEnteranceGraduationYearList(birthDay);
+    };
+
+    const updateEnteranceGraduationYearList = (argBirthDay: YearMonthDay) => {};
+
     return (
         <div className={styles.main_div}>
-            <div>
-                <p>生年月日</p>
+            <h1 className={styles.h1}>生年月日</h1>
+            <div className={styles.birthday_input_div}>
                 <TextField
                     select
                     label="年"
@@ -55,7 +86,7 @@ function GradeCalculatorPage() {
                     sx={{ width: "50%" }}
                     onChange={(e) => {
                         const year = parseInt(e.target.value);
-                        setBirthDay({ ...birthDay, year: year });
+                        handleOnChaneBirthDay({ ...birthDay, year: year });
                     }}
                 >
                     {yearList.map((option) => (
@@ -74,7 +105,7 @@ function GradeCalculatorPage() {
                     sx={{ width: "23%", margin: "0 2%" }}
                     onChange={(e) => {
                         const month = parseInt(e.target.value);
-                        setBirthDay({ ...birthDay, month: month });
+                        handleOnChaneBirthDay({ ...birthDay, month: month });
                     }}
                 >
                     {monthList.map((option) => (
@@ -93,7 +124,7 @@ function GradeCalculatorPage() {
                     sx={{ width: "23%" }}
                     onChange={(e) => {
                         const date = parseInt(e.target.value);
-                        setBirthDay({ ...birthDay, date: date });
+                        handleOnChaneBirthDay({ ...birthDay, date: date });
                     }}
                 >
                     {dayList.slice(0, lastDayOfMonth).map((option) => (
@@ -103,20 +134,133 @@ function GradeCalculatorPage() {
                     ))}
                 </TextField>
             </div>
+            <h1 className={styles.h1}>入学・卒業年度</h1>
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
+                        <TableCell
+                            align="center"
+                            sx={{ paddingLeft: 1, paddingRight: 1 }}
+                        >
+                            学校
+                        </TableCell>
+                        <TableCell
+                            align="center"
+                            sx={{ padding: 1, paddingRight: 1 }}
+                        >
+                            年度
+                        </TableCell>
+                        <TableCell
+                            align="center"
+                            sx={{ padding: 1, paddingRight: 1 }}
+                        >
+                            入学・卒業条件
+                        </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableCell>Dessert (100g serving)</TableCell>
-                    <TableCell align="right">Calories</TableCell>
+                    {delayEnrolledList.map((delayEnrolled, index) => (
+                        <SchoolRow
+                            key={index}
+                            delayEnrolled={delayEnrolled}
+                            update={updateEnteranceGraduationYearList}
+                            birthDay={birthDay}
+                        />
+                    ))}
                 </TableBody>
             </Table>
         </div>
     );
 }
+
+interface SchoolRowProps {
+    delayEnrolled: DelayEnrolled;
+    update: (y: YearMonthDay) => void;
+    birthDay: YearMonthDay;
+}
+const SchoolRow = ({ delayEnrolled, update, birthDay }: SchoolRowProps) => {
+    const delayLabel: string[] = [...Array<string>(10)].map(
+        (_, i): string => `${i}年遅れて入学`
+    );
+    const enrolledYearLabel: string[] = [...Array<string>(9)].map(
+        (_, i): string => `${i + 1}年在学`
+    );
+    delayLabel[0] = "現役入学";
+    const [delayLabelIndex, setDelayLabelIndex] = useState(delayEnrolled.delay);
+    const [enrolledYearLabelIndex, setEnrolledYearLabelIndex] = useState(
+        delayEnrolled.enrolledYear - 1
+    );
+    const tablePadding = { paddingLeft: 0.5, paddingRight: 0.5 };
+    console.log("log", delayEnrolled.name);
+    return (
+        <>
+            <TableRow>
+                <TableCell align="center" sx={tablePadding}>
+                    {delayEnrolled.name}入学
+                </TableCell>
+                <TableCell align="center" sx={tablePadding}>
+                    {delayEnrolled.entranceYear}年4月
+                </TableCell>
+                <TableCell align="center" sx={tablePadding}>
+                    <TextField
+                        select
+                        fullWidth
+                        label="入学"
+                        defaultValue={delayLabel[delayLabelIndex]}
+                        SelectProps={{ native: true }}
+                        variant="standard"
+                        value={delayLabel[delayLabelIndex]}
+                        onChange={(e) => {
+                            const index = delayLabel.indexOf(e.target.value);
+                            setDelayLabelIndex(index);
+                            delayEnrolled.delay = index;
+                            update(birthDay);
+                        }}
+                    >
+                        {delayLabel.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </TextField>
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell align="center" sx={tablePadding}>
+                    {delayEnrolled.name}卒業
+                </TableCell>
+                <TableCell align="center" sx={tablePadding}>
+                    {delayEnrolled.graduationYear}年3月
+                </TableCell>
+                <TableCell align="center" sx={tablePadding}>
+                    <TextField
+                        select
+                        fullWidth
+                        label="在学年数"
+                        defaultValue={enrolledYearLabel[enrolledYearLabelIndex]}
+                        SelectProps={{ native: true }}
+                        variant="standard"
+                        value={enrolledYearLabel[enrolledYearLabelIndex]}
+                        onChange={(e) => {
+                            const index = enrolledYearLabel.indexOf(
+                                e.target.value
+                            );
+                            setEnrolledYearLabelIndex(index);
+                            delayEnrolled.enrolledYear = index + 1;
+                            update(birthDay);
+                            console.log(index + 1);
+                        }}
+                    >
+                        {enrolledYearLabel.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </TextField>
+                </TableCell>
+            </TableRow>
+        </>
+    );
+};
 
 export default GradeCalculatorPage;
