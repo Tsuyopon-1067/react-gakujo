@@ -136,6 +136,7 @@ export default function FixedBottomNavigation({
                     showLabels
                     value={value}
                     onChange={(_, newValue) => {
+                        setIsSubPage(false);
                         setValue(newValue);
                     }}
                 >
