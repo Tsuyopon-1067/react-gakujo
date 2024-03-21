@@ -1,5 +1,4 @@
 import {
-    Divider,
     Table,
     TableBody,
     TableCell,
