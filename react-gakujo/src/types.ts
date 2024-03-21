@@ -161,7 +161,7 @@ export class GraduateCalcData {
     }
 
     public static createEmptyGraduateCalcData(): GraduateCalcData {
-        const birthDay = { year: 2001, month: 4, date: 2 } as YearMonthDay;
+        const birthDay = { year: 2002, month: 4, date: 2 } as YearMonthDay;
         const delayEnrolled = [
             new DelayEnrolled("小学校", 0, 6),
             new DelayEnrolled("中学校", 0, 3),

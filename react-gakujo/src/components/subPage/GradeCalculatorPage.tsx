@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import styles from "./GradeCalculatorPage.module.css";
 import { useEffect, useState } from "react";
-import { DelayEnrolled, YearMonthDay } from "../../types";
+import { DelayEnrolled, GraduateCalcData, YearMonthDay } from "../../types";
 import { MainLocalStorageData } from "../FixedBottomNavigation";
 
 // main component
@@ -66,6 +66,15 @@ function GradeCalculatorPage() {
                 newList[i].entranceYear + newList[i].enrolledYear;
         }
         setDelayEnrolledList(newList);
+
+        const newBirthDay = new YearMonthDay(
+            argBirthDay.year,
+            argBirthDay.month,
+            argBirthDay.date
+        );
+        const newGradeCalcData = new GraduateCalcData(newBirthDay, newList);
+        MainLocalStorageData.setGradeCalc(newGradeCalcData);
+        MainLocalStorageData.saveData();
     };
 
     return (
