@@ -212,7 +212,6 @@ const SchoolRow = ({ delayEnrolled, update, birthDay }: SchoolRowProps) => {
         delayEnrolled.enrolledYear - 1
     );
     const tablePadding = { paddingLeft: 0.5, paddingRight: 0.5 };
-    console.log("log", delayEnrolled.name);
     return (
         <>
             <TableRow>
