@@ -1,3 +1,32 @@
 .main_div {
     margin: 10pt;
 }
+
+.usage_grid_area {
+    margin: 2pt 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.usage_grid_area_element {
+    margin: 0 2pt;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+}
+
+.park_icon {
+    display: inline-block;
+    height: 12pt;
+    width: 12pt;
+    background-color: #474A4D;
+    margin-right: 2pt;
+}
+
+.bicycle_park_icon {
+    display: inline-block;
+    height: 12pt;
+    width: 12pt;
+    background-color: #909398;
+    margin-right: 2pt;
+}
