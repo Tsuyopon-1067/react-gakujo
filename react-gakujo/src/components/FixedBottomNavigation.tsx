@@ -30,10 +30,12 @@ import MailPage from "./subPage/MailPage";
 import StudentNumberPage from "./subPage/StudentNumberPage";
 import WifiPage from "./subPage/WifiPage";
 import { UniTable } from "./timeTableTypes";
+import GradeCalculatorPage from "./subPage/GradeCalculatorPage";
+import GradeCalcIcon from "./subPage/GradeCalcIcon";
 
 export const ContextApp = React.createContext<
     [UniTable, (u: UniTable) => void]
->([new UniTable([]), () => { }]);
+>([new UniTable([]), () => {}]);
 export const MainLocalStorageData = new LocalStorageData();
 
 interface FixedBottomNavigationProps {
@@ -103,6 +105,11 @@ export default function FixedBottomNavigation({
             <></>,
             <ClassTimerPage colorsettings={colorSettingsProps} />
         ),
+        createBottomNavigationElement(
+            "卒業年度チェック",
+            <></>,
+            <GradeCalculatorPage />
+        ),
     ];
 
     return (
@@ -129,6 +136,7 @@ export default function FixedBottomNavigation({
                     showLabels
                     value={value}
                     onChange={(_, newValue) => {
+                        setIsSubPage(false);
                         setValue(newValue);
                     }}
                 >
@@ -226,8 +234,25 @@ const ClassTimerButton = {
     value: 9,
 } as SubPageButtonElement;
 
-export {
-    BusButton, ClassTimerButton, MailButton,
-    StudentNumberButton, WifiButton
-};
+const GradeCalculatorButton = {
+    title: "卒業年度チェック",
+    icon: (
+        <GradeCalcIcon
+            style={{
+                fill: "#00000088",
+                width: fontSize,
+                height: fontSize,
+            }}
+        />
+    ),
+    value: 10,
+} as SubPageButtonElement;
 
+export {
+    BusButton,
+    ClassTimerButton,
+    MailButton,
+    StudentNumberButton,
+    WifiButton,
+    GradeCalculatorButton,
+};
