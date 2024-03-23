@@ -1,5 +1,15 @@
 # 行事予定データ形式
 
+## 場所
+
+react-gakujo/src/components/eventShedule/
+
+## 実行
+
+```
+go run createSchedule.go > hoge.json
+```
+
 ## csv
 
 -   A(0)：日付 （yyyy-mm-dd）
