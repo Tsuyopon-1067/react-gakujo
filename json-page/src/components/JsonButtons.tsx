@@ -45,7 +45,7 @@ function JsonButtons({ data }: JsonButtonsProps) {
     return (
         <>
             <Grid item xs={4}>
-                <div>
+                <div className={styles.title_div}>
                     <h2 className={styles.h2}>{name}</h2>
                 </div>
             </Grid>
