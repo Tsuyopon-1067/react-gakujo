@@ -1,17 +1,32 @@
 import { ExpandMore } from "@mui/icons-material";
-import { Accordion, AccordionDetails, AccordionSummary, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+} from "@mui/material";
 import styles from "./EventSchedule.module.css";
-import { DaliySchedule, MonthlySchedule, monthlySchedule4 } from "./EventScheduleType";
+import {
+    DaliySchedule,
+    MonthlySchedule,
+    monthlySchedule,
+} from "./EventScheduleType";
 
 function EventSchedule() {
     return (
         <div className={styles.main_div}>
             <h1>行事予定表</h1>
-            <MonthlyScheduleAccordion data={monthlySchedule4} />
+            {monthlySchedule.map((data) => (
+                <MonthlyScheduleAccordion key={data.month} data={data} />
+            ))}
         </div>
     );
 }
-
 
 interface EventScheduleProps {
     data: MonthlySchedule;
@@ -20,7 +35,7 @@ interface EventScheduleProps {
 function MonthlyScheduleAccordion({ data }: EventScheduleProps) {
     return (
         <Accordion>
-            <AccordionSummary expandIcon={<ExpandMore />} >
+            <AccordionSummary expandIcon={<ExpandMore />}>
                 {data.month}月
             </AccordionSummary>
             <AccordionDetails>
@@ -29,8 +44,8 @@ function MonthlyScheduleAccordion({ data }: EventScheduleProps) {
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center">日</TableCell>
-                                <TableCell align="center" >曜日</TableCell>
-                                <TableCell align="center" >行事</TableCell>
+                                <TableCell align="center">曜日</TableCell>
+                                <TableCell align="center">行事</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -59,15 +74,15 @@ const ScheduleTableRow = ({ data }: ScheduleTableRowProps) => {
             color = { background: "#fff0f0" };
             break;
         default:
-            color = { background: "#ffffff" }
+            color = { background: "#ffffff" };
     }
     return (
         <TableRow sx={{ color }}>
             <TableCell align="center">{data.day}</TableCell>
             <TableCell align="center">{data.dayOfWeek}</TableCell>
             <TableCell align="center">{data.content}</TableCell>
-        </TableRow >
+        </TableRow>
     );
-}
+};
 
 export default EventSchedule;
