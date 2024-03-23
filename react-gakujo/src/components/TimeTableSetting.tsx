@@ -1,17 +1,21 @@
-import { Edit } from '@mui/icons-material';
-import { IconButton, TextField } from '@mui/material';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import * as React from 'react';
+import { Edit } from "@mui/icons-material";
+import { IconButton, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import * as React from "react";
 import { useState } from "react";
-import { ContextApp, MainLocalStorageData } from './FixedBottomNavigation';
-import { ClassCellProps } from './TimeTable';
-import { UniCategory, UniClass, UniOnline, UniTable } from './timeTableTypes';
+import { ContextApp, MainLocalStorageData } from "./FixedBottomNavigation";
+import { ClassCellProps } from "./TimeTable";
+import { UniCategory, UniClass, UniOnline, UniTable } from "./timeTableTypes";
 
-export default function TimeTableSetting({ day, period, index }: ClassCellProps) {
+export default function TimeTableSetting({
+    day,
+    period,
+    index,
+}: ClassCellProps) {
     const [data, setData] = React.useContext(ContextApp);
     const [open, setOpen] = useState(false);
     const dayLabels = ["", "月", "火", "水", "木", "金"];
@@ -35,7 +39,16 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
 
     const handleSave = (data: UniTable) => {
         setOpen(false);
-        const tmp = new UniClass(name, teacher, room, credit, online, category, length, memo);
+        const tmp = new UniClass(
+            name,
+            teacher,
+            room,
+            credit,
+            online,
+            category,
+            length,
+            memo
+        );
         data.setClass(tmp, day - 1, period - 1, index);
         data = new UniTable(data.getClasses());
         setData(data);
@@ -43,9 +56,38 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
         MainLocalStorageData.saveData();
     };
 
+    const handleOnChangeCredit = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let creditNumber = Number(e.target.value);
+        if (creditNumber < 0) {
+            creditNumber = 0;
+        }
+        setCredit(creditNumber);
+    };
+
+    const handleOnChangeClassLength = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        let lengthNumber = Number(e.target.value);
+        if (lengthNumber < 0) {
+            lengthNumber = 0;
+        } else if (lengthNumber > 6 - period) {
+            lengthNumber = 6 - period;
+        }
+        setLength(lengthNumber);
+    };
+
     return (
         <React.Fragment>
-            <IconButton onClick={handleClickOpen} sx={{ width: 12, height: 12, padding: 0, margin: 0, display: "flex" }}>
+            <IconButton
+                onClick={handleClickOpen}
+                sx={{
+                    width: 12,
+                    height: 12,
+                    padding: 0,
+                    margin: 0,
+                    display: "flex",
+                }}
+            >
                 <Edit sx={{ width: 12, height: 12 }} />
             </IconButton>
             <Dialog
@@ -57,16 +99,48 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
                     {`編集：${dayLabels[day]}曜日 ${period}コマ`}
                 </DialogTitle>
                 <DialogContent>
-                    <TextField fullWidth label="科目名" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
-                    <TextField fullWidth label="教員名" variant="standard" value={teacher} onChange={(e) => setTeacher(e.target.value)} />
-                    <TextField fullWidth label="教室" variant="standard" value={room} onChange={(e) => setRoom(e.target.value)} />
-                    <TextField fullWidth label="単位数" type="number" InputLabelProps={{ shrink: true, }} variant="standard" value={credit} onChange={(e) => setCredit(Number(e.target.value))} />
-                    <TextField fullWidth select label="授業形態" defaultValue={UniOnline.labels[0]}
-                        SelectProps={{ native: true, }}
+                    <TextField
+                        fullWidth
+                        label="科目名"
+                        variant="standard"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <TextField
+                        fullWidth
+                        label="教員名"
+                        variant="standard"
+                        value={teacher}
+                        onChange={(e) => setTeacher(e.target.value)}
+                    />
+                    <TextField
+                        fullWidth
+                        label="教室"
+                        variant="standard"
+                        value={room}
+                        onChange={(e) => setRoom(e.target.value)}
+                    />
+                    <TextField
+                        fullWidth
+                        label="単位数"
+                        type="number"
+                        InputLabelProps={{ shrink: true }}
+                        variant="standard"
+                        value={credit}
+                        onChange={handleOnChangeCredit}
+                    />
+                    <TextField
+                        fullWidth
+                        select
+                        label="授業形態"
+                        defaultValue={UniOnline.labels[0]}
+                        SelectProps={{ native: true }}
                         variant="standard"
                         value={online}
                         onChange={(e) => {
-                            const index = UniOnline.labels.indexOf(e.target.value);
+                            const index = UniOnline.labels.indexOf(
+                                e.target.value
+                            );
                             setOnline(new UniOnline(index));
                         }}
                     >
@@ -77,13 +151,19 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
                         ))}
                     </TextField>
                     <br />
-                    <TextField fullWidth select label="科目分類" defaultValue={UniOnline.labels[0]}
-                        SelectProps={{ native: true, }}
+                    <TextField
+                        fullWidth
+                        select
+                        label="科目分類"
+                        defaultValue={UniOnline.labels[0]}
+                        SelectProps={{ native: true }}
                         variant="standard"
                         defaultChecked={true}
                         value={category}
                         onChange={(e) => {
-                            const index = UniCategory.labels.indexOf(e.target.value);
+                            const index = UniCategory.labels.indexOf(
+                                e.target.value
+                            );
                             setCategory(new UniCategory(index));
                         }}
                     >
@@ -93,8 +173,26 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
                             </option>
                         ))}
                     </TextField>
-                    <TextField fullWidth id="standard-number" label="連続" type="number" InputLabelProps={{ shrink: true, }} variant="standard" value={length} onChange={(e) => setLength(Number(e.target.value))} />
-                    <TextField fullWidth label="メモ" multiline rows={8} defaultValue={"hogehoge"} sx={{ marginTop: 2 }} value={memo} onChange={(e) => setMemo(e.target.value)} />
+                    <TextField
+                        fullWidth
+                        id="standard-number"
+                        label="連続"
+                        type="number"
+                        InputLabelProps={{ shrink: true }}
+                        variant="standard"
+                        value={length}
+                        onChange={handleOnChangeClassLength}
+                    />
+                    <TextField
+                        fullWidth
+                        label="メモ"
+                        multiline
+                        rows={8}
+                        defaultValue={"hogehoge"}
+                        sx={{ marginTop: 2 }}
+                        value={memo}
+                        onChange={(e) => setMemo(e.target.value)}
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button autoFocus onClick={handleCancel}>
@@ -105,6 +203,6 @@ export default function TimeTableSetting({ day, period, index }: ClassCellProps)
                     </Button>
                 </DialogActions>
             </Dialog>
-        </React.Fragment >
+        </React.Fragment>
     );
 }
