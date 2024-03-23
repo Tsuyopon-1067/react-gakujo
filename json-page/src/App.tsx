@@ -1,9 +1,21 @@
+import { Grid } from "@mui/material";
+import styles from "./App.module.css";
+import { InfJsonDataList } from "./components/JsonButtonPropsData";
+import JsonButtons from "./components/JsonButtons";
+import SimpleAppBar from "./components/SimpleAppBar";
+
 function App() {
     return (
         <>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
+            <SimpleAppBar />
+            <div className={styles.main_div}>
+                <h1 className={styles.h1}>情報学部</h1>
+                <Grid container spacing={2} width={"100%"}>
+                    {InfJsonDataList.map((data, index) => (
+                        <JsonButtons key={index} data={data} />
+                    ))}
+                </Grid>
+            </div>
         </>
     );
 }
