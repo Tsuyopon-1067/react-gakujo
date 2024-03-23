@@ -12,6 +12,7 @@ import {
     GakujoButton,
     HamaXButton,
     HandBookButton,
+    JsonCopyButton,
     OfficialSiteButton,
     OpacButton,
     SawayakaButton,
@@ -121,6 +122,7 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
             icon={StudentNumberButton.icon}
         />,
         <SawayakaButton colorSettings={colorSettings} />,
+        <JsonCopyButton colorSettings={colorSettings} />,
     ];
     return (
         <div className={styles.main_div}>

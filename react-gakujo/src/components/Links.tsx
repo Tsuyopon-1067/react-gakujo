@@ -1,6 +1,7 @@
 import {
     Business,
     Egg,
+    IntegrationInstructions,
     MenuBook,
     Restaurant,
     TextSnippet,
@@ -148,11 +149,26 @@ const SawayakaButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     />
 );
 
+const JsonCopyButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="設定データコピー"
+        href="https://tsuyopon-1067.github.io/react-gakujo/jsonCopy.html"
+        icon={
+            <IntegrationInstructions
+                sx={{ fontSize: fontSize }}
+                color="action"
+            />
+        }
+        colorSettings={colorSettings}
+    />
+);
+
 export {
     AcademicAffairsButton,
     GakujoButton,
     HamaXButton,
     HandBookButton,
+    JsonCopyButton,
     OfficialSiteButton,
     OpacButton,
     SawayakaButton,
