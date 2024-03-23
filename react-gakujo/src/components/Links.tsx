@@ -1,4 +1,11 @@
-import { Business, Egg, MenuBook, TextSnippet, Web } from "@mui/icons-material";
+import {
+    Business,
+    Egg,
+    MenuBook,
+    Restaurant,
+    TextSnippet,
+    Web,
+} from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { CSSProperties } from "react";
 import styles from "./Links.module.css";
@@ -132,11 +139,21 @@ const OfficialSiteButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     />
 );
 
+const SawayakaButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="さわやか和合店待ち時間"
+        href="https://www.genkotsu-hb.com/shop/wago.php"
+        icon={<Restaurant sx={{ fontSize: fontSize }} color="action" />}
+        colorSettings={colorSettings}
+    />
+);
+
 export {
-    GakujoButton,
     AcademicAffairsButton,
-    OpacButton,
-    HandBookButton,
+    GakujoButton,
     HamaXButton,
+    HandBookButton,
     OfficialSiteButton,
+    OpacButton,
+    SawayakaButton,
 };

@@ -14,6 +14,7 @@ import {
     HandBookButton,
     OfficialSiteButton,
     OpacButton,
+    SawayakaButton,
 } from "./Links";
 import styles from "./MiscPage.module.css";
 import { ColorSettingsProps } from "./WindowSwitcher";
@@ -119,6 +120,7 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
             title={StudentNumberButton.title}
             icon={StudentNumberButton.icon}
         />,
+        <SawayakaButton colorSettings={colorSettings} />,
     ];
     return (
         <div className={styles.main_div}>
