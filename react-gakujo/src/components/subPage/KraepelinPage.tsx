@@ -1,5 +1,5 @@
-import { Button } from "@mui/material";
-import { useState } from "react";
+import { Button, Card, CardContent } from "@mui/material";
+import { useCallback, useRef, useState } from "react";
 import styles from "./KraepelinPage.module.css";
 
 interface NumPadProps {
@@ -28,6 +28,8 @@ function KraepelinPage() {
     const [currentScore, setCurrentScore] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [queryList, setQueryList] = useState(createRandomArray(200));
+    const [currentLine, setCurrentLine] = useState(1);
+
     const handleOnClick = (n: number) => {
         const digit = (queryList[currentIndex] + queryList[currentIndex + 1]) % 10;
         if (n === digit) {
@@ -72,14 +74,68 @@ function KraepelinPage() {
             </div>
         );
     }
+
+    const lineTime = 5;
+    const [remainingTime, setRemainingTime] = useState(lineTime);
+    const [isCount, setIsCount] = useState(false);
+    const resetSession = () => {
+        setCurrentLine(c => c + 1);
+        setCurrentScore(0);
+        setCurrentIndex(0);
+        setQueryList(createRandomArray(200));
+        setRemainingTime(lineTime);
+
+        if (currentLine === 15) {
+            setCurrentLine(1);
+            setIsCount(false);
+            stopCounter();
+        }
+    }
+
+    const updateTimer = () => {
+        const newTime = remainingTime - 1;
+        if (newTime < -1) {
+            resetSession();
+        }
+        setRemainingTime(c => c - 1);
+        return;
+    }
+
+    const intervalRef = useRef<number | null>(null);
+    const startCounter = useCallback(() => {
+        if (intervalRef.current) {
+            return;
+        }
+        intervalRef.current = setInterval(() => {
+            updateTimer();
+        }, 1000);
+    }, []);
+
+    const stopCounter = useCallback(() => {
+        if (intervalRef.current !== null) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
+    }, []);
+
     return (
         <div className={styles.main_div}>
             <div className={styles.query_div}>
                 <QueryDisplay length={12} />
             </div>
             <NumPad onClick={handleOnClick} />
-            {currentScore}- {currentIndex}
-        </div>
+            {currentScore}- {currentIndex} = {remainingTime}
+            <Card>
+                <CardContent>
+                    <div className={styles.session_div}>
+                        <span> 正答率{currentScore}/{currentIndex}</span>
+                        <span> 行数{currentLine}/15</span>
+                    </div>
+                </CardContent>
+            </Card>
+            <Button onClick={() => setIsCount(true)} variant="contained" disabled={isCount} >開始</Button>
+            {isCount ? "true" : "false"}
+        </div >
     );
 }
 
