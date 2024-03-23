@@ -40,14 +40,21 @@ func main() {
 		classNumber, _ := strconv.Atoi(v[6])
 
 		dayOfWeekList := []string{"日", "月", "火", "水", "木", "金", "土"}
-		contents := []string{}
+		contents := ""
 		if classNumber != 0 {
-			contents = []string{dayOfWeekList[clasDayOfWeek] + strconv.Itoa(classNumber)}
+			contents = dayOfWeekList[clasDayOfWeek] + strconv.Itoa(classNumber) + " "
 		}
-		contents = append(contents, v[7:]...)
+		for i := 7; i < len(v); i++ {
+			if v[i] == "" {
+				break
+			}
+			contents += v[i] + " "
+		}
+		if len(contents) > 0 {
+			contents = contents[:len(contents)-1]
+		}
 
-		schedule := DailySchedule{day, dayOfWeekList[dayOfWeek], contents[0]}
-
+		schedule := DailySchedule{day, dayOfWeekList[dayOfWeek], contents}
 		eventMonthList[month-1].Data = append(eventMonthList[month-1].Data, schedule)
 	}
 
