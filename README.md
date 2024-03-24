@@ -1,6 +1,6 @@
 # react-gakujo
 
-<img src="./docs/img/app.jpg" width="500" alt="アプリ画面">
+<img src="./docs/img/app.jpg" width="400" alt="アプリ画面">
 
 ## 機能
 
@@ -36,3 +36,7 @@ https://tsuyopon-1067.github.io/react-gakujo/
 -   TypeScript v5.3.3
 -   MUI v5.15.11
 -   vite v5.1.4
+
+## 説明書的な
+
+https://github.com/Tsuyopon-1067/react-gakujo/blob/main/docs/description.md
