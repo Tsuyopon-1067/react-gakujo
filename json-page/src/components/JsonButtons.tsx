@@ -36,7 +36,7 @@ function JsonButtons({ data }: JsonButtonsProps) {
                     disabled={data === ""}
                     onClick={() => fetchDataAndCopyToClipboard(data)}
                 >
-                    <h2 className={styles.h2}>{name}</h2>
+                    <h3 className={styles.h3}>{name}</h3>
                 </Button>
             </Grid>
         );
@@ -46,7 +46,7 @@ function JsonButtons({ data }: JsonButtonsProps) {
         <>
             <Grid item xs={4}>
                 <div className={styles.title_div}>
-                    <h2 className={styles.h2}>{name}</h2>
+                    <h3 className={styles.h3}>{name}</h3>
                 </div>
             </Grid>
             <JsonButton name={"前期"} data={data1} />
