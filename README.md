@@ -1,6 +1,6 @@
 # react-gakujo
 
-![アプリ画面](./docs/img/app.jpg)
+<img src="./docs/img/app.jpg" width="500" alt="アプリ画面">
 
 ## 機能
 
