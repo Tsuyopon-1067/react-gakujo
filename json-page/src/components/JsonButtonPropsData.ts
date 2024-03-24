@@ -18,4 +18,42 @@ const InfCs3 = {
     data2: "",
 } as JsonButtonData;
 
-export const InfJsonDataList = [InfCs1, InfCs2, InfCs3];
+const InfBi1 = {
+    name: "学部1年",
+    data1: ``,
+    data2: ``,
+} as JsonButtonData;
+
+const InfBi2 = {
+    name: "学部2年",
+    data1: ``,
+    data2: ``,
+} as JsonButtonData;
+
+const InfBi3 = {
+    name: "学部3年",
+    data1: ``,
+    data2: ``,
+} as JsonButtonData;
+
+const InfIa1 = {
+    name: "学部1年",
+    data1: ``,
+    data2: ``,
+} as JsonButtonData;
+
+const InfIa2 = {
+    name: "学部2年",
+    data1: ``,
+    data2: ``,
+} as JsonButtonData;
+
+const InfIa3 = {
+    name: "学部3年",
+    data1: ``,
+    data2: ``,
+} as JsonButtonData;
+
+export const InfCsJsonDataList = [InfCs1, InfCs2, InfCs3];
+export const InfBiJsonDataList = [InfBi1, InfBi2, InfBi3];
+export const InfIaJsonDataList = [InfIa1, InfIa2, InfIa3];
