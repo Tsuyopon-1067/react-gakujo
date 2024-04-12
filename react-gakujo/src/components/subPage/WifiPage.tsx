@@ -42,9 +42,31 @@ function WifiPage() {
                 </p>
                 <p
                     className={styles.wifi_p}
+                    style={{
+                        gridRow: 3,
+                        gridColumn: 1,
+                        gridColumnEnd: 3,
+                        marginTop: "32px",
+                    }}
+                >
+                    例）静大IDが「ab123456」の場合
+                </p>
+                <p
+                    className={styles.wifi_p}
+                    style={{
+                        gridRow: 4,
+                        gridColumn: 1,
+                        gridColumnEnd: 3,
+                        marginLeft: "32px",
+                    }}
+                >
+                    ab123456@shizuoka.ac.jp
+                </p>
+                <p
+                    className={styles.wifi_p}
                     style={{ gridRow: 1, gridColumn: 2 }}
                 >
-                    静大ID（学情と同じ）
+                    静大ID（学情と同じ）+ @shizuoka.ac.jp
                 </p>
                 <p
                     className={styles.wifi_p}
