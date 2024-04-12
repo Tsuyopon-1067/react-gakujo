@@ -4,6 +4,7 @@ import {
     IntegrationInstructions,
     MenuBook,
     Restaurant,
+    Share,
     TextSnippet,
     Web,
 } from "@mui/icons-material";
@@ -163,6 +164,15 @@ const JsonCopyButton = ({ colorSettings }: WrapedLinkButtonProps) => (
     />
 );
 
+const ShareButton = ({ colorSettings }: WrapedLinkButtonProps) => (
+    <LinkButton
+        title="共有"
+        href="https://github.com/Tsuyopon-1067/react-gakujo/blob/main/docs/description.md"
+        icon={<Share sx={{ fontSize: fontSize }} color="action" />}
+        colorSettings={colorSettings}
+    />
+);
+
 export {
     AcademicAffairsButton,
     GakujoButton,
@@ -172,4 +182,5 @@ export {
     OfficialSiteButton,
     OpacButton,
     SawayakaButton,
+    ShareButton,
 };

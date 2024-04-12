@@ -16,6 +16,7 @@ import {
     OfficialSiteButton,
     OpacButton,
     SawayakaButton,
+    ShareButton,
 } from "./Links";
 import styles from "./MiscPage.module.css";
 import { ColorSettingsProps } from "./WindowSwitcher";
@@ -123,6 +124,7 @@ function MiscPage({ colorSettings, setIsSubPage, setValue }: MiscPageProps) {
         />,
         <SawayakaButton colorSettings={colorSettings} />,
         <JsonCopyButton colorSettings={colorSettings} />,
+        <ShareButton colorSettings={colorSettings} />,
     ];
     return (
         <div className={styles.main_div}>
